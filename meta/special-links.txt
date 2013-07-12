@@ -1,0 +1,1 @@
+autokey ~/.config/autokey/data/emacs

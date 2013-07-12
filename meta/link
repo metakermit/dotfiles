@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+import os, shutil
+
+with open('./meta/special-links.txt') as f:
+    for line in f:
+        line = line.strip()
+        if line != '':
+            target, link = line.split(' ')
+            link_location, link_name = os.path.split(link)
+            link_location = os.path.expanduser(link_location)
+            target, link_name = os.path.join(os.getcwd(), target), link_name
+            try:
+                print('ln -s %s %s' % (target, link_name))
+                os.symlink(target, link_name)
+            except OSError as e:
+                if e.errno==17: # file exists
+                    pass
+                else:
+                    raise
+            print('moving symlink to %s' % link_location)
+            shutil.move(link_name, link_location)
