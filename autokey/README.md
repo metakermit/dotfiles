@@ -15,4 +15,4 @@ Note that I'm using `<alt>` to represent `<cmd>`, because I'm using a PC keyboar
 
 Installation
 ------------
-Place the scripts anywhere inside `~/.config/autokey/` (or run my `./meta/link` script to do create symlinks to the cloned repo for you) and add `autokey` to your startup applications (dash -> startup applications in Ubuntu).
+Place the scripts anywhere inside `~/.config/autokey/` (or run my `./meta/link` script to create symlinks to the cloned repo for you) and add `autokey` to your startup applications (dash -> startup applications in Ubuntu).
