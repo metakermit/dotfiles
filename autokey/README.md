@@ -10,3 +10,11 @@ My [Autokey](https://apps.ubuntu.com/cat/applications/autokey-gtk/) settings to 
 To achieve this, a remapping of the old functions (new window, tab, print, select all, ...) was also done so that they are accessible through the `alt` key (`alt+n`, `alt+t` etc.)
 
 A list of apps that are not included (Emacs itself obviously, but also some others where you wouldn't wanna mess with the bindings) is defined in the `combo.py` script.
+
+Installation
+------------
+Place the scripts anywhere inside `~/.config/autokey/` (or run my `./meta/link` script to do create symlinks to the cloned repo for you) and add
+
+    autokey
+
+to your startup applications (dash -> startup applications in Ubuntu).
