@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# kermit-process-control-conky
+sleep 60 && conky;
+
+exit

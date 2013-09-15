@@ -1,1 +1,2 @@
 autokey ~/.config/autokey/data/emacs
+scripts ~/.bin/scripts

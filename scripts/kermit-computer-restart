@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# restart the machine
+
+sudo reboot
+
+exit

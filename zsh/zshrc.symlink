@@ -39,4 +39,4 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 #export PATH=/Users/kermit/.rvm/gems/ruby-2.0.0-p0/bin:/Users/kermit/.rvm/gems/ruby-2.0.0-p0@global/bin:/Users/kermit/.rvm/rubies/ruby-2.0.0-p0/bin:/Users/kermit/.rvm/bin:/Users/kermit/.virtualenvs/s/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin
 
-. /usr/local/bin/kermit-computer-shrc
+. ~/.bin/scripts/kermit-computer-shrc

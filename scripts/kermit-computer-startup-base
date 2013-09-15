@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# kermitr-script-edit <sleep time>
+if [ -n "$1" ]
+# Test whether command-line argument is present (non-empty).
+then
+  SLEEP_TIME=$1
+else  
+  echo Must specify sleep time as an argument
+  exit
+fi
+
+#synergyc -f quadrophenia &
+#sleep $SLEEP_TIME
+#dropbox start -i
+sleep $SLEEP_TIME
+/bin/sh -c '[ -d "$HOME/Ubuntu One" ] && ubuntuone-launch' &
+sleep $SLEEP_TIME
+guake &
+sleep $SLEEP_TIME
+conky &
+#kermit-process-control-conky &
+#tomboy &
+#gnome-do &
+
+exit

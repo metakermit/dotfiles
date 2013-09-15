@@ -1,0 +1,145 @@
+#!/bin/bash
+
+# install locally, not as super user
+
+# Non-sudo stuff
+##################
+
+# Python packages
+#-----------------
+
+cheese_shop() {
+    echo "installing from the Cheese Shop"
+    export WORKON_HOME
+    source /usr/local/bin/virtualenvwrapper.sh
+    mkvirtualenv --system-site-packages s
+    workon s
+    pip install pandas numpy ipython[notebook] nose yanc jedi epc
+}
+
+# get stuff from source
+#-----------------------
+
+get_zsh() {
+	if [ -d ~/.oh-my-zsh ]
+	then
+	    echo "oh-my-zsh already set up"
+	else
+	    echo "setting up oh-my-zsh"
+	    #wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+        # manual method since I want my own .zsh
+        git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+        chsh -s /bin/zsh
+	fi
+}
+
+get_ruby() {
+	#if hash rvm 2>/dev/null; then
+        if [ -f ~/.rvm/bin/rvm ]
+	then
+	    echo "rvm already installed."
+	else
+	    echo "installing rvm"
+	    \curl -L https://get.rvm.io | bash -s stable --autolibs=3 --rails
+	fi
+	# install all the gems
+	# gem install gist
+}
+
+# Node.js
+# TODO
+get_node() {
+    NODEPATH=~/projekti/git/drugi/node
+
+    if [ -f ~/.npmrc ]; then
+	echo "have .npmrc"
+    else
+	echo root = $HOME/.local/lib/node_modules | tee -a ~/.npmrc
+	echo binroot = $HOME/.local/bin | tee -a ~/.npmrc
+	echo manroot = $HOME/.local/share/man | tee -a ~/.npmrc
+    fi
+
+    if [ -d $NODEPATH ]; then
+	echo "node set up. updating"
+	cd $NODEPATH
+	git pull
+    else
+	echo "installing node..."
+	git clone https://github.com/joyent/node.git $NODEPATH
+	cd $NODEPATH
+    fi
+    ./configure --prefix=$HOME/.local
+    make
+    make install
+    cd
+    ln -s .local/lib/node_modules .node_modules
+}
+
+# Docker
+# nije bas dobro - instaliram globalno iz paketa
+get_docker() {
+    if [ -d ${GOPATH}/src/github.com/dotcloud ]
+    then
+	echo "docker already installed"
+    else
+	echo "installing docker..."
+	mkdir -p $GOPATH/src/github.com/dotcloud
+	cd $GOPATH/src/github.com/dotcloud
+	git clone git://github.com/dotcloud/docker.git
+	cd docker
+	go get -v github.com/dotcloud/docker/...
+	go install -v github.com/dotcloud/docker/...
+    fi
+
+}
+
+clone_new() {
+    NAME=`python -c "import sys; p=sys.argv[1]; print(p.split('/')[-1][:-4])" $1`
+    if [ -d $NAME ]
+    then
+	echo $NAME already installed
+    else
+	git clone $1
+    fi
+}
+
+get_src() {
+    GIT=~/projekti/git/
+
+    # solarized stuff
+    # -----
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        SLR=${GIT}/drugi/solarized
+        mkdir -p $SLR
+        cd $SLR
+        clone_new https://github.com/sigurdga/gnome-terminal-colors-solarized.git
+        clone_new https://github.com/coolwanglu/guake-colors-solarized.git
+    fi
+
+    # other
+    # -----
+    cd $GIT/drugi
+    clone_new https://github.com/rupa/z.git
+}
+
+# Call all the functions
+#-----------------------
+
+install_non_sudo() {
+    get_zsh
+    get_ruby
+    cheese_shop
+    #get_docker
+    get_node
+    get_src
+}
+
+echo "Instulling stuff as a *local* user..."
+
+install_non_sudo
+
+echo "Done."
+echo $HOME
+pwd
+echo $PATH
+exit

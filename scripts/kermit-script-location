@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# kermit-deploy-location - get location from where the kermit scripts install from
+# Note: this function is hard-coded in the kermit-deploy script
+cat /etc/kermit-location
+
+
+exit

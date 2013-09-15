@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# kermit-open
+
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'FreeBSD' || "$unamestr" == 'Darwin' ]]; then
+   platform='mac'
+fi
+
+if [[ $platform == 'linux' ]]; then
+# Ubuntu
+    xdg-open $1 &
+elif [[ $platform == 'mac' ]]; then
+# OS X
+    echo "opening on OS X"
+    open $1
+fi
+
+
+
+exit

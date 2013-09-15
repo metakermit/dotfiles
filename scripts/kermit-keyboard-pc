@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# set the defualt pc keyboard (keep current layout)
+
+get_layout() {
+  setxkbmap -print | grep xkb_symbols | awk '{print $4}' | awk -F"+" '{print $2}'
+}
+
+#setxkbmap -layout `get_layout`
+
+# clear settings
+setxkbmap -model "pc105" -layout "hr,us" -option ""
+
+# pc keyobard
+setxkbmap -rules "evdev" -model "pc105" -layout "hr,us" -option "terminate:ctrl_alt_bksp,lv3:rwin_switch,grp:shifts_toggle,caps:ctrl_modifier"
+
+exit

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# finite test
+
+echo \"running assembly...\"; sleep 2; echo \"running assembly...\"; sleep 2;echo \"running assembly...\"; sleep 2;echo \"running assembly...\"; sleep 2
+
+exit

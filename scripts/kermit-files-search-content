@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# kermit-files-search-content <phrase>
+
+#find -name '*.vala' -exec grep -P '(class|struct|interface) Foo' {} +
+echo searching for:
+echo $1
+
+find -name '*.vala' -exec grep -PH $1 {} +
+
+exit

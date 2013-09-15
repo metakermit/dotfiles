@@ -2,14 +2,18 @@
 
 import os, shutil
 
-with open('./meta/special-links.txt') as f:
+script_path = os.path.realpath(os.path.dirname(__file__))
+repo_root = os.path.dirname(script_path)
+special_links = os.path.join(script_path, 'special-links.txt')
+
+with open(special_links) as f:
     for line in f:
         line = line.strip()
         if line != '':
             target, link = line.split(' ')
             link_location, link_name = os.path.split(link)
             link_location = os.path.expanduser(link_location)
-            target, link_name = os.path.join(os.getcwd(), target), link_name
+            target, link_name = os.path.join(repo_root, target), link_name
             try:
                 print('ln -s %s %s' % (target, link_name))
                 os.symlink(target, link_name)
@@ -18,5 +22,9 @@ with open('./meta/special-links.txt') as f:
                     pass
                 else:
                     raise
-            print('moving symlink to %s' % link_location)
-            shutil.move(link_name, link_location)
+            #print('moving symlink to %s' % link_location)
+            # errors in 12.04
+            #shutil.move(link_name, link_location)
+            cmd = 'mkdir -p {2}; mv {0} {1}'.format(link_name, link_location + '/', link_location)
+            #print(cmd)
+            os.system(cmd)

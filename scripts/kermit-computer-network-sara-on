@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# restartaj konekciju kod sare
+
+sudo pon dsl-provider
+ping www.google.com
+
+exit

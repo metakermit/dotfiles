@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# kermit-look [dark|light]
+
+if [ -n "$1" ]; then
+  mod=$1
+else  
+  echo Must specify name as an argument
+  exit
+fi
+
+ext_add() {
+    pic=${1}.jpg
+    if [ -f $pic ]; then
+	:
+    else
+	pic=${1}.png
+    fi
+    echo $pic
+}
+
+
+
+if [ $mod == 'dark' ]; then
+    bckg=$(ext_add ~/dark)
+else
+    mod=light
+    bckg=$(ext_add ~/light)
+fi
+
+# desktop background
+echo Setting background to ${bckg}
+gsettings set org.gnome.desktop.background picture-uri file://${bckg}
+
+# gnome
+cd ~/projekti/git/drugi/solarized/gnome-terminal-colors-solarized/
+./install.sh -s ${mod} -p Default
+
+# guake
+cd ~/projekti/git/drugi/solarized/guake-colors-solarized
+./set_${mod}.sh
+
+# emacs
+emacsclient -e "(load-theme 'solarized-${mod} t)"
+
+exit

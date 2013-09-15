@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# restartaj konekciju kod sare
+
+sudo poff -a
+sudo kill -9 `pidof pppd gpppon`
+sudo /etc/init.d/networking restart
+sudo restart network-manager
+ps -e | grep ppp
+
+exit

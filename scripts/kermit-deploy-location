@@ -1,0 +1,3 @@
+#!/bin/bash
+abspath="$(cd "${0%/*}" 2>/dev/null; echo "$PWD"/"${0##*/}")"
+echo `dirname $abspath`

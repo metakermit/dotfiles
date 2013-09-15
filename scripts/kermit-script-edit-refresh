@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# kermitr-script-edit name
+if [ -n "$1" ]
+# Test whether command-line argument is present (non-empty).
+then
+  name=$1
+else  
+  echo Must specify script name as an argument
+  exit
+fi
+
+. kermit-script-cd
+echo Editing script $name at location `pwd`
+
+editor=vim
+
+$editor $name
+
+sudo kermit-refresh
+
+exit

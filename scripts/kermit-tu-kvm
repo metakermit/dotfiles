@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# connect to kvm
+
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'FreeBSD' ]]; then
+   platform='freebsd'
+fi
+
+if [[ $platform == 'linux' ]]; then
+# Ubuntu
+    interface='eth0:1'
+    sudo ifconfig $interface 192.168.172.31 netmask 255.255.255.0
+elif [[ $platform == 'freebsd' ]]; then
+# OS X
+    interface='en0:1'
+fi
+
+kermit-open http://192.168.172.26 &
+
+
+exit

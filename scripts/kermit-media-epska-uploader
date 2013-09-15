@@ -1,0 +1,28 @@
+#!
+#/usr/bin/python
+
+'''Script uploads comics for epska.org
+parameter: path to picture to be uploaded'''
+from ftplib import FTP
+import os, sys
+
+def upload(ftp, file):
+    ext = os.path.splitext(file)[1]
+    if ext in (".txt", ".htm", ".html", ".xml"):
+        ftp.storlines("STOR " + file, open(file))
+    else:
+        ftp.storbinary("STOR " + file, open(file, "rb"), 1024)
+
+
+local_path=sys.argv[1]
+print "file to be stored: " + local_path
+
+ftp=FTP("ftp.epska.org")
+ftp.login("epskaor", "vOkinjlOksa4")
+ftp.cwd("/public_html/neobjavljene_stvarcice/strip")
+ftp.retrlines("LIST")
+print "uploading..."
+upload(ftp, local_path)
+print "done"
+ftp.retrlines("LIST")
+ftp.quit()

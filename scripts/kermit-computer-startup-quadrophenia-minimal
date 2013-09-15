@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# kermitr-script-edit <sleep time>
+if [ -n "$1" ]
+# Test whether command-line argument is present (non-empty).
+then
+  SLEEP_TIME=$1
+else  
+  echo Must specify sleep time as an argument
+  exit
+fi
+
+kermit-computer-startup-base SLEEP_TIME &
+sleep $SLEEP_TIME
+synergys -c /home/kermit/.quicksynergy/synergy.conf &
+
+exit

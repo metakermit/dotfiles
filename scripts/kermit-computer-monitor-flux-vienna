@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# xflux Vienna
+
+xflux -l 48.210433 -g 16.37159 &
+
+exit

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# kermit-app-ipy-notebook
+
+. ~/.bashrc
+
+ipython notebook --pylab=inline --notebook-dir=~/Dropbox/dev/skripte/python/notebook
+
+exit

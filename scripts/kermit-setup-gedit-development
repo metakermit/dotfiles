@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# setup gedit for development
+
+sudo apt-add-repository ppa:sinzui/ppa
+sudo apt-get update
+sudo apt-get install gedit-plugins gedit-developer-plugins
+
+
+exit

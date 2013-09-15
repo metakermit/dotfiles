@@ -13,7 +13,7 @@ echo ''
 # logging functions
 
 info () {
-  printf "  [ \033[00;34m..\033[0m ] $1"
+  printf "  [ \033[00;34m..\033[0m ] $1\n"
 }
 
 user () {
@@ -37,7 +37,15 @@ link_files () {
   success "linked $1 to $2"
 }
 
-# the main install function
+aditionally () {
+  info 'special links'
+  `dirname $0`/link
+
+  info 'install local programs'
+  $HOME/.bin/scripts/kermit-install-programs-local
+}
+
+# the main dotfile linking function
 
 install_dotfiles () {
   info 'installing dotfiles'
@@ -107,6 +115,7 @@ install_dotfiles () {
 }
 
 install_dotfiles
+aditionally
 
 echo ''
 echo 'All installed!'

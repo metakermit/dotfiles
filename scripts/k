@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+import os
+import subprocess
+import sys
+#import argparse
+
+if len(sys.argv)==1:
+    print('W    elcome to k. Please enter a subcommand')
+else:
+    subcommand = sys.argv[1]
+    print(subcommand)

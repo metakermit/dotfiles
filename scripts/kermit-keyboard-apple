@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# clear all options
+setxkbmap -model "pc105" -layout "hr,us" -option ""  
+
+# set the Apple keyboard
+setxkbmap -rules "evdev" -model "pc105" -layout "hr,us" -option "terminate:ctrl_alt_bksp,lv3:rwin_switch,grp:shifts_toggle,caps:ctrl_modifier,altwin:swap_lalt_lwin"
+
+# TODO lsusb
+if [[ `hostname` == "Glamdring" ]]; then
+    : #nothing
+else
+    # swap the grave-tilde with less-greater key
+    # variant with dead keys
+    #xmodmap -e "keycode  94 = grave asciitilde dead_grave dead_tilde grave asciitilde"
+    #xmodmap -e "keycode  49 = less greater less greater bar brokenbar bar brokenbar"
+
+    # variant without dead keys
+    xmodmap -e "keycode  94 = grave asciitilde"
+    xmodmap -e "keycode  49 = less greater less greater bar brokenbar bar brokenbar"
+fi
+
+exit

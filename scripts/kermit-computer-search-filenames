@@ -1,0 +1,14 @@
+#!
+#trazi datoteku arg2 u direktoriju arg1 i dublje
+USAGE="find <what> <where>"
+if [[ -n "$1" && -n '$2' ]]
+# Test whether command-line argument is present (non-empty).
+then
+  WHAT=$1
+  WHERE=$2
+else  
+  echo $USAGE
+  exit
+fi
+
+find $WHERE -name $WHAT -type f -print

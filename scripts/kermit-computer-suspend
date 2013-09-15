@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# kermit-computer-suspendkermit-computer-suspend
+
+dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend
+
+
+
+exit

@@ -1,0 +1,168 @@
+#!/bin/bash
+
+# kermit's shell profile file
+
+# aliases
+##########
+
+alias ec=emacsclient
+
+GIT=$HOME/projekti/git
+
+function test_open() {
+    echo "opening"
+    open "http://localhost/"
+}
+
+function server() {
+	if [ -f /usr/local/bin/kermit-app-server ]
+	then
+		kermit-app-server
+	else
+		local port="${1:-8000}"
+		open "http://localhost:${port}/"
+		nohup python -m SimpleHTTPServer "$port" > /dev/null 2>&1 &
+	fi
+}
+
+function absolute_path {
+    echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1")
+}
+
+# global functions
+###################
+
+on_demand_venv() {
+	# Python virtualenvwrapper loads really slowly, so load it on demand.
+	if [[ $(type -t workon) != function ]]; then
+	virtualenv_funcs=( workon deactivate mkvirtualenv )
+	 
+	load_virtualenv() {
+	# If these already exist, then virtualenvwrapper won't override them.
+	unset -f "${virtualenv_funcs[@]}"
+	 
+	# virtualenvwrapper doesn't load if PYTHONPATH is set, because the
+	# virtualenv python doesn't have the right modules.
+	declare _pp="$PYTHONPATH"
+	unset PYTHONPATH
+	 
+	# Attempt to load virtualenvwrapper from its many possible sources...
+	_try_source() { [[ -f $1 ]] || return; source "$1"; return 0; }
+	_try_source /usr/local/bin/virtualenvwrapper.sh || \
+	_try_source /etc/bash_completion.d/virtualenvwrapper || \
+	_try_source /usr/bin/virtualenvwrapper.sh
+	declare status=$?
+	unset -f _try_source
+	 
+	# Restore PYTHONPATH
+	[[ -n $_pp ]] && export PYTHONPATH="$_pp"
+	 
+	# Did loading work?
+	if [[ $status != 0 || $(type -t "$1") != function ]]; then
+	echo "Error loading virtualenvwrapper, sorry" >&2
+	return $status
+	fi
+	 
+	# Chain-load the appropriate function
+	"$@"
+	}
+	 
+	for v in "${virtualenv_funcs[@]}"; do
+	eval "$v() { load_virtualenv $v \"\$@\"; }"
+	done
+	fi
+}
+
+export PATH
+
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$1"
+    fi
+}
+
+# OS-specific
+##################
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    # Linux
+    subl() { nohup /usr/bin/subl "$@" > /dev/null 2>&1 & }
+    #e() { nohup emacs "$@" > /dev/null 2>&1 & }
+    alias open=xdg-open
+    alias edit=e
+    #emacs --daemon # start the background daemon
+    #ALTERNATE_EDITOR=""
+    e() { nohup emacsclient -n --alternate-editor="emacs" "$@" > /dev/null 2>&1 & }
+    alias rc='env DISPLAY=:0.0 rhythmbox-client --no-start'
+    if [[ `hostname` == hocus-pocus ]]; then
+        # key remappings for weird keyboards. Apple khm.. khm..
+	# off due to switching to an us layout
+        #xmodmap ~/.Xmodmap
+	:
+    fi
+    # emacs-bindings - http://superuser.com/questions/345452/how-do-i-change-my-gnome-ubuntu-key-binding-work-as-emacs
+    #gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    # Mac
+    #export PATH=/usr/texbin:$PATH
+    pathadd '/usr/texbin'
+    # Set CLICOLOR if you want Ansi Colors in iTerm2 
+    export CLICOLOR=1
+    # Set colors to match iTerm2 Terminal Colors
+    export TERM=xterm-256color
+    # open Emacs GUI from terminal
+    #alias emacs='open -a /Applications/Emacs.app $1'
+    alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+    alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+    alias e='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor="/Applications/Emacs.app/Contents/MacOS/Emacs" -n'
+fi
+
+# my scripts
+#############
+pathadd $HOME/.bin/scripts
+
+# language support
+####################
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# Deb packaging
+################
+export DEBFULLNAME="Dražen Lučanin"
+export DEBEMAIL="kermit666@gmail.com"
+
+# Python
+##############
+export WORKON_HOME
+source /usr/local/bin/virtualenvwrapper_lazy.sh
+#on_demand_venv
+
+# Ruby
+######
+pathadd '/var/lib/gems/1.8/bin'
+pathadd $HOME/.rvm/bin
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# Heroku
+########
+pathadd '/usr/local/heroku/bin'
+
+# GO
+#####
+export GOPATH=$HOME/.go
+mkdir -p $GOPATH/bin
+pathadd ${GOPATH}/bin
+
+# node
+######
+pathadd $HOME/.local/bin
+
+# Z script
+######
+source ${GIT}/drugi/z/z.sh
+
+# dev env variables
+# TODO: keep not public
+######
+FORECAST_KEY='24e4d718ac63f60724a956b116c65949'
+

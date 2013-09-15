@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# resyn
+# -----
+# usage:
+# resyn client | server <host>
+# e.g.
+# resyn client quadrophenia
+# or
+# resyn server
+
+if [ -n "$1" ]
+# Test whether command-line argument is present (non-empty).
+then
+  type=$1
+else  
+  echo Must specify "server" or "client"
+  exit
+fi
+
+if [ -n "$2" ]
+# Test whether command-line argument is present (non-empty).
+then
+  host=$2
+else  
+  echo Must specify hostname
+  exit
+fi
+
+if [$type -eq "server"]
+then
+	pkill synergys
+	kermit-network-synergys
+fi
+
+if [$type -eq "client"]
+then
+        pkill synergyc
+        kermit-network-synergyc $host
+fi
+
+exit

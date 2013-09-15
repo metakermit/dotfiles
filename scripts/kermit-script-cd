@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# kermit-script-cd
+# usage:
+# . kermit-script-cd
+
+cd `kermit-script-location`
+

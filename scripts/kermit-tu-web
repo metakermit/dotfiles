@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# kermit-auto-web-tu
+
+#cd `kermit-deploy-location`
+cd ~/Dropbox/dev/eclipse/projekti/sci.profile.tu-webpage
+./deploy.sh
+
+exit

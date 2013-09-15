@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# kermit-speak
+
+# Read highlighted text on screen
+ 
+# convert text into usable ascii text (if anyone has a better way of 
+# doing this which produces text which can be read by festival please let me know)
+ascii() 
+{
+echo "<html><body>" > /tmp/convert.htm
+cat | uni2ascii -a Q -a D 2> /dev/null >> /tmp/convert.htm
+echo "</html></body>" >> /tmp/convert.htm
+cat /tmp/convert.htm | lynx -stdin -dump
+rm /tmp/convert.htm
+}
+ 
+#Stop running instance if found then exit
+ 
+pidfile=/tmp/speak.pid
+if [ -e $pidfile ]; then
+    pid=`cat $pidfile`
+    if kill -0 $pid 2> /dev/null; then
+        echo "Already running...Killing process"
+        # Ramble on kill
+        # kill $pid 2> /dev/null
+        # Stop at end of sentence kill
+        for i in `ps -ef| awk '$3 == '${pid}' { print $2 }'`; do
+            kill $i
+        done
+        exit 0
+    else
+        rm $pidfile
+    fi
+fi
+ 
+# Otherwise speak selected text
+xsel -o | ascii | festival --tts 2> /dev/null & pid=$! 
+echo $pid > $pidfile
+wait $pid 2> /dev/null
+ 
+rm $pidfile
+
+
+
+exit

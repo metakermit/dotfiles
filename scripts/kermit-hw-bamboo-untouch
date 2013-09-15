@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# kermit-hw-bamboo-untouch
+
+#xinput -set-prop 10 "Device Enabled" 0
+#xinput -set-prop 11 "Device Enabled" 0
+
+#xinput -list
+kermit-internal-pytouch 0
+
+exit

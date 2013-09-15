@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# ubuntu
+sudo apt-get install -y curl python-pip ubuntu-restricted-extras virtualenvwrapper zsh
+#venvwrapper kroz pip?
+sudo pip install 
+
+# little less important
+
+

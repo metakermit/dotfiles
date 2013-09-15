@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# kermit-script-markdown
+
+filename=$(basename $1)
+extension=${filename##*.}
+filename=${filename%.*}
+echo "markdown $1 >  `dirname $1`/${filename}.html"
+markdown $1 > `dirname $1`/${filename}.html
+
+exit

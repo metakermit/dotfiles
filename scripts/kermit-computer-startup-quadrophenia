@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# kermit-computer-startup-quadrophenia <SLEEP_TIME>
+if [ -n "$1" ]
+# Test whether command-line argument is present (non-empty).
+then
+  SLEEP_TIME=$1
+else  
+  echo Must specify sleep time as an argument
+  exit
+fi
+
+kermit-computer-startup-minimal $SLEEP_TIME &
+sleep $SLEEP_TIME
+empathy &
+sleep $SLEEP_TIME
+gm-notify &

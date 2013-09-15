@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# kermit-script-view
+
+. kermit-script-cd
+echo Look at my lovely scripts:
+echo --------------------------
+ls
+
+exit
+

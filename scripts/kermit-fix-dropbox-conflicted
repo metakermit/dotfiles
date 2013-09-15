@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# remove files with conflicted in their name from . deeper
+find . | grep conflicted | while read line; do rm "$line"; done
+
+
+exit

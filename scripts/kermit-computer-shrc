@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# kermit's shell rc file
+
+. ~/.bin/scripts/kermit-computer-profile

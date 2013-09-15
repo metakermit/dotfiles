@@ -1,0 +1,4 @@
+#!/bin/bash
+out=${1%%.*}
+gcc $1 -o ${out}.out
+./${out}.out

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# kermit-script-pandoc
+usage="kermit-script-pandoc <file> <target extension>"
+
+filename=$(basename $1)
+extension=${filename##*.}
+filename=${filename%.*}
+target_extension=$2
+echo "pandoc -f markdown -o `dirname $1`/${filename}.$target_extension $1"
+pandoc -f markdown -o `dirname $1`/${filename}.$target_extension $1
+
+exit

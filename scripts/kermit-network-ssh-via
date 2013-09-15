@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# ssh-via <proxy> <destination>
+# e.g. ssh-via vitalab.tuwien.ac.at snowwhite.infosys.tuwien.ac.at
+
+ssh -A -t $1 ssh -A $2
+
+exit

@@ -1,0 +1,18 @@
+#!/usr/bin/python
+
+# kermit-internal-pytouch 0|1
+
+import re, sys, subprocess
+resp = subprocess.Popen(['xinput', '-list'], stdout = subprocess.PIPE)
+out, err = resp.communicate()
+WacomLine = re.compile('Wacom')
+FingerLine = re.compile('Finger')
+idExpr=re.compile('id=(?P<number>\d+)')
+for line in out.split("\n"):
+    if WacomLine.search(line) and FingerLine.search(line):
+        identifier = idExpr.search(line)
+        num = identifier.group("number")
+        subprocess.call(['xinput', '-set-prop', num, "Device Enabled", sys.argv[1]])
+resp = subprocess.Popen(['xinput', '-list'], stdout = subprocess.PIPE)
+out, err = resp.communicate()
+print(out)
