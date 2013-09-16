@@ -4,10 +4,16 @@
 function server() {
 	local port="${1:-8000}"
 
-	#nohup python -m SimpleHTTPServer "$port" > /dev/null 2>&1 &
-	nohup php -S 0.0.0.0:"$port" > /dev/null 2>&1 &
-	#nohup guard > /dev/null 2>&1 &
-	guard
+    if hash php 2>/dev/null; then
+        nohup php -S 0.0.0.0:"$port" > /dev/null 2>&1 &
+    else
+        nohup python -m SimpleHTTPServer "$port" > /dev/null 2>&1 &
+    fi
+
+    if hash php 2>/dev/null; then
+    	#nohup guard > /dev/null 2>&1 &
+	    guard
+    fi
 
 	kermit-open "http://localhost:${port}/" > /dev/null 2>&1
 
