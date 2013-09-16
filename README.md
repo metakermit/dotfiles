@@ -12,6 +12,7 @@ Installation
 TODO:
 ----
 
+- store kermit-location inside the scripts folder
 - k script prefix with tab-copmleted subcommands - argparse+genzshcomp,
   OptionParser or trollop
 - move aditionally () to separate file (too custom to my preferences)

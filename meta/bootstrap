@@ -43,6 +43,12 @@ aditionally () {
 
   info 'install local programs'
   $HOME/.bin/scripts/kermit-install-programs-local
+
+  # scripts location TODO: write a (.gitignored) config file to the scripts/ folder stating this location
+  META_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+  SCRIPTS_DIR=`dirname $META_DIR`/scripts
+  info 'need sudo to write to /etc/kermit-location'
+  echo $SCRIPTS_DIR | sudo tee -a /etc/kermit-location
 }
 
 # the main dotfile linking function
