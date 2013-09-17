@@ -48,7 +48,7 @@ aditionally () {
   META_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
   SCRIPTS_DIR=`dirname $META_DIR`/scripts
   info 'need sudo to write to /etc/kermit-location'
-  echo $SCRIPTS_DIR | sudo tee -a /etc/kermit-location
+  echo $SCRIPTS_DIR | sudo tee /etc/kermit-location
 }
 
 # the main dotfile linking function
