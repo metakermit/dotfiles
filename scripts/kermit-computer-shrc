@@ -2,4 +2,7 @@
 
 # kermit's shell rc file
 
-. ~/.bin/scripts/kermit-computer-profile
+workon s
+
+# TODO: figure out how to divide stuff between profile and shrc
+#. ~/.bin/scripts/kermit-computer-profile
