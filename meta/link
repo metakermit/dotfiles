@@ -13,6 +13,7 @@ with open(special_links) as f:
             target, link = line.split(' ')
             link = os.path.expanduser(link)
             link_location, link_name = os.path.split(link)
+            os.system('mkdir -p ' + link_location)
             target, link_name = os.path.join(repo_root, target), link_name
             try:
                 curr_dir = os.getcwd()
