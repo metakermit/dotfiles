@@ -2,7 +2,7 @@
 
 install_sudo(){
 
-apt-get install -y audacity aptitude biblatex bsdtar bzr-explorer chromium-browser compiz-plugins compizconfig-settings-manager curl gcc gespeaker gimp git glade gnupg golang goldendict gtk-recordmydesktop guake inkscape libfreetype6-dev lxc mbrola mbrola-cr1 mbrola-us1 mbrola-us2 mbrola-en1 mbrola-de6 mbrola-it3 mbrola-it4 meld miro netcat network-manager-vpnc-gnome nmap openclipart-libreoffice openssh-server p7zip pandoc pbuilder picard pitivi playonlinux pulseaudio-module-jack python-pip python-matplotlib qtcreator quicksynergy rapidsvn rednotebook shutter synaptic subdownloader tex4ht texlive texlive-math-extra texlive-science texmaker ubuntu-restricted-extras vim virtualenvwrapper vlc vlc-plugin-pulse wireshark xcalib xchm xclip zsh
+apt-get install -y audacity aptitude biblatex bsdtar bzr-explorer chromium-browser compiz-plugins compizconfig-settings-manager gespeaker gimp glade gnupg golang goldendict gtk-recordmydesktop guake inkscape libfreetype6-dev lxc mbrola mbrola-cr1 mbrola-us1 mbrola-us2 mbrola-en1 mbrola-de6 mbrola-it3 mbrola-it4 meld miro netcat network-manager-vpnc-gnome nmap openclipart-libreoffice openssh-server p7zip pandoc pbuilder picard pitivi playonlinux pulseaudio-module-jack python-numpy python-matplotlib qtcreator quicksynergy rapidsvn rednotebook shutter synaptic subdownloader tex4ht texlive texlive-math-extra texlive-science texmaker ubuntu-restricted-extras vim vlc vlc-plugin-pulse wireshark xcalib xchm xclip
 
 #TOFIX cheese
 
@@ -16,8 +16,6 @@ add-apt-repository -y ppa:freefilesync/ffs
 # Lingo
 #apt-add-repository -y ppa:elementary-os/daily
 #apt-add-repository -y ppa:nemequ/sqlheavy
-# Emacs24
-add-apt-repository -y ppa:cassou/emacs
 # Sublime Text 2
 add-apt-repository -y ppa:webupd8team/sublime-text-2
 # Polly
@@ -31,9 +29,12 @@ sudo add-apt-repository ppa:dotcloud/lxc-docker
 
 apt-get update
 
-apt-get install emacs-snapshot-gtk emacs-snapshot-el freefilesync lxc-docker polly rhythmbox-plugin-llyrics sublime-text
+apt-get install freefilesync lxc-docker polly rhythmbox-plugin-llyrics sublime-text
 
 }
+
+# the essentials are in this script...
+kermit-install-programs-essential
 
 install_sudo
 

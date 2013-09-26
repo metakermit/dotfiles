@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# install only the basic stuff!
+
+apt-get install -y build-essential curl git python-pip virtualenvwrapper zsh
+
+# Add PPAs
+#---------
+# Emacs24
+add-apt-repository -y ppa:cassou/emacs
+
+
+apt-get update
+
+
+apt-get install -y emacs-snapshot-gtk emacs-snapshot-el
+
+exit
