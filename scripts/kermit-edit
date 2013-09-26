@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# kermitr-edit name
+if [ -n "$1" ]
+# Test whether command-line argument is present (non-empty).
+then
+  name=$1
+else  
+  echo Must specify filename as an argument
+  exit
+fi
+
+edtr=emacs
+
+type $edtr >/dev/null 2>&1 || { edtr=vim; echo "fallback vim"; }
+
+#if type $edtr &>/dev/null 2>&1; then edtr=vim; echo "fallback vim"; fi
+
+$edtr $name &
+
+exit

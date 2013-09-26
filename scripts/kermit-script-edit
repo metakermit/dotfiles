@@ -13,12 +13,6 @@ fi
 . kermit-script-cd
 echo Editing script $name at location `pwd`
 
-edtr=emacs
-
-type $edtr >/dev/null 2>&1 || { edtr=vim; echo "fallback vim"; }
-
-#if type $edtr &>/dev/null 2>&1; then edtr=vim; echo "fallback vim"; fi
-
-$edtr $name
+kermit-edit $name
 
 exit

@@ -18,6 +18,6 @@ echo Creating script $name at location `pwd`
 
 cp kermit-script-template $name
 
-vim $name
+kermit-edit $name
 
 exit
