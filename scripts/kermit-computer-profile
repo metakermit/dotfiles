@@ -15,7 +15,7 @@ function test_open() {
 }
 
 function server() {
-	if [ -f /usr/local/bin/kermit-app-server ]
+	if [ -f `kermit-deploy-location`/kermit-app-server ]
 	then
 		kermit-app-server
 	else
@@ -25,7 +25,7 @@ function server() {
 	fi
 }
 
-function absolute_path {
+function absolute_path() {
     echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1")
 }
 

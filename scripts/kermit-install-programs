@@ -1,6 +1,6 @@
 #!/bin/bash
 
-install_sudo(){
+install_sudo() {
 
 apt-get install -y audacity aptitude biblatex bsdtar bzr-explorer chromium-browser compiz-plugins compizconfig-settings-manager gespeaker gimp glade gnupg golang goldendict gtk-recordmydesktop guake inkscape libfreetype6-dev lxc mbrola mbrola-cr1 mbrola-us1 mbrola-us2 mbrola-en1 mbrola-de6 mbrola-it3 mbrola-it4 meld miro netcat network-manager-vpnc-gnome nmap openclipart-libreoffice openssh-server p7zip pandoc pbuilder picard pitivi playonlinux pulseaudio-module-jack python-numpy python-matplotlib qtcreator quicksynergy rapidsvn rednotebook shutter synaptic subdownloader tex4ht texlive texlive-math-extra texlive-science texmaker ubuntu-restricted-extras vim vlc vlc-plugin-pulse wireshark xcalib xchm xclip
 
@@ -22,14 +22,21 @@ add-apt-repository -y ppa:webupd8team/sublime-text-2
 add-apt-repository -y ppa:conscioususer/polly-unstable
 # Rhythmbox plugins
 add-apt-repository -y ppa:fossfreedom/rhythmbox-plugins
+# PPA Purge
+add-apt-repository -y ppa:nilarimogard/webupd8
 # docker
-sudo apt-get install software-properties-common
-sudo add-apt-repository ppa:dotcloud/lxc-docker
-
+# tmp transition ...
+ppa-purge ppa:dotcloud/lxc-docker
+#...
+apt-get install linux-image-extra-`uname -r`
+sh -c "curl https://get.docker.io/gpg | apt-key add -"
+# ufw setup for docker
+sed -i 's/^DEFAULT_FORWARD_POLICY="DROP"/DEFAULT_FORWARD_POLICY="ACCEPT"/g' /etc/default/ufw
+ufw reload
 
 apt-get update
 
-apt-get install freefilesync lxc-docker polly rhythmbox-plugin-llyrics sublime-text
+apt-get install freefilesync lxc-docker polly ppa-purge rhythmbox-plugin-llyrics sublime-text
 
 }
 
@@ -39,4 +46,4 @@ kermit-install-programs-essential
 install_sudo
 
 # and now for the non-sudo stuff
-sudo -u $SUDO_USER kermit-install-programs-local
+/usr/bin/sudo -u `logname` env PATH=$PATH kermit-install-programs-local
