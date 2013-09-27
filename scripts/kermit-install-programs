@@ -28,15 +28,16 @@ add-apt-repository -y ppa:nilarimogard/webupd8
 # tmp transition ...
 ppa-purge ppa:dotcloud/lxc-docker
 #...
-apt-get install linux-image-extra-`uname -r`
+apt-get install -y linux-image-extra-`uname -r`
 sh -c "curl https://get.docker.io/gpg | apt-key add -"
+sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
 # ufw setup for docker
 sed -i 's/^DEFAULT_FORWARD_POLICY="DROP"/DEFAULT_FORWARD_POLICY="ACCEPT"/g' /etc/default/ufw
 ufw reload
 
 apt-get update
 
-apt-get install freefilesync lxc-docker polly ppa-purge rhythmbox-plugin-llyrics sublime-text
+apt-get install -y freefilesync lxc-docker polly ppa-purge rhythmbox-plugin-llyrics sublime-text
 
 }
 

@@ -85,8 +85,6 @@ pathadd() {
 ##################
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # Linux
-    # http://stackoverflow.com/questions/257616/sudo-changes-path-why
-    alias sudo='sudo env PATH=$PATH'
     subl() { nohup /usr/bin/subl "$@" > /dev/null 2>&1 & }
     #e() { nohup emacs "$@" > /dev/null 2>&1 & }
     alias open=xdg-open

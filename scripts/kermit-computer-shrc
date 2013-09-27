@@ -4,5 +4,8 @@
 
 workon s
 
+# http://stackoverflow.com/questions/257616/sudo-changes-path-why
+alias sudo='sudo env PATH=$PATH'
+
 # TODO: figure out how to divide stuff between profile and shrc
 #. ~/.bin/scripts/kermit-computer-profile
