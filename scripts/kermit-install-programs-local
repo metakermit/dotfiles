@@ -47,8 +47,7 @@ get_ruby() {
 }
 
 # Node.js
-# TODO
-get_node() {
+get_node_latest() {
     NODEPATH=~/projekti/git/drugi/node
 
     if [ -f ~/.npmrc ]; then
@@ -73,6 +72,19 @@ get_node() {
     make install
     cd
     ln -s .local/lib/node_modules .node_modules
+}
+
+get_node() {
+    # revert old installation
+    mv ~/.node-modules ~/.node-modules-old
+    mv ~/.npmrc ~/.npmrc-old
+    # install new
+    curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+    [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
+    NODE_STABLE=0.10.20
+    nvm install $NODE_STABLE
+    nvm use $NODE_STABLE
+    nvm alias default $NODE_STABLE
 }
 
 # Docker

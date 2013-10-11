@@ -155,7 +155,9 @@ pathadd ${GOPATH}/bin
 
 # node
 ######
-pathadd $HOME/.local/bin
+#pathadd $HOME/.local/bin
+[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 # Z script
 ######
