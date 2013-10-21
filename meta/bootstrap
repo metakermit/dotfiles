@@ -47,8 +47,14 @@ aditionally () {
   # scripts location TODO: write a (.gitignored) config file to the scripts/ folder stating this location
   META_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
   SCRIPTS_DIR=`dirname $META_DIR`/scripts
-  info 'need sudo to write to /etc/kermit-location'
+  info 'need sudo to write to /etc/kermit-location and install essential programs'
   echo $SCRIPTS_DIR | sudo tee /etc/kermit-location
+  
+  # we need the Ubuntu sudo same PATH hack...
+  source $HOME/.bin/scripts/kermit-computer-shrc
+  source $HOME/.bin/scripts/kermit-computer-profile
+  # ...to install essentials TODO: before everything, OS-independent (dotfiles.github.com)
+  sudo kermit-install-programs-essential
 }
 
 # the main dotfile linking function

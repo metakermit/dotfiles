@@ -2,10 +2,15 @@
 
 # kermit's shell rc file
 
-workon s
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    # http://stackoverflow.com/questions/257616/sudo-changes-path-why
+    alias sudo='sudo env PATH=$PATH'
+fi
 
-# http://stackoverflow.com/questions/257616/sudo-changes-path-why
-alias sudo='sudo env PATH=$PATH'
+
+if hash workon 2>/dev/null; then
+    workon s
+fi
 
 # TODO: figure out how to divide stuff between profile and shrc
 #. ~/.bin/scripts/kermit-computer-profile

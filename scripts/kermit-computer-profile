@@ -133,7 +133,9 @@ export DEBEMAIL="kermit666@gmail.com"
 # Python
 ##############
 export WORKON_HOME
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+if [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ]; then
+    source /usr/local/bin/virtualenvwrapper_lazy.sh
+fi
 #on_demand_venv
 
 # Ruby
