@@ -74,6 +74,14 @@ get_node_latest() {
     ln -s .local/lib/node_modules .node_modules
 }
 
+npm_essential_modules() {
+    npm -g install grunt-cli bower yo generator-webapp
+}
+
+npm_comfy_modules() {
+    npm -g install generator-reveal jslint
+}
+
 get_node() {
     # revert old installation
     mv ~/.node-modules ~/.node-modules-old
@@ -85,6 +93,9 @@ get_node() {
     nvm install $NODE_STABLE
     nvm use $NODE_STABLE
     nvm alias default $NODE_STABLE
+    # install some npm modules
+    npm_essential_modules
+    npm_comfy_modules
 }
 
 # Docker
