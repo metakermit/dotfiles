@@ -1,1 +1,5 @@
+# initialize autocomplete
+autoload -U compinit compdef
+compinit
+
 . ~/.bin/scripts/kermit-computer-profile
