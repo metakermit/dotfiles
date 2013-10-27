@@ -36,16 +36,16 @@ on_demand_venv() {
 	# Python virtualenvwrapper loads really slowly, so load it on demand.
 	if [[ $(type -t workon) != function ]]; then
 	virtualenv_funcs=( workon deactivate mkvirtualenv )
-	 
+
 	load_virtualenv() {
 	# If these already exist, then virtualenvwrapper won't override them.
 	unset -f "${virtualenv_funcs[@]}"
-	 
+
 	# virtualenvwrapper doesn't load if PYTHONPATH is set, because the
 	# virtualenv python doesn't have the right modules.
 	declare _pp="$PYTHONPATH"
 	unset PYTHONPATH
-	 
+
 	# Attempt to load virtualenvwrapper from its many possible sources...
 	_try_source() { [[ -f $1 ]] || return; source "$1"; return 0; }
 	_try_source /usr/local/bin/virtualenvwrapper.sh || \
@@ -53,20 +53,20 @@ on_demand_venv() {
 	_try_source /usr/bin/virtualenvwrapper.sh
 	declare status=$?
 	unset -f _try_source
-	 
+
 	# Restore PYTHONPATH
 	[[ -n $_pp ]] && export PYTHONPATH="$_pp"
-	 
+
 	# Did loading work?
 	if [[ $status != 0 || $(type -t "$1") != function ]]; then
 	echo "Error loading virtualenvwrapper, sorry" >&2
 	return $status
 	fi
-	 
+
 	# Chain-load the appropriate function
 	"$@"
 	}
-	 
+
 	for v in "${virtualenv_funcs[@]}"; do
 	eval "$v() { load_virtualenv $v \"\$@\"; }"
 	done
@@ -115,6 +115,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
     alias e='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor="/Applications/Emacs.app/Contents/MacOS/Emacs" -n'
 fi
+
+export EDITOR=emacsclient
 
 # my scripts
 #############
@@ -166,7 +168,9 @@ pathadd ${GOPATH}/bin
 source ${GIT}/drugi/z/z.sh
 
 # dev env variables
-# TODO: keep not public
 ######
-FORECAST_KEY='24e4d718ac63f60724a956b116c65949'
+API_keys_script=$HOME/Dropbox/dev/API-keys.sh
+if [ -f $API_keys_script ]; then
+    source $API_keys_script
+fi
 
