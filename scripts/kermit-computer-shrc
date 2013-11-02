@@ -8,7 +8,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 fi
 
 
-if hash workon 2>/dev/null; then
+if type workon > /dev/null; then
     workon s
 fi
 
