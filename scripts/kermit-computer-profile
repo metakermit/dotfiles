@@ -114,6 +114,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
     alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
     alias e='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor="/Applications/Emacs.app/Contents/MacOS/Emacs" -n'
+    # brew wants this before /usr/bin
+    export PATH="/usr/local/bin:$PATH"
 fi
 
 export EDITOR=emacsclient
@@ -173,4 +175,3 @@ API_keys_script=$HOME/Dropbox/dev/API-keys.sh
 if [ -f $API_keys_script ]; then
     source $API_keys_script
 fi
-
