@@ -127,7 +127,8 @@ clone_new() {
 }
 
 get_src() {
-    GIT=~/projekti/git/
+    GIT=~/projekti/git
+    mkdir -p $GIT
 
     # solarized stuff
     # -----
@@ -141,6 +142,7 @@ get_src() {
 
     # other
     # -----
+    mkdir -p $GIT/drugi
     cd $GIT/drugi
     clone_new https://github.com/rupa/z.git
 }
