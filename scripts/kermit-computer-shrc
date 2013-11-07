@@ -13,4 +13,4 @@ if type workon > /dev/null; then
 fi
 
 # TODO: figure out how to divide stuff between profile and shrc
-#. ~/.bin/scripts/kermit-computer-profile
+source ~/.bin/scripts/kermit-computer-profile
