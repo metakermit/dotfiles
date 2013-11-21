@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# compress the file
+# http://askubuntu.com/a/256449/6418
+
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen \
+-dNOPAUSE -dQUIET -dBATCH -sOutputFile=tmp.pdf $1
+
+mv tmp.pdf $1
+
+
+exit
