@@ -41,6 +41,9 @@ aditionally () {
   info 'special links'
   python `dirname $0`/link
 
+  # get fonts
+  source `dirname $0`/get-powerline-fonts
+
   info 'install local programs'
   $HOME/.bin/scripts/kermit-install-programs-local
 
