@@ -10,13 +10,25 @@ pip install virtualenvwrapper
 
 # Add PPAs
 #---------
+# enable adding
+if type add-apt-repository > /dev/null 2>&1 ; then
+    :
+else
+    apt-get install python-software-properties
+fi
+
 # Emacs24
 add-apt-repository -y ppa:cassou/emacs
 
 
 apt-get update
 
+if dpkg -l ubuntu-desktop > /dev/null 2>&1 ; then
+    apt-get install -y emacs-snapshot-gtk
+else
+    apt-get install -y emacs-snapshot-nox
+fi
 
-apt-get install -y emacs-snapshot-gtk emacs-snapshot-el
+apt-get install emacs-snapshot-el
 
 exit
