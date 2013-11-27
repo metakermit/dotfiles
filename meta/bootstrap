@@ -39,7 +39,7 @@ link_files () {
 
 aditionally () {
   info 'special links'
-  `dirname $0`/link
+  python `dirname $0`/link
 
   info 'install local programs'
   $HOME/.bin/scripts/kermit-install-programs-local
