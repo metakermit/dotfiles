@@ -49,12 +49,15 @@ aditionally () {
   SCRIPTS_DIR=`dirname $META_DIR`/scripts
   info 'need sudo to write to /etc/kermit-location and install essential programs'
   echo $SCRIPTS_DIR | sudo tee /etc/kermit-location
-  
+
   # we need the Ubuntu sudo same PATH hack...
   . $HOME/.bin/scripts/kermit-computer-profile
   . $HOME/.bin/scripts/kermit-computer-shrc
   # ...to install essentials TODO: before everything, OS-independent (dotfiles.github.com)
   sudo kermit-install-programs-essential
+
+  # zsh default
+  chsh -s $(which zsh)
 }
 
 # the main dotfile linking function
