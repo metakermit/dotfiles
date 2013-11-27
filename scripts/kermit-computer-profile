@@ -101,6 +101,13 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     fi
     # emacs-bindings - http://superuser.com/questions/345452/how-do-i-change-my-gnome-ubuntu-key-binding-work-as-emacs
     #gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
+    # ssh keychain
+    if type keychain >/dev/null 2>/dev/null; then
+        keychain --nogui -q ~/.ssh/id_rsa
+        [ -f ~/.keychain/${HOSTNAME}-sh ] && . ~/.keychain/${HOSTNAME}-sh
+	[ -f ~/.keychain/${HOSTNAME}-sh-gpg ] && . ~/.keychain/${HOSTNAME}-sh-gpg
+    fi
+
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Mac
     #export PATH=/usr/texbin:$PATH

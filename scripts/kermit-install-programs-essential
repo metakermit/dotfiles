@@ -26,7 +26,7 @@ apt-get update
 if dpkg -l ubuntu-desktop > /dev/null 2>&1 ; then
     apt-get install -y emacs-snapshot-gtk
 else
-    apt-get install -y emacs-snapshot-nox
+    apt-get install -y emacs-snapshot-nox keychain
 fi
 
 apt-get install emacs-snapshot-el
