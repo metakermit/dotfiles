@@ -34,7 +34,7 @@ DEFAULT_USER="kermit"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(bower brew django docker fabric gem git github go heroku history node npm postgres python rails rake ruby rvm sublime vagrant virtualenvwrapper)
+plugins=(bower brew django docker fabric gem git github go heroku history node npm postgres python rails rake ruby rvm sublime vagrant virtualenv virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
