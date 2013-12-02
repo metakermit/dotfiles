@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# merge conflicting files
+
+emacs -Q $*
+#emacsclient -c  --eval "(emerge-files nil \"$3\" \"$4\" \"${4}.out\")"
+
+#exit
