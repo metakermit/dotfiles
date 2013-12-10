@@ -15,14 +15,14 @@ function test_open() {
 }
 
 function server() {
-	if [ -f `kermit-deploy-location`/kermit-app-server ]
-	then
-		kermit-app-server
-	else
-		local port="${1:-8000}"
-		open "http://localhost:${port}/"
-		nohup python -m SimpleHTTPServer "$port" > /dev/null 2>&1 &
-	fi
+    if [ -f `kermit-deploy-location`/kermit-app-server ]
+    then
+        kermit-app-server
+    else
+        local port="${1:-8000}"
+        open "http://localhost:${port}/"
+        nohup python -m SimpleHTTPServer "$port" > /dev/null 2>&1 &
+    fi
 }
 
 function absolute_path() {
@@ -33,44 +33,44 @@ function absolute_path() {
 ###################
 
 on_demand_venv() {
-	# Python virtualenvwrapper loads really slowly, so load it on demand.
-	if [[ $(type -t workon) != function ]]; then
-	virtualenv_funcs=( workon deactivate mkvirtualenv )
+    # Python virtualenvwrapper loads really slowly, so load it on demand.
+    if [[ $(type -t workon) != function ]]; then
+        virtualenv_funcs=( workon deactivate mkvirtualenv )
 
-	load_virtualenv() {
-	# If these already exist, then virtualenvwrapper won't override them.
-	unset -f "${virtualenv_funcs[@]}"
+        load_virtualenv() {
+        # If these already exist, then virtualenvwrapper won't override them.
+        unset -f "${virtualenv_funcs[@]}"
 
-	# virtualenvwrapper doesn't load if PYTHONPATH is set, because the
-	# virtualenv python doesn't have the right modules.
-	declare _pp="$PYTHONPATH"
-	unset PYTHONPATH
+        # virtualenvwrapper doesn't load if PYTHONPATH is set, because the
+        # virtualenv python doesn't have the right modules.
+        declare _pp="$PYTHONPATH"
+        unset PYTHONPATH
 
-	# Attempt to load virtualenvwrapper from its many possible sources...
-	_try_source() { [[ -f $1 ]] || return; source "$1"; return 0; }
-	_try_source /usr/local/bin/virtualenvwrapper.sh || \
-	_try_source /etc/bash_completion.d/virtualenvwrapper || \
-	_try_source /usr/bin/virtualenvwrapper.sh
-	declare status=$?
-	unset -f _try_source
+        # Attempt to load virtualenvwrapper from its many possible sources...
+        _try_source() { [[ -f $1 ]] || return; source "$1"; return 0; }
+        _try_source /usr/local/bin/virtualenvwrapper.sh || \
+        _try_source /etc/bash_completion.d/virtualenvwrapper || \
+        _try_source /usr/bin/virtualenvwrapper.sh
+        declare status=$?
+        unset -f _try_source
 
-	# Restore PYTHONPATH
-	[[ -n $_pp ]] && export PYTHONPATH="$_pp"
+        # Restore PYTHONPATH
+        [[ -n $_pp ]] && export PYTHONPATH="$_pp"
 
-	# Did loading work?
-	if [[ $status != 0 || $(type -t "$1") != function ]]; then
-	echo "Error loading virtualenvwrapper, sorry" >&2
-	return $status
-	fi
+        # Did loading work?
+        if [[ $status != 0 || $(type -t "$1") != function ]]; then
+        echo "Error loading virtualenvwrapper, sorry" >&2
+        return $status
+        fi
 
-	# Chain-load the appropriate function
-	"$@"
-	}
+        # Chain-load the appropriate function
+        "$@"
+        }
 
-	for v in "${virtualenv_funcs[@]}"; do
-	eval "$v() { load_virtualenv $v \"\$@\"; }"
-	done
-	fi
+        for v in "${virtualenv_funcs[@]}"; do
+            eval "$v() { load_virtualenv $v \"\$@\"; }"
+        done
+    fi
 }
 
 export PATH
@@ -95,9 +95,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     alias rc='env DISPLAY=:0.0 rhythmbox-client --no-start'
     if [[ `hostname` == hocus-pocus ]]; then
         # key remappings for weird keyboards. Apple khm.. khm..
-	# off due to switching to an us layout
+        # off due to switching to an us layout
         #xmodmap ~/.Xmodmap
-	:
+        :
     fi
     # emacs-bindings - http://superuser.com/questions/345452/how-do-i-change-my-gnome-ubuntu-key-binding-work-as-emacs
     #gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
@@ -105,7 +105,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     if type keychain >/dev/null 2>/dev/null; then
         keychain --nogui -q ~/.ssh/id_rsa
         [ -f ~/.keychain/${HOSTNAME}-sh ] && . ~/.keychain/${HOSTNAME}-sh
-	[ -f ~/.keychain/${HOSTNAME}-sh-gpg ] && . ~/.keychain/${HOSTNAME}-sh-gpg
+        [ -f ~/.keychain/${HOSTNAME}-sh-gpg ] && . ~/.keychain/${HOSTNAME}-sh-gpg
     fi
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then

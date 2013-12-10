@@ -89,7 +89,7 @@ get_node() {
     # install new
     curl https://raw.github.com/creationix/nvm/master/install.sh | sh
     [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
-    NODE_STABLE=0.10.20
+    NODE_STABLE=0.10.22
     nvm install $NODE_STABLE
     nvm use $NODE_STABLE
     nvm alias default $NODE_STABLE
