@@ -18,6 +18,8 @@ add-apt-repository -y ppa:freefilesync/ffs
 #apt-add-repository -y ppa:nemequ/sqlheavy
 # Sublime Text 2
 add-apt-repository -y ppa:webupd8team/sublime-text-2
+# Brackets
+add-apt-repository -y ppa:webupd8team/brackets
 # Polly
 add-apt-repository -y ppa:conscioususer/polly-unstable
 # Rhythmbox plugins
@@ -37,7 +39,7 @@ ufw reload
 
 apt-get update
 
-apt-get install -y freefilesync lxc-docker polly ppa-purge rhythmbox-plugin-llyrics sublime-text
+apt-get install -y brackets freefilesync lxc-docker polly ppa-purge rhythmbox-plugin-llyrics sublime-text
 
 }
 
