@@ -112,4 +112,9 @@ fi
 
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
+export WORKON_HOME
+if [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ]; then
+    source /usr/local/bin/virtualenvwrapper_lazy.sh
+fi
+
 . ~/.bin/scripts/kermit-computer-shrc

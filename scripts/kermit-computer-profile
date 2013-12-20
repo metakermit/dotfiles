@@ -1,11 +1,21 @@
 #!/bin/bash
 
 # kermit's shell profile file
+if [ $PROFILE_SOURCED ]; then
+    return # don't source us twice
+fi
+
+export PROFILE_SOURCED=TRUE
 
 # aliases
 ##########
 
 alias ec=emacsclient
+alias ed="emacs --daemon &"
+alias ek="ec -e '(kill-emacs)' &"
+alias ep="ps -e | grep -i emacs"
+
+alias s="workon s"
 
 GIT=$HOME/projekti/git
 
@@ -31,47 +41,6 @@ function absolute_path() {
 
 # global functions
 ###################
-
-on_demand_venv() {
-    # Python virtualenvwrapper loads really slowly, so load it on demand.
-    if [[ $(type -t workon) != function ]]; then
-        virtualenv_funcs=( workon deactivate mkvirtualenv )
-
-        load_virtualenv() {
-        # If these already exist, then virtualenvwrapper won't override them.
-        unset -f "${virtualenv_funcs[@]}"
-
-        # virtualenvwrapper doesn't load if PYTHONPATH is set, because the
-        # virtualenv python doesn't have the right modules.
-        declare _pp="$PYTHONPATH"
-        unset PYTHONPATH
-
-        # Attempt to load virtualenvwrapper from its many possible sources...
-        _try_source() { [[ -f $1 ]] || return; source "$1"; return 0; }
-        _try_source /usr/local/bin/virtualenvwrapper.sh || \
-        _try_source /etc/bash_completion.d/virtualenvwrapper || \
-        _try_source /usr/bin/virtualenvwrapper.sh
-        declare status=$?
-        unset -f _try_source
-
-        # Restore PYTHONPATH
-        [[ -n $_pp ]] && export PYTHONPATH="$_pp"
-
-        # Did loading work?
-        if [[ $status != 0 || $(type -t "$1") != function ]]; then
-        echo "Error loading virtualenvwrapper, sorry" >&2
-        return $status
-        fi
-
-        # Chain-load the appropriate function
-        "$@"
-        }
-
-        for v in "${virtualenv_funcs[@]}"; do
-            eval "$v() { load_virtualenv $v \"\$@\"; }"
-        done
-    fi
-}
 
 export PATH
 
@@ -143,18 +112,19 @@ export DEBEMAIL="kermit666@gmail.com"
 
 # Python
 ##############
-export WORKON_HOME
-if [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ]; then
-    source /usr/local/bin/virtualenvwrapper_lazy.sh
-fi
-#on_demand_venv
+# virtualenvwrapper sourced by zsh plugin / .bashrc
 
 # Ruby
 ######
 pathadd '/var/lib/gems/1.8/bin'
 pathadd $HOME/.rvm/bin
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# TODO: see if this can be made faster
+# for now disabled as it somehow automagically is shell
+#source_rvm() {
+#    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+#}
+#alias srv=source_rvm
 
 # Heroku
 ########
@@ -168,7 +138,7 @@ pathadd ${GOPATH}/bin
 
 # node
 ######
-#pathadd $HOME/.local/bin
+pathadd $HOME/.local/bin
 [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 

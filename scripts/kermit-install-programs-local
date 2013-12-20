@@ -13,8 +13,11 @@ cheese_shop() {
     export WORKON_HOME
     source /usr/local/bin/virtualenvwrapper.sh
     mkvirtualenv --system-site-packages s
-    workon s
-    pip install pandas numpy ipython[notebook] nose yanc jedi epc
+    if type workon > /dev/null; then
+        workon s
+        pip install pandas numpy ipython[notebook] nose yanc jedi epc
+    fi
+
 }
 
 # get stuff from source
