@@ -118,13 +118,7 @@ export DEBEMAIL="kermit666@gmail.com"
 ######
 pathadd '/var/lib/gems/1.8/bin'
 pathadd $HOME/.rvm/bin
-
-# TODO: see if this can be made faster
-# for now disabled as it somehow automagically is shell
-#source_rvm() {
-#    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-#}
-#alias srv=source_rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Heroku
 ########
