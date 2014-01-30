@@ -7,17 +7,28 @@ fi
 
 export PROFILE_SOURCED=TRUE
 
+GIT=$HOME/projekti/git
+
 # aliases
 ##########
 
+# - emacs
 alias ec=emacsclient
+alias et="ec -t"
 alias ed="emacs --daemon &"
 alias ek="ec -e '(kill-emacs)' &"
 alias ep="ps -e | grep -i emacs"
 
+# - python
 alias s="workon s"
+alias s3="workon s3"
+alias py=python
+alias py3=python3
+alias ipy=ipython
+alias ipy3=ipython3
 
-GIT=$HOME/projekti/git
+# global functions
+###################
 
 function test_open() {
     echo "opening"
@@ -38,9 +49,6 @@ function server() {
 function absolute_path() {
     echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1")
 }
-
-# global functions
-###################
 
 export PATH
 
