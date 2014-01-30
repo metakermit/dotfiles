@@ -16,3 +16,7 @@
         tool = emerge
 [mergetool "emerge"]
            path = ~/.bin/scripts/kermit-code-merge
+[alias]
+	co = checkout
+[pull]
+	rebase = true
