@@ -23,6 +23,50 @@ cheese_shop() {
 # get stuff from source
 #-----------------------
 
+#--global functions-----
+export GIT=~/projekti/git
+
+clone_new() {
+    NAME=`python -c "import sys; p=sys.argv[1]; print(p.split('/')[-1][:-4])" $1`
+    if [ -d $NAME ]
+    then
+        echo $NAME already installed
+    else
+        git clone $1
+    fi
+}
+#----------
+
+# prefix doesn't work
+get_hub() {
+    export PREFIX=$HOME
+    cd $GIT/drugi
+    clone_new git://github.com/github/hub.git
+    cd hub
+    rake install
+}
+
+get_src() {
+    mkdir -p $GIT
+
+    # solarized stuff
+    # -----
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        SLR=${GIT}/drugi/solarized
+        mkdir -p $SLR
+        cd $SLR
+        clone_new https://github.com/sigurdga/gnome-terminal-colors-solarized.git
+        clone_new https://github.com/coolwanglu/guake-colors-solarized.git
+    fi
+
+    # other
+    # -----
+    mkdir -p $GIT/drugi
+    cd $GIT/drugi
+    clone_new https://github.com/rupa/z.git
+    get_hub
+}
+
 get_zsh() {
     if [ -d ~/.oh-my-zsh ]
     then
@@ -119,36 +163,6 @@ get_docker() {
 
 }
 
-clone_new() {
-    NAME=`python -c "import sys; p=sys.argv[1]; print(p.split('/')[-1][:-4])" $1`
-    if [ -d $NAME ]
-    then
-        echo $NAME already installed
-    else
-        git clone $1
-    fi
-}
-
-get_src() {
-    GIT=~/projekti/git
-    mkdir -p $GIT
-
-    # solarized stuff
-    # -----
-    if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        SLR=${GIT}/drugi/solarized
-        mkdir -p $SLR
-        cd $SLR
-        clone_new https://github.com/sigurdga/gnome-terminal-colors-solarized.git
-        clone_new https://github.com/coolwanglu/guake-colors-solarized.git
-    fi
-
-    # other
-    # -----
-    mkdir -p $GIT/drugi
-    cd $GIT/drugi
-    clone_new https://github.com/rupa/z.git
-}
 
 # Call all the functions
 #-----------------------
