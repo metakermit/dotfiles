@@ -107,6 +107,7 @@ export EDITOR=emacsclient
 # my scripts
 #############
 pathadd $HOME/.bin/scripts
+pathadd $HOME/bin
 
 # language support
 ####################
