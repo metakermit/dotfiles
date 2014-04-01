@@ -100,6 +100,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias e='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor="/Applications/Emacs.app/Contents/MacOS/Emacs" -n'
     # brew wants this before /usr/bin
     export PATH="/usr/local/bin:$PATH"
+    # find the local docker daemon
+    export DOCKER_HOST=tcp://127.0.0.1:4243
 fi
 
 export EDITOR=emacsclient
