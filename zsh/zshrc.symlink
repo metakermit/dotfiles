@@ -9,6 +9,10 @@ ZSH_THEME="robbyrussell"
 #ZSH_THEME="agnoster"
 DEFAULT_USER="kermit"
 
+# TODO: move this to shrc and maybe source it always for nested shells
+# venvwrapper stopped working with py2 in Ubuntu 14.04
+VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"

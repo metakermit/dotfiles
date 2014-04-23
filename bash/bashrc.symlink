@@ -106,6 +106,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# venvwrapper stopped working with py2 in Ubuntu 14.04
+VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 #export WORKON_HOME
 #source /usr/local/bin/virtualenvwrapper.sh
 #workon s
