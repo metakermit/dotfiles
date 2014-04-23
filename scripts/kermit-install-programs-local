@@ -11,11 +11,22 @@
 cheese_shop() {
     echo "installing from the Cheese Shop"
     export WORKON_HOME
+    deactivate
     source /usr/local/bin/virtualenvwrapper.sh
-    mkvirtualenv --system-site-packages s
+    mkvirtualenv --system-site-packages -p /usr/bin/python2 s
+    mkvirtualenv --system-site-packages -p /usr/bin/python3 s3
+
+    # no upgrade - hopefully, there's a binary
+    PYTHON_STABLE="numpy scipy matplotlib"
+    # keep these upgraded
+    PYTHON_ESSENTIAL="ipython[notebook] pandas nose yanc jedi epc"
     if type workon > /dev/null; then
         workon s
-        pip install pandas numpy ipython[notebook] nose yanc jedi epc
+        pip install `echo $PYTHON_STABLE`
+        pip install --upgrade `echo $PYTHON_ESSENTIAL`
+        workon s3
+        pip install `echo $PYTHON_STABLE`
+        pip install --upgrade `echo $PYTHON_ESSENTIAL`
     fi
 
 }

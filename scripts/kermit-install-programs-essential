@@ -3,11 +3,14 @@
 # install only the basic stuff!
 
 apt-get install -y build-essential curl git-core python-pip python-pip3 zsh
+# some python libraries that take ages to compile
+apt-get install -y python-numpy python-scipy python-matplotlib python3-numpy python3-scipy python3-matplotlib
 
 # because the Debian package behaves oddly
 # http://askubuntu.com/questions/251378/where-is-virtualenvwrapper-sh
+pip uninstall virtualenv # only temporary
 pip uninstall virtualenvwrapper # only temporary
-pip3 install virtualenvwrapper
+pip3 install virtualenv virtualenvwrapper
 
 # Add PPAs
 #---------
