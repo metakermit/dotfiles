@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # clear all options
-setxkbmap -model "pc105" -layout "hr,us" -option ""  
+setxkbmap -model "pc105" -layout "hr,us" -option ""
 
 # set the Apple keyboard
-setxkbmap -rules "evdev" -model "pc105" -layout "hr,us" -option "terminate:ctrl_alt_bksp,lv3:rwin_switch,grp:shifts_toggle,caps:ctrl_modifier,altwin:swap_lalt_lwin"
+setxkbmap -rules "evdev" -model "pc105" -layout "hr,us" -option "terminate:ctrl_alt_bksp,lv3:rwin_switch,grp:shifts_toggle,caps:ctrl_modifier,altwin:swap_lalt_lwin,altwin:swap_alt_win"
+# (all options defined in /usr/share/X11/xkb/rules/base.lst)
 
 # TODO lsusb
 if [[ `hostname` == "Glamdring" ]]; then
@@ -19,5 +20,9 @@ else
     xmodmap -e "keycode  94 = grave asciitilde"
     xmodmap -e "keycode  49 = less greater less greater bar brokenbar bar brokenbar"
 fi
+
+#xmodmap -e "keycode 64 = Super_L NoSymbol Super_L"    #this will make Alt_L to act as Super_L
+#xmodmap -e "keycode 133 = Alt_L Meta_L Alt_L Meta_L"  #this will make Super_L to act as Alt_L
+
 
 exit

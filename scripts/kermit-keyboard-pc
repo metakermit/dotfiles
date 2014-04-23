@@ -14,4 +14,7 @@ setxkbmap -model "pc105" -layout "hr,us" -option ""
 # pc keyobard
 setxkbmap -rules "evdev" -model "pc105" -layout "hr,us" -option "terminate:ctrl_alt_bksp,lv3:rwin_switch,grp:shifts_toggle,caps:ctrl_modifier"
 
+#xmodmap -e "keycode 64 = Super_L NoSymbol Super_L"    #this will make Alt_L to act as Super_L
+#xmodmap -e "keycode 133 = Alt_L Meta_L Alt_L Meta_L"  #this will make Super_L to act as Alt_L
+
 exit
