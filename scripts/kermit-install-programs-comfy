@@ -2,12 +2,15 @@
 
 # install stuff that I use very often
 
-apt-get install -y audacity aptitude build-essential bzr-explorer gimp guake inkscape mypaint ubuntu-restricted-extras vlc vlc-plugin-pulse xclip
+apt-get install -y audacity aptitude build-essential bzr-explorer gimp guake inkscape mypaint subdownloader ubuntu-restricted-extras vlc vlc-plugin-pulse xclip
 
 add-apt-repository -y ppa:me-davidsansome/clementine-dev
 
+# until the main ppa gets fixed (ppa:synapse-core/ppa)
+sudo add-apt-repository -y ppa:synapse-core/testing
+
 apt-get update
 
-apt-get install -y clementine
+apt-get install -y clementine synapse
 
 exit

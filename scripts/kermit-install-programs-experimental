@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# install experimental stuff that I don't know if I need or not
+
+apt-get install -y chromium-browser miro
+
+# Add PPAs
+#---------
+# enable adding
+if type add-apt-repository > /dev/null 2>&1 ; then
+    :
+else
+    apt-get install python-software-properties
+fi
+
+# Brackets
+add-apt-repository -y ppa:webupd8team/brackets
+# Polly
+add-apt-repository -y ppa:conscioususer/polly-unstable
+
+apt-get update
+
+apt-get install -y brackets polly
+
+exit
