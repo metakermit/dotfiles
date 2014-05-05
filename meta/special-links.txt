@@ -1,2 +1,3 @@
 autokey ~/.config/autokey/data/emacs
 scripts ~/.bin/scripts
+ssh_config ~/.ssh/config

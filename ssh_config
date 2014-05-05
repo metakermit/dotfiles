@@ -1,0 +1,35 @@
+Host *
+  ServerAliveInterval 240
+
+# Cloudfleet
+#------------
+Host spire
+  HostName spire.cloudfleet.io
+  User cloudfleet
+
+Host blimpyard
+  HostName blimpyard.cloudfleet.io
+  User kermit
+
+# Xworx
+#-------
+Host athos
+  HostName 141.244.40.212
+  Port 10009
+  User xworx
+
+Host porthos
+  HostName 141.244.40.213
+  Port 10009
+  User xworx
+
+Host athos
+  HostName 141.244.40.214
+  Port 10009
+  User xworx
+
+Host dartagnan
+  HostName 141.244.40.209
+  Port 10009
+  User root
+  ForwardX11 yes
