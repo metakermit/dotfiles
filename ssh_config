@@ -23,7 +23,7 @@ Host porthos
   Port 10009
   User xworx
 
-Host athos
+Host aramis
   HostName 141.244.40.214
   Port 10009
   User xworx
