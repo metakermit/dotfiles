@@ -11,7 +11,9 @@ DEFAULT_USER="kermit"
 
 # TODO: move this to shrc and maybe source it always for nested shells
 # venvwrapper stopped working with py2 in Ubuntu 14.04
-VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+   VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+fi
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
