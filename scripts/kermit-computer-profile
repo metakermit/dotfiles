@@ -90,7 +90,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     fi
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    # Mac
+    # Mac OS X
     #export PATH=/usr/texbin:$PATH
     pathadd '/usr/texbin'
     # Set CLICOLOR if you want Ansi Colors in iTerm2 
@@ -105,7 +105,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # brew wants this before /usr/bin
     export PATH="/usr/local/bin:$PATH"
     # find the local docker daemon
-    export DOCKER_HOST=tcp://127.0.0.1:4243
+    export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
 fi
 
 export EDITOR=emacsclient
