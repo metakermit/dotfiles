@@ -21,4 +21,5 @@
 [pull]
 	rebase = true
 [credential]
-	helper = cache --timeout=3600
+        helper = osxkeychain
+        helper = cache --timeout=3600
