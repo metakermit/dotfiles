@@ -11,6 +11,10 @@ Host blimpyard
   HostName blimpyard.cloudfleet.io
   User kermit
 
+Host cloudfleet
+  HostName cloudfleet.io
+  User cloudfleet
+
 # Xworx
 #-------
 Host athos
