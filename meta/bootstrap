@@ -59,6 +59,10 @@ aditionally () {
   # ...to install essentials TODO: before everything, OS-independent (dotfiles.github.com)
   sudo kermit-install-programs-essential
 
+  # copy some hooks (on-resume etc.)
+  here=`dirname $0`
+  sudo ./meta/os/ubuntu/setup_ubuntu_root_stuff.sh
+
   # zsh default
   chsh -s $(which zsh)
 }

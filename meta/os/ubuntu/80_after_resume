@@ -1,0 +1,7 @@
+case "${1}" in
+    resume|thaw)
+        DISPLAY=:0.0 ; export DISPLAY
+        USER=kermit
+        su $USER -c "sleep 3; /home/kermit/.bin/scripts/kermit-keyboard-apple"
+;;
+esac
