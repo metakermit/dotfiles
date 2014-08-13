@@ -37,3 +37,11 @@ Host dartagnan
   Port 10009
   User root
   ForwardX11 yes
+
+# TU
+#----
+
+Host vitalab
+	Hostname vitalab.tuwien.ac.at
+        ServerAliveInterval 300
+        ServerAliveCountMax 36
