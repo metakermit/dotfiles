@@ -19,6 +19,9 @@ add-apt-repository -y ppa:freefilesync/ffs
 # Sublime Text 2
 add-apt-repository -y ppa:webupd8team/sublime-text-2
 
+# Atom.io
+add-apt-repository ppa:webupd8team/atom
+
 # Rhythmbox plugins
 add-apt-repository -y ppa:fossfreedom/rhythmbox-plugins
 # PPA Purge
@@ -36,7 +39,7 @@ ufw reload
 
 apt-get update
 
-apt-get install -y freefilesync lxc-docker ppa-purge rhythmbox-plugin-llyrics sublime-text
+apt-get install -y atom freefilesync lxc-docker ppa-purge rhythmbox-plugin-llyrics sublime-text
 
 }
 
