@@ -1,5 +1,5 @@
-#!
-#/bin/bash
+#!/bin/bash
+
 location=`cat /etc/kermit-location`
 chmod -R 755 $location
 cp ${location}/* /usr/local/bin/

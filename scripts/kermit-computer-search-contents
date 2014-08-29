@@ -1,4 +1,4 @@
-#!
+#!/bin/bash
 #trazi datoteku arg2 u direktoriju arg1 i dublje
 USAGE="find <regex> <where>"
 if [[ -n "$1" && -n '$2' ]]
@@ -6,9 +6,11 @@ if [[ -n "$1" && -n '$2' ]]
 then
   WHAT=$1
   WHERE=$2
-else  
+else
   echo $USAGE
   exit
 fi
 
 grep -r -P $WHAT $WHERE
+
+exit

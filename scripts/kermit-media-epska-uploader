@@ -1,5 +1,4 @@
-#!
-#/usr/bin/python
+#!/usr/bin/python
 
 '''Script uploads comics for epska.org
 parameter: path to picture to be uploaded'''
@@ -18,7 +17,7 @@ local_path=sys.argv[1]
 print "file to be stored: " + local_path
 
 ftp=FTP("ftp.epska.org")
-ftp.login("epskaor", "vOkinjlOksa4")
+ftp.login("epskaor", "XXXX")
 ftp.cwd("/public_html/neobjavljene_stvarcice/strip")
 ftp.retrlines("LIST")
 print "uploading..."

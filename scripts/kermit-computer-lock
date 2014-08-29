@@ -2,7 +2,4 @@
 # lock screen
 `gnome-screensaver-command --lock && sleep 5 && xset dpms force off `;
 
-
-
-
 exit

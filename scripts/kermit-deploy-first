@@ -1,5 +1,5 @@
-#!
-#/bin/bash
+#!/bin/bash
+
 location=`pwd`
 echo $location > /etc/kermit-location
 chmod -R 755 $location

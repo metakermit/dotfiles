@@ -4,7 +4,7 @@
 
 if [ -n "$1" ]; then
   mod=$1
-else  
+else
   echo Must specify name as an argument
   exit
 fi

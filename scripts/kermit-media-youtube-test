@@ -1,6 +1,4 @@
-#!
-#/bin/bash
+#!/bin/bash
+
 #Youtube downloader
 youtube-dl http://www.youtube.com/watch?v=$1
-
-

@@ -1,5 +1,5 @@
-#!
-#/bin/bash
+#!/bin/bash
+
 #Youtube downloader
 youtube-dl http://www.youtube.com/watch?v=$1
 kermit-media-flv2avi.sh -xvid $1.flv

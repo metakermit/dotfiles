@@ -5,7 +5,7 @@ if [ -n "$1" ]
 # Test whether command-line argument is present (non-empty).
 then
   name=$1
-else  
+else
   echo Must specify filename as an argument
   exit
 fi

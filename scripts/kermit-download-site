@@ -6,7 +6,7 @@ if [ -n "$1" ]
 # Test whether command-line argument is present (non-empty).
 then
   DEPTH=$1
-else  
+else
   echo $USAGE
   exit
 fi
@@ -15,7 +15,7 @@ if [ -n "$2" ]
 # Test whether command-line argument is present (non-empty).
 then
   URL=$2
-else  
+else
   echo $USAGE
   exit
 fi

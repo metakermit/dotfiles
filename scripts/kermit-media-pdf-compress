@@ -8,5 +8,4 @@ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen \
 
 mv tmp.pdf $1
 
-
 exit
