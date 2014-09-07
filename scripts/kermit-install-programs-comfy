@@ -4,6 +4,9 @@
 
 apt-get install -y audacity aptitude build-essential bzr-explorer gimp guake inkscape mypaint subdownloader ubuntu-restricted-extras vlc vlc-plugin-pulse xclip
 
+# tuxguitar
+apt-get install -y tuxguitar timidity-interfaces-extra tuxguitar-alsa tuxguitar-oss tuxguitar-jsa
+
 add-apt-repository -y ppa:me-davidsansome/clementine-dev
 
 # until the main ppa gets fixed (ppa:synapse-core/ppa)
