@@ -1,5 +1,6 @@
 Host *
   ServerAliveInterval 15
+  ForwardX11 yes
 
 # Cloudfleet
 #------------

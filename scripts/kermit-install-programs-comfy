@@ -2,7 +2,7 @@
 
 # install stuff that I use very often
 
-apt-get install -y audacity aptitude build-essential bzr-explorer gimp guake inkscape mypaint subdownloader ubuntu-restricted-extras vlc vlc-plugin-pulse xclip
+apt-get install -y audacity aptitude build-essential bzr-explorer gimp guake inkscape mypaint subdownloader ubuntu-restricted-extras vlc vlc-plugin-pulse xclip x2goclient
 
 # tuxguitar
 apt-get install -y tuxguitar timidity-interfaces-extra tuxguitar-alsa tuxguitar-oss tuxguitar-jsa
