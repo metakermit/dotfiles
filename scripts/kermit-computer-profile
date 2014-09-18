@@ -93,7 +93,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Mac OS X
     #export PATH=/usr/texbin:$PATH
     pathadd '/usr/texbin'
-    # Set CLICOLOR if you want Ansi Colors in iTerm2 
+    # Set CLICOLOR if you want Ansi Colors in iTerm2
     export CLICOLOR=1
     # Set colors to match iTerm2 Terminal Colors
     export TERM=xterm-256color
@@ -101,7 +101,11 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     #alias emacs='open -a /Applications/Emacs.app $1'
     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
     alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
-    alias e='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor="/Applications/Emacs.app/Contents/MacOS/Emacs" -n'
+    e() {
+      nohup /Applications/Emacs.app/Contents/MacOS/bin/emacsclient \
+      -n --alternate-editor="/Applications/Emacs.app/Contents/MacOS/Emacs" \
+      "$@" > /dev/null 2>&1 &
+    }
     # brew wants this before /usr/bin
     export PATH="/usr/local/bin:$PATH"
     # find the local docker daemon
