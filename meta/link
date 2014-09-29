@@ -19,6 +19,9 @@ with open(special_links) as f:
                 curr_dir = os.getcwd()
                 print('ln -s %s %s' % (target, link))
                 os.chdir(link_location)
+                if os.path.exists(link_name): # back it up
+                    print('found {}, backing it up.'.format(link_name))
+                    os.rename(link_name, link_name + '-backup')
                 os.symlink(target, link_name)
                 os.chdir(curr_dir)
             except OSError as e:
