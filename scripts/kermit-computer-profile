@@ -68,7 +68,10 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     alias edit=e
     #emacs --daemon # start the background daemon
     #ALTERNATE_EDITOR=""
-    e() { nohup emacsclient -n --alternate-editor="emacs" "$@" > /dev/null 2>&1 & }
+    e() {
+        nohup emacsclient -n --alternate-editor="emacs" "$@" > /dev/null 2>&1 &
+    }
+    export EDITOR=emacsclient
     alias rc='env DISPLAY=:0.0 rhythmbox-client --no-start'
     if [[ `hostname` == hocus-pocus ]]; then
         # key remappings for weird keyboards. Apple khm.. khm..
@@ -76,7 +79,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         #xmodmap ~/.Xmodmap
         :
     fi
-    # emacs-bindings - http://superuser.com/questions/345452/how-do-i-change-my-gnome-ubuntu-key-binding-work-as-emacs
+    # emacs-bindings: http://superuser.com/questions/345452
     #gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
     # ssh keychain
     if type keychain >/dev/null 2>/dev/null; then
@@ -106,6 +109,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
       -n --alternate-editor="/Applications/Emacs.app/Contents/MacOS/Emacs" \
       "$@" > /dev/null 2>&1 &
     }
+    export EDITOR=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
     # brew wants this before /usr/bin
     export PATH="/usr/local/bin:$PATH"
     # find the local docker daemon
@@ -117,8 +121,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias redisstart='sudo launchctl start io.redis.redis-server'
     alias redisstop='sudo launchctl stop io.redis.redis-server'
 fi
-
-export EDITOR=emacsclient
 
 # my scripts
 #############
@@ -143,7 +145,8 @@ export DEBEMAIL="kermit666@gmail.com"
 ######
 pathadd '/var/lib/gems/1.8/bin'
 pathadd $HOME/.rvm/bin
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # Heroku
 ########
