@@ -11,10 +11,20 @@
 cheese_shop() {
     echo "installing from the Cheese Shop"
     export WORKON_HOME
-    deactivate
     source /usr/local/bin/virtualenvwrapper.sh
-    mkvirtualenv --system-site-packages -p /usr/bin/python2 s
-    mkvirtualenv --system-site-packages -p /usr/bin/python3 s3
+    deactivate
+
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        PYTHON_BIN2=/usr/bin/python2
+        PYTHON_BIN3=/usr/bin/python3
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        PYTHON_BIN2=/usr/local/bin/python2
+        PYTHON_BIN3=/usr/local/bin/python3
+    fi
+
+
+    mkvirtualenv --system-site-packages -p $PYTHON_BIN2 s
+    mkvirtualenv --system-site-packages -p $PYTHON_BIN3 s3
 
     # no upgrade - hopefully, there's a binary
     PYTHON_STABLE="numpy scipy matplotlib"
