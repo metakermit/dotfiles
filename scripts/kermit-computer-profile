@@ -162,6 +162,10 @@ export GOPATH=$HOME/.go
 mkdir -p $GOPATH/bin
 pathadd ${GOPATH}/bin
 
+# OCaml
+#######
+. $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
 # node
 ######
 pathadd $HOME/.local/bin
