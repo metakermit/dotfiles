@@ -6,8 +6,13 @@ I decided to go the build-your-own-lightsaber road after all. So here goes...
 
 Installation
 ------------
+On a clean Ubuntu machine, do:
 
-    $ source ./meta/bootstrap
+    wget -O - https://raw.githubusercontent.com/kermit666/dotfiles/master/meta/bootstrap_new_machine | bash
+
+Alternatively, if you already have `git` and you cloned this repository, just do:
+
+    source ./meta/bootstrap
 
 TODO:
 ----
