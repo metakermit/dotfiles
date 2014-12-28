@@ -36,13 +36,12 @@ function test_open() {
 }
 
 function server() {
- if [ -f `kermit-deploy-location`/kermit-app-server ]
-    then
-        kermit-app-server
+    local port="${1:-8000}"
+    if [ -f `kermit-deploy-location`/kermit-app-server ]; then
+        kermit-app-server "$port"
     else
-        local port="${1:-8000}"
-        open "http://localhost:${port}/"
         nohup python -m SimpleHTTPServer "$port" > /dev/null 2>&1 &
+        open "http://localhost:${port}/"
     fi
 }
 

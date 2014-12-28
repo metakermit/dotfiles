@@ -2,7 +2,7 @@
 
 # run a web server
 function server() {
-	local port="${1:-8000}"
+    local port="${1:-8000}"
 
     if hash php 2>/dev/null; then
         nohup php -S 0.0.0.0:"$port" > /dev/null 2>&1 &
@@ -10,12 +10,12 @@ function server() {
         nohup python -m SimpleHTTPServer "$port" > /dev/null 2>&1 &
     fi
 
-    if hash php 2>/dev/null; then
-    	#nohup guard > /dev/null 2>&1 &
-	    guard
-    fi
+    kermit-open "http://localhost:${port}/" > /dev/null 2>&1
 
-	kermit-open "http://localhost:${port}/" > /dev/null 2>&1
+    if hash php 2>/dev/null; then
+        #nohup guard > /dev/null 2>&1 &
+        guard
+    fi
 
 }
 
