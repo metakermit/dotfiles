@@ -15,7 +15,8 @@
 [merge]
 	tool = emerge
 [mergetool "emerge"]
-	path = $HOME/.bin/kermit-code-merge
+        cmd = kermit-code-merge
+
 [alias]
 	co = checkout
         lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
