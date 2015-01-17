@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# delete untagged (none) images
+docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
+
+exit
