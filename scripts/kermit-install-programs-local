@@ -143,7 +143,7 @@ get_node_latest() {
 }
 
 npm_essential_modules() {
-    npm -g install yo generator-webapp
+    npm -g install yo grunt-cli bower generator-webapp generator-gulp-webapp
 }
 
 npm_comfy_modules() {
