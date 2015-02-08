@@ -161,6 +161,9 @@ get_node() {
     nvm install $NODE_STABLE
     nvm use $NODE_STABLE
     nvm alias default $NODE_STABLE
+    # update stuff
+    npm install -g npm
+    npm update -g
     # install some npm modules
     npm_essential_modules
     npm_comfy_modules
