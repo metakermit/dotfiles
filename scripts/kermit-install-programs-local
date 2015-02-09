@@ -22,9 +22,13 @@ cheese_shop() {
         PYTHON_BIN3=/usr/local/bin/python3
     fi
 
-
-    mkvirtualenv --system-site-packages -p $PYTHON_BIN2 s
-    mkvirtualenv --system-site-packages -p $PYTHON_BIN3 s3
+    # create the virtualenvs if they don't exist
+    if ! workon | grep --quiet '^s$'; then
+        mkvirtualenv --system-site-packages -p $PYTHON_BIN2 s
+    fi
+    if ! workon | grep --quiet '^s3$'; then
+        mkvirtualenv --system-site-packages -p $PYTHON_BIN3 s3
+    fi
 
     # no upgrade - hopefully, there's a binary
     PYTHON_STABLE="numpy scipy matplotlib"
