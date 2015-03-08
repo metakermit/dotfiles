@@ -27,6 +27,9 @@ alias py3=python3
 alias ipy=ipython
 alias ipy3=ipython3
 
+# - other
+alias fig=docker-compose
+
 # global functions
 ###################
 
