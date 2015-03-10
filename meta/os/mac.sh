@@ -41,3 +41,7 @@ brew install freetype
 brew tap homebrew/science
 echo "Install XQuartz from https://xquartz.macosforge.org/landing/"
 brew install R
+
+# Cask
+brew tap cask
+# TODO: install desktop apps like VLC, Chrome, ...
