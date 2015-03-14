@@ -2,16 +2,16 @@
 
 # install only the basic stuff!
 
-apt-get install -y build-essential curl git-core python-pip python3-pip zsh
+apt-get install -y build-essential curl git-core python-pip python3-pip zsh \
+    virtualenvwrapper
 # some python libraries that take ages to compile
-apt-get install -y python-numpy python-scipy python-matplotlib python3-numpy python3-scipy python3-matplotlib
+apt-get install -y python-numpy python-scipy python-matplotlib python3-numpy \
+    python3-scipy python3-matplotlib
 
 # because the Debian package behaves oddly
 # http://askubuntu.com/questions/251378/where-is-virtualenvwrapper-sh
-# March 2015 - removed these pip-installed versions, as they were troublesome
-#pip uninstall virtualenv # only temporary
-#pip uninstall virtualenvwrapper # only temporary
-#pip3 install virtualenv virtualenvwrapper
+# install an additional virtualenvwrapper for python3
+pip3 install virtualenv virtualenvwrapper
 
 # Add PPAs
 #---------
