@@ -146,6 +146,8 @@ export DEBEMAIL="kermit666@gmail.com"
 # Python
 ##############
 # virtualenvwrapper sourced by zsh plugin / .bashrc
+# - but it needs $WORKON_HOME defined (only the zsh plugin)
+export WORKON_HOME=$HOME/.virtualenvs
 
 # Ruby
 ######

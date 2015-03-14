@@ -8,9 +8,10 @@ apt-get install -y python-numpy python-scipy python-matplotlib python3-numpy pyt
 
 # because the Debian package behaves oddly
 # http://askubuntu.com/questions/251378/where-is-virtualenvwrapper-sh
-pip uninstall virtualenv # only temporary
-pip uninstall virtualenvwrapper # only temporary
-pip3 install virtualenv virtualenvwrapper
+# March 2015 - removed these pip-installed versions, as they were troublesome
+#pip uninstall virtualenv # only temporary
+#pip uninstall virtualenvwrapper # only temporary
+#pip3 install virtualenv virtualenvwrapper
 
 # Add PPAs
 #---------
