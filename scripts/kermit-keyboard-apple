@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # clear all options
-setxkbmap -model "pc105" -layout "hr,us" -option ""
+setxkbmap -model "pc105" -layout "us,hr" -option ""
 
 # set the Apple keyboard
-setxkbmap -rules "evdev" -model "pc105" -layout "hr,us" -option "terminate:ctrl_alt_bksp,lv3:rwin_switch,grp:shifts_toggle,caps:ctrl_modifier,altwin:swap_lalt_lwin,altwin:swap_alt_win"
+setxkbmap -rules "evdev" -model "pc105" -layout "us,hr" -option "terminate:ctrl_alt_bksp,lv3:rwin_switch,grp:shifts_toggle,caps:ctrl_modifier,altwin:swap_lalt_lwin,altwin:swap_alt_win"
 # (all options defined in /usr/share/X11/xkb/rules/base.lst)
 
 # TODO lsusb
@@ -17,8 +17,15 @@ else
     #xmodmap -e "keycode  49 = less greater less greater bar brokenbar bar brokenbar"
 
     # variant without dead keys
-    xmodmap -e "keycode  94 = grave asciitilde"
-    xmodmap -e "keycode  49 = less greater less greater bar brokenbar bar brokenbar"
+    # - these two options set the <> to the left of Y on Apple keyboards
+    # - (typical for Croatian PC layout)
+    #xmodmap -e "keycode  94 = grave asciitilde"
+    #xmodmap -e "keycode  49 = less greater less greater bar brokenbar bar brokenbar"
+    # - these two options set the `~ to the left of Y on Apple keyboards
+    # - (typical for US layout)
+    # - I use that as the default, now that I'm using the US layout more
+    xmodmap -e "keycode  94 = less greater less greater bar brokenbar bar brokenbar"
+    xmodmap -e "keycode  49 = grave asciitilde"
 fi
 
 #xmodmap -e "keycode 64 = Super_L NoSymbol Super_L"    #this will make Alt_L to act as Super_L
