@@ -57,5 +57,5 @@ brew install git
 #brew install R
 
 # Cask
-brew tap cask
-# TODO: install desktop apps like VLC, Chrome, ...
+brew install caskroom/cask/brew-cask
+# TODO: install desktop apps like VLC, Chrome, ... from a text file
