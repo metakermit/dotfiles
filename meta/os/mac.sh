@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# TODO: refactor into multiple scripts
+
+# fetch my keyboard layout
+#-------------------------
+key_repo=https://raw.githubusercontent.com/kermit666/croatian-awesome/master/
+sudo curl $key_repo/Croatian-awesome.keylayout \
+  -o /Library/Keyboard\ Layouts/Croatian-awesome.keylayout
+sudo curl $key_repo/Croatian-awesome.icns \
+  -o /Library/Keyboard\ Layouts/Croatian-awesome.icns
+
 # Xcode command line tools
 #-------------------------
 xcode-select --install
