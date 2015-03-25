@@ -10,6 +10,10 @@ On a clean Ubuntu machine, do:
 
     wget -O - https://raw.githubusercontent.com/kermit666/dotfiles/master/meta/bootstrap_new_machine | bash
 
+In OS X do:
+
+    bash <(curl -s https://raw.githubusercontent.com/kermit666/dotfiles/master/meta/os/mac.sh)
+
 Alternatively, if you already have `git` and you cloned this repository, just do:
 
     source ./meta/bootstrap
