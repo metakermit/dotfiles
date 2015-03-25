@@ -2,6 +2,8 @@
 
 # TODO: refactor into multiple scripts
 
+echo "STEP 1: install essentials"
+
 # fetch my keyboard layout
 #-------------------------
 key_repo=https://raw.githubusercontent.com/kermit666/croatian-awesome/master/
@@ -56,6 +58,22 @@ brew install git
 #echo "Install XQuartz from https://xquartz.macosforge.org/landing/"
 #brew install R
 
+#!/bin/bash
+
 # Cask
 brew install caskroom/cask/brew-cask
 # TODO: install desktop apps like VLC, Chrome, ... from a text file
+
+# deploy the dotfiles
+#--------------------
+
+DOTFILES_HOME=~/projekti/git/dotfiles
+
+echo "STEP 2: grab the source"
+git clone https://github.com/kermit666/dotfiles.git $DOTFILES_HOME
+
+echo "STEP 3: continue bootstrapping"
+# don't do it for now, as it's not Mac-ready
+#(cd $DOTFILES_HOME; source ./meta/bootstrap)
+
+exit
