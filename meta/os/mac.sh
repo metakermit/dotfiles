@@ -68,6 +68,7 @@ brew install caskroom/cask/brew-cask
 #--------------------
 
 DOTFILES_HOME=~/projekti/git/dotfiles
+mkdir -p $DOTFILES_HOME
 
 echo "STEP 2: grab the source"
 git clone https://github.com/kermit666/dotfiles.git $DOTFILES_HOME
