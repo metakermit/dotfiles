@@ -132,6 +132,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # if [ -f /usr/libexec/java_home ]; then
     #     export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
     # fi
+    # Postgres.app
+    pathadd /Applications/Postgres.app/Contents/Versions/9.4/bin
 fi
 
 # my scripts

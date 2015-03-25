@@ -6,3 +6,4 @@ atom.symlink/compile-cache
 atom.symlink/packages
 atom.symlink/storage
 atom.symlink/.apm/.apmrc
+.apm

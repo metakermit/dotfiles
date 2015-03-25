@@ -5,3 +5,4 @@ dropbox
 libreoffice
 google-chrome
 atom
+postgres

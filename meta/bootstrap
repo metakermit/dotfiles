@@ -65,6 +65,9 @@ aditionally () {
 
   # zsh default
   chsh -s $(which zsh)
+
+  # on OS X do:
+  # sudo dscl . change /users/$USER UserShell /bin/bash $(which zsh)
 }
 
 # the main dotfile linking function
