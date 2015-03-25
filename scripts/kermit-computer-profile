@@ -104,14 +104,19 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     export TERM=xterm-256color
     # open Emacs GUI from terminal
     #alias emacs='open -a /Applications/Emacs.app $1'
-    alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
-    alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+    EMACS_PATH="/opt/homebrew-cask/Caskroom/emacs/24.4/Emacs.app/Contents/MacOS/"
+    if [ ! -d "$EMACS_PATH" ]; then
+      # backup for when Emacs.app was manually installed
+      EMACS_PATH="/Applications/Emacs.app/Contents/MacOS"
+    fi
+    #alias emacs="${EMACS_PATH}/Emacs"
+    #alias emacsclient="${EMACS_PATH}/emacsclient"
     e() {
-      nohup /Applications/Emacs.app/Contents/MacOS/bin/emacsclient \
-      -n --alternate-editor="/Applications/Emacs.app/Contents/MacOS/Emacs" \
+      nohup ${EMACS_PATH}/bin/emacsclient \
+      -n --alternate-editor="${EMACS_PATH}/Emacs" \
       "$@" > /dev/null 2>&1 &
     }
-    export EDITOR=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
+    export EDITOR=${EMACS_PATH}/bin/Emacs # used to be ...emacsclient
     # brew wants this before /usr/bin
     export PATH="/usr/local/bin:$PATH"
     # find the local docker daemon
@@ -123,9 +128,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias redisstart='sudo launchctl start io.redis.redis-server'
     alias redisstop='sudo launchctl stop io.redis.redis-server'
     # JDK path
-    if [ -f /usr/libexec/java_home ]; then
-        export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-    fi
+    # for when Java is installed
+    # if [ -f /usr/libexec/java_home ]; then
+    #     export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+    # fi
 fi
 
 # my scripts
