@@ -2,8 +2,8 @@
 
 # install only the basic stuff!
 
-apt-get install -y build-essential curl git-core python-pip python3-pip zsh \
-    virtualenvwrapper
+apt-get install -y build-essential curl editorconfig git-core python-pip \
+        python3-pip zsh virtualenvwrapper
 # some python libraries that take ages to compile
 apt-get install -y python-numpy python-scipy python-matplotlib python3-numpy \
     python3-scipy python3-matplotlib

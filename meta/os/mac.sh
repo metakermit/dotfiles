@@ -58,7 +58,8 @@ brew install git
 #echo "Install XQuartz from https://xquartz.macosforge.org/landing/"
 #brew install R
 
-#!/bin/bash
+# other
+# brew install editorconfig
 
 # Cask
 brew install caskroom/cask/brew-cask
