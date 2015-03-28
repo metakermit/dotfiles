@@ -117,6 +117,11 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
       "$@" > /dev/null 2>&1 &
     }
     export EDITOR=${EMACS_PATH}/bin/Emacs # used to be ...emacsclient
+    # set Chrome binary path
+    CHROME_BIN=/opt/homebrew-cask/Caskroom/google-chrome/latest/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+    if [ -f "$CHROME_BIN" ]; then
+      export CHROME_BIN
+    fi
     # brew wants this before /usr/bin
     export PATH="/usr/local/bin:$PATH"
     # find the local docker daemon
