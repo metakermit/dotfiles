@@ -15,6 +15,10 @@ Host cloudfleet
   HostName cloudfleet.io
   User cloudfleet
 
+Host blimp.epska.org
+  CheckHostIP no
+  ProxyCommand /usr/bin/nc -X connect -x blimpyard.cloudfleet.io:80 %h %p
+
 # Xworx
 #-------
 Host athos
