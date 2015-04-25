@@ -50,6 +50,15 @@ function server() {
     fi
 }
 
+# - docker cleanup
+function docker-rm-exited() {
+    docker rm $(docker ps -a -q -f status=exited)
+}
+function docker-rmi-none() {
+    docker rmi $(docker images -a | grep '<none>' | awk '{print($3)}')
+}
+
+
 function absolute_path() {
     echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1")
 }
