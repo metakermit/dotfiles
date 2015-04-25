@@ -170,6 +170,10 @@ pathadd '/var/lib/gems/1.8/bin'
 pathadd $HOME/.rvm/bin
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# rsense (Emacs auto-completion)
+if hash rsense 2>/dev/null; then
+    RSENSE_HOME=`which rsense`
+fi
 
 # Heroku
 ########
