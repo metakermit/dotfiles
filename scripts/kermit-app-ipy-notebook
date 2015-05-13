@@ -4,6 +4,7 @@
 
 . ~/.bashrc
 
-ipython notebook --pylab=inline --notebook-dir=~/Dropbox/dev/skripte/python/notebook
+# start every notebook with %matplotlib inline (or %pylab inline)
+ipython notebook --notebook-dir=~/Dropbox/dev/skripte/python/notebook
 
 exit
