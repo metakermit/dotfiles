@@ -12,6 +12,9 @@ GIT=$HOME/projekti/git
 # aliases
 ##########
 
+alias g=git
+alias be="bundle exec"
+
 # - emacs
 alias ec=emacsclient
 alias et="ec -t"
