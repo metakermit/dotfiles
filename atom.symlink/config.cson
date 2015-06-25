@@ -14,8 +14,7 @@
   wordcount:
     files:
       "File extensions": "md markdown readme txt rst tex"
-  "tree-view":
-    {}
+  "tree-view": {}
   editor:
-    invisibles:
-      {}
+    invisibles: {}
+    fontSize: 15
