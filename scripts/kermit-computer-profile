@@ -171,7 +171,7 @@ export DEBFULLNAME="Dražen Lučanin"
 export DEBEMAIL="kermit666@gmail.com"
 
 # Python
-##############
+########
 # virtualenvwrapper sourced by zsh plugin / .bashrc
 # - but it needs $WORKON_HOME defined (only the zsh plugin)
 export WORKON_HOME=$HOME/.virtualenvs
@@ -208,12 +208,37 @@ pathadd $HOME/.local/bin
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 # Z script
-######
+##########
 source ${GIT}/drugi/z/z.sh
 
 # dev env variables
-######
+###################
 API_keys_script=$HOME/Dropbox/dev/API-keys.sh
 if [ -f $API_keys_script ]; then
     source $API_keys_script
 fi
+
+# Postgres functions
+####################
+pg() {
+    DATA="$1"
+    PORT=${2-5432}
+    postgres -D $DATA -p $PORT
+}
+
+create-project-db() {
+    U=$1
+    DB=$2
+    DBPATH=tmp/postgres
+    PORT=9911
+
+    initdb $DBPATH
+    postgres -D $DBPATH -p $PORT &
+    sleep 5
+    PID=$!
+    createuser -s -p $PORT $U
+    createdb -p $PORT -O $U $DB
+    echo "Created database $DB for user $U"
+
+    kill -INT $PID
+}
