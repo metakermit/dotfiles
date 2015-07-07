@@ -10,12 +10,14 @@ else
   exit
 fi
 
-edtr=emacs
+#edtr=emacs
+edtr=`echo $EDITOR`
 
 type $edtr >/dev/null 2>&1 || { edtr=vim; echo "fallback vim"; }
 
 #if type $edtr &>/dev/null 2>&1; then edtr=vim; echo "fallback vim"; fi
 
-$edtr $name &
+#$edtr $name &
+(cd $(dirname $name); $edtr $name)
 
 exit

@@ -5,14 +5,13 @@ if [ -n "$1" ]
 # Test whether command-line argument is present (non-empty).
 then
   name=$1
-else  
+else
   echo Must specify script name as an argument
   exit
 fi
 
-. kermit-script-cd
-echo Editing script $name at location `pwd`
+echo Editing script $name at location `kermit-script-location`
 
-kermit-edit $name
+(. kermit-script-cd; kermit-edit $name)
 
 exit
