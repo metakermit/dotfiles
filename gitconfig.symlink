@@ -18,10 +18,29 @@
         cmd = kermit-code-merge
 
 [alias]
-        s = status
-        d = diff
+  s = status
+  d = diff
 	co = checkout
-        lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  pl = pull
+  ps = push
+  c = commit
+  f = fetch
+  rb = rebase
+  a = add
+  br = branch
+  bi = bisect
+  cl = clone
+  i = init
+  h = help
+  t = tag
+  sh = show
+  rs = reset
+  m = merge
+  mt = mergetool
+  g = grep
+
 [pull]
 	rebase = true
 [credential]
