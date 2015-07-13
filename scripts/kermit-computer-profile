@@ -9,26 +9,36 @@ export PROFILE_SOURCED=TRUE
 
 GIT=$HOME/projekti/git
 
+# TODO: split all this into multiple files
+
 # aliases
 ##########
 
 alias g=git
 alias be="bundle exec"
 
-# - emacs
+# - Emacs
 alias ec=emacsclient
 alias et="ec -t"
 alias ed="emacs --daemon &"
 alias ek="ec -e '(kill-emacs)' &"
 alias ep="ps -e | grep -i emacs"
 
-# - python
+# - Python
 alias s="workon s"
 alias s3="workon s3"
 alias py=python
 alias py3=python3
 alias ipy=ipython
 alias ipy3=ipython3
+
+# - Ruby
+alias rbgrep="grep --include='*.rb' $*"
+alias r="bundle exec rails"
+alias rc="bundle exec rails console"
+alias rcp="bundle exec rails console production"
+alias rct="bundle exec rails console test"
+alias rdb="bundle exec rails dbconsole"
 
 # - docker-compose
 alias fig=docker-compose
@@ -61,7 +71,7 @@ function docker-rmi-none() {
     docker rmi $(docker images -a | grep '<none>' | awk '{print($3)}')
 }
 
-
+# - PATH stuff
 function absolute_path() {
     echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1")
 }
@@ -72,6 +82,28 @@ pathadd() {
     if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
         PATH="${PATH:+"$PATH:"}$1"
     fi
+}
+
+# - Ruby
+rdbm () {
+  if [ -f `pwd`/bin/rake ]
+  then
+    RAKE_CMD="./bin/rake"
+  else
+    RAKE_CMD="bundle exec rake"
+  fi
+  echo "Migrating dev database..."
+  $RAKE_CMD db:migrate
+  echo "Migrating test database..."
+  $RAKE_CMD db:migrate RAILS_ENV=test
+}
+
+function routes() {
+  if [ -n "$1" ]; then
+    bundle exec rake routes | grep $1
+  else
+    bundle exec rake routes
+  fi
 }
 
 # OS-specific
