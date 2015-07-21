@@ -5,7 +5,7 @@ Host *
 #------------
 Host spire
   HostName spire.cloudfleet.io
-  User cloudfleet
+  User root
 
 Host blimpyard
   HostName blimpyard.cloudfleet.io
