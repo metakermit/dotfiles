@@ -1,5 +1,17 @@
 #!/bin/bash
 
+intexit() {
+    # Kill all subprocesses (all processes in the current process group)
+    kill -HUP -$$
+}
+
+hupexit() {
+    # HUP'd (probably by intexit)
+    echo
+    echo "Interrupted. Killing server & guard."
+    exit
+}
+
 # run a web server
 function server() {
     local port="${1:-8000}"
@@ -14,11 +26,14 @@ function server() {
 
     if hash php 2>/dev/null; then
         #nohup guard > /dev/null 2>&1 &
-        guard
+        guard &
     fi
 
 }
 
+trap hupexit HUP
+trap intexit INT
+
 server "${1:-8000}"
 
-exit
+wait
