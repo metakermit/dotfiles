@@ -171,10 +171,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # brew wants this before /usr/bin
     export PATH="/usr/local/bin:$PATH"
     # find the local docker daemon
-    #export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
-    #export DOCKER_HOST=tcp://192.168.59.103:2376
-    #export DOCKER_CERT_PATH=/Users/kermit/.docker/boot2docker-vm
-    $(boot2docker shellinit 2>/dev/null)
+
+    eval "$(docker-machine env default)"
     # redis start/stop shortcuts
     alias redisstart='sudo launchctl start io.redis.redis-server'
     alias redisstop='sudo launchctl stop io.redis.redis-server'
