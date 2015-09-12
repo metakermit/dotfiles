@@ -162,7 +162,8 @@ get_node() {
     curl https://raw.github.com/creationix/nvm/master/install.sh | sh
     [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
     # NODE_STABLE=$(curl -s semver.io/node/stable)
-    NODE_STABLE=$(curl -s semver.io/iojs/stable)
+    # NODE_STABLE=$(curl -s semver.io/iojs/stable)
+    NODE_STABLE="v4.0.0" # tmp. until semver gets updated
     nvm install $NODE_STABLE
     nvm use $NODE_STABLE
     nvm alias default $NODE_STABLE
