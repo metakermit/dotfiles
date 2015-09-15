@@ -31,7 +31,7 @@ cheese_shop() {
     fi
 
     # no upgrade - hopefully, there's a binary
-    PYTHON_STABLE="numpy scipy matplotlib"
+    PYTHON_STABLE="numpy scipy matplotlib ansible"
     # keep these upgraded
     PYTHON_ESSENTIAL="ipython[notebook] pandas nose yanc jedi epc"
     if type workon > /dev/null; then
