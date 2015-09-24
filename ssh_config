@@ -19,6 +19,15 @@ Host blimp.epska.org
   CheckHostIP no
   ProxyCommand /usr/bin/nc -X connect -x blimpyard.cloudfleet.io:80 %h %p
 
+Host kermit-blimp
+  HostName kermit-blimp
+  User root
+
+Host kermit-blimp-rpi
+  HostName kermit-blimp
+  Port 2202
+  User root
+
 # Xworx
 #-------
 Host athos
