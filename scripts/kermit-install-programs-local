@@ -36,9 +36,11 @@ cheese_shop() {
     PYTHON_ESSENTIAL="ipython[notebook] pandas nose yanc jedi epc"
     if type workon > /dev/null; then
         workon s
+        pip install --upgrade pip
         pip install `echo $PYTHON_STABLE`
         pip install --upgrade `echo $PYTHON_ESSENTIAL`
         workon s3
+        pip install --upgrade pip
         pip install `echo $PYTHON_STABLE`
         pip install --upgrade `echo $PYTHON_ESSENTIAL`
     fi
