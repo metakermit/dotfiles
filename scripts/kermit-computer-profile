@@ -282,3 +282,8 @@ genpasswd() {
   #tr -dc A-Za-z0-9 < /dev/urandom | head -c ${l} | xargs
   openssl rand -base64 $l
  }
+
+# web performance
+perf () {
+        curl -o /dev/null -s -w "%{time_connect} + %{time_starttransfer} = %{time_total}\n" $@
+}
