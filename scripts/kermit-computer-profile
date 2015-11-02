@@ -119,7 +119,10 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     e() {
         nohup emacsclient -n --alternate-editor="emacs" "$@" > /dev/null 2>&1 &
     }
-    export EDITOR=emacsclient
+    export EDITOR_GUI=emacs
+    export EDITOR_TERM="emacs -nw"
+    #export EDITOR=emacsclient
+    export EDITOR=kermit-edit
     alias rc='env DISPLAY=:0.0 rhythmbox-client --no-start'
     if [[ `hostname` == hocus-pocus ]]; then
         # key remappings for weird keyboards. Apple khm.. khm..
@@ -162,7 +165,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
       -n --alternate-editor="${EMACS_PATH}/Emacs" \
       "$@" > /dev/null 2>&1 &
     }
-    export EDITOR=${EMACS_PATH}/Emacs # used to be ...emacsclient
+    export EDITOR_GUI=${EMACS_PATH}/Emacs
+    export EDITOR_TERM="$EDITOR_GUI -nw"
+    export EDITOR=kermit-edit # used to be emacsclient, then ${EMACS_PATH}/Emacs
     # set Chrome binary path
     CHROME_BIN=/opt/homebrew-cask/Caskroom/google-chrome/latest/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
     if [ -f "$CHROME_BIN" ]; then
