@@ -22,6 +22,6 @@ type $edtr >/dev/null 2>&1 || { edtr=vim; echo "fallback vim"; }
 #$edtr $name &
 #(cd $(dirname $name); $edtr $name)
 #echo $EDITOR_TERM $1
-(cd $(dirname $1); $EDITOR_TERM $1)
+(cd $(dirname $1); $EDITOR_TERM "$@")
 
 exit
