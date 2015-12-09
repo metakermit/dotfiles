@@ -33,10 +33,11 @@ brew install git
 # SSL better from brew
 # http://hackercodex.com/guide/python-development-environment-on-mac-osx/
 #echo "Leg-stretching while Python installs..."
-#brew install python --with-brewed-openssl
+# add --framework due to http://matplotlib.org/faq/virtualenv_faq.html
+brew install python --with-brewed-openssl --framework
 
 # Py3k
-#brew install python3 --with-brewed-openssl
+brew install python3 --with-brewed-openssl --framework
 
 # now on with the packages...
 # http://www.lowindata.com/2013/installing-scientific-python-on-mac-os-x/
