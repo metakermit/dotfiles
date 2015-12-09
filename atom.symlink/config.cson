@@ -11,6 +11,7 @@
       ".svn"
       ".DS_Store"
     ]
+    excludeVcsIgnoredPaths: false
   wordcount:
     files:
       "File extensions": "md markdown readme txt rst tex"
@@ -18,3 +19,4 @@
   editor:
     invisibles: {}
     fontSize: 15
+  "autocomplete-python": {}
