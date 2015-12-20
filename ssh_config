@@ -21,11 +21,23 @@ Host blimp.epska.org
 
 Host kermit-blimp
   HostName kermit-blimp
+  # HostName izvidnica.ddns.net
   User root
 
 Host kermit-blimp-rpi
   HostName kermit-blimp
+  # HostName izvidnica.ddns.net
   Port 2202
+  User root
+
+Host kermit-blimp-rpi-zg
+     HostName utvrda.ddns.net
+     Port 2202
+     User root
+
+Host blimp-ci
+  HostName kermit-blimp
+  Port 2203
   User root
 
 # Xworx

@@ -6,4 +6,5 @@ atom.symlink/compile-cache
 atom.symlink/packages
 atom.symlink/storage
 atom.symlink/.apm/.apmrc
+atom.symlink/blob-store
 .apm
