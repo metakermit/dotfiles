@@ -149,7 +149,7 @@ get_node_latest() {
 }
 
 npm_essential_modules() {
-    npm -g install yo grunt-cli bower generator-webapp generator-angular
+    npm -g install yo gulp grunt-cli bower generator-webapp generator-angular
 }
 
 npm_comfy_modules() {
@@ -165,7 +165,7 @@ get_node() {
     [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
     # NODE_STABLE=$(curl -s semver.io/node/stable)
     # NODE_STABLE=$(curl -s semver.io/iojs/stable)
-    NODE_STABLE="v4.0.0" # tmp. until semver gets updated
+    NODE_STABLE="v5.3.0" # tmp. until semver gets updated
     nvm install $NODE_STABLE
     nvm use $NODE_STABLE
     nvm alias default $NODE_STABLE
