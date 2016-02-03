@@ -33,15 +33,15 @@ cheese_shop() {
     # no upgrade - hopefully, there's a binary
     PYTHON_STABLE="numpy scipy matplotlib ansible"
     # keep these upgraded
-    PYTHON_ESSENTIAL="ipython[notebook] pandas nose yanc jedi epc"
+    PYTHON_ESSENTIAL="jupyter pandas nose yanc jedi epc"
     if type workon > /dev/null; then
         workon s
         pip install --upgrade pip
-        pip install `echo $PYTHON_STABLE`
+        pip install --upgrade `echo $PYTHON_STABLE`
         pip install --upgrade `echo $PYTHON_ESSENTIAL`
         workon s3
         pip install --upgrade pip
-        pip install `echo $PYTHON_STABLE`
+        pip install --upgrade `echo $PYTHON_STABLE`
         pip install --upgrade `echo $PYTHON_ESSENTIAL`
     fi
 
