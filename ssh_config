@@ -24,6 +24,12 @@ Host kermit-blimp
   # HostName izvidnica.ddns.net
   User root
 
+Host yardbird
+  HostName kermit-blimp
+  # HostName izvidnica.ddns.net
+  Port 2202
+  User root
+
 Host kermit-blimp-rpi
   HostName kermit-blimp
   # HostName izvidnica.ddns.net
