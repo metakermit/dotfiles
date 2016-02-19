@@ -149,11 +149,11 @@ get_node_latest() {
 }
 
 npm_essential_modules() {
-    npm -g install yo gulp grunt-cli bower generator-webapp generator-angular
+    npm -g install yo gulp bower
 }
 
 npm_comfy_modules() {
-    npm -g install generator-reveal jslint
+    npm -g install jslint generator-generator generator-webapp generator-gulp-angular
 }
 
 get_node() {
@@ -163,9 +163,9 @@ get_node() {
     # install new
     curl https://raw.github.com/creationix/nvm/master/install.sh | sh
     [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
-    # NODE_STABLE=$(curl -s semver.io/node/stable)
+    NODE_STABLE=$(curl -s semver.io/node/stable)
     # NODE_STABLE=$(curl -s semver.io/iojs/stable)
-    NODE_STABLE="v5.3.0" # tmp. until semver gets updated
+    #NODE_STABLE="v5.3.0" # tmp. until semver gets updated
     nvm install $NODE_STABLE
     nvm use $NODE_STABLE
     nvm alias default $NODE_STABLE
