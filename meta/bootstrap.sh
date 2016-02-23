@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
 # bootstrap is the entry point to installing everything.
 #
@@ -9,13 +9,13 @@
 echo ''
 DIR=`dirname $0`
 META_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-$DIR/util
+source $DIR/util.sh
 
 # sub-functions
 
 additionally () {
   # get fonts
-  source $DIR/get-powerline-fonts
+  source $DIR/get-powerline-fonts.sh
 
   info 'install local programs'
   $HOME/.bin/scripts/kermit-install-programs-local
@@ -41,7 +41,7 @@ additionally () {
   # sudo dscl . change /users/$USER UserShell /bin/bash $(which zsh)
 }
 
-source $DIR/install-dotfiles
+source $DIR/install-dotfiles.sh
 additionally
 
 echo ''

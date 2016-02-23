@@ -11,7 +11,7 @@ git clone https://github.com/kermit666/dotfiles.git $DOTFILES_HOME
 echo "STEP 3: continue bootstrapping"
 cd $DOTFILES_HOME
 
-source ./meta/bootstrap
+source ./meta/bootstrap.sh
 
 exit
 

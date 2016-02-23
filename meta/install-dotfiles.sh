@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
 # link and backup all dotfiles
 #
@@ -10,7 +10,7 @@ DOTFILES_ROOT="`pwd`"
 
 echo ''
 DIR=`dirname $0`
-$DIR/util
+source $DIR/util.sh
 
 # sub-functions
 
@@ -90,7 +90,7 @@ install_dotfiles () {
 
 link_special () {
   info 'special links'
-  python $DIR/link
+  python $DIR/link.py
 }
 
 install_dotfiles

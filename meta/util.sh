@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # logging functions
 
 info () {
