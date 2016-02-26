@@ -39,6 +39,9 @@ additionally () {
 
   # on OS X do:
   # sudo dscl . change /users/$USER UserShell /bin/bash $(which zsh)
+
+  # get emoji
+  curl 'https://raw.githubusercontent.com/heewa/bae/master/emoji_vars.sh' > ~/.emoji_vars.sh
 }
 
 source $DIR/install-dotfiles.sh

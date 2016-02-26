@@ -292,3 +292,8 @@ genpasswd() {
 perf () {
         curl -o /dev/null -s -w "%{time_connect} + %{time_starttransfer} = %{time_total}\n" $@
 }
+
+# emoji
+if [ -e ~/.emoji_vars.sh ]; then
+    source ~/.emoji_vars.sh
+fi
