@@ -177,9 +177,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     export PATH="/usr/local/bin:$PATH"
     # find the local docker daemon
 
-    if [[ $(docker-machine ls | grep default) ]]; then
-      eval "$(docker-machine env default)"
-    fi
+    # hopefully not needed after Docker for Mac
+    # if [[ $(docker-machine ls | grep default) ]]; then
+    #   eval "$(docker-machine env default)"
+    # fi
 
     # redis start/stop shortcuts
     alias redisstart='sudo launchctl start io.redis.redis-server'
