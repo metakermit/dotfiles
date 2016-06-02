@@ -7,7 +7,7 @@
       ".DS_Store"
     ]
   editor:
-    fontSize: 19
+    fontSize: 17
     invisibles: {}
   "exception-reporting":
     userId: "d3a0f3ef-d857-32e9-f013-43043c15090d"

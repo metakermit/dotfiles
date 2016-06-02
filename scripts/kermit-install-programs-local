@@ -149,11 +149,11 @@ get_node_latest() {
 }
 
 npm_essential_modules() {
-    npm -g install yo gulp bower
+    npm -g install yo gulp-cli bower
 }
 
 npm_comfy_modules() {
-    npm -g install jslint generator-generator generator-webapp generator-gulp-angular
+    npm -g install jslint generator-generator generator-webapp generator-gulp-angular generator-jekyllized
 }
 
 get_node() {
