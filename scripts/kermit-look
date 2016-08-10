@@ -2,6 +2,11 @@
 
 # kermit-look [dark|light]
 
+# Change iterm2 profile. Usage it2prof ProfileName (case sensitive)
+it2prof() {
+    echo -e "\033]50;SetProfile=$1\a"
+}
+
 if [ -n "$1" ]; then
   mod=$1
 else
@@ -23,24 +28,39 @@ ext_add() {
 
 if [ $mod == 'dark' ]; then
     bckg=$(ext_add ~/dark)
+    iterm2variant=""
 else
     mod=light
     bckg=$(ext_add ~/light)
+    iterm2variant="Light"
 fi
 
-# desktop background
-echo Setting background to ${bckg}
-gsettings set org.gnome.desktop.background picture-uri file://${bckg}
+# OS-specific
+##################
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    # Linux
+    # desktop background
+    echo Setting background to ${bckg}
+    gsettings set org.gnome.desktop.background picture-uri file://${bckg}
 
-# gnome
-cd ~/projekti/git/drugi/solarized/gnome-terminal-colors-solarized/
-./install.sh -s ${mod} -p Default
+    # gnome
+    cd ~/projekti/git/drugi/solarized/gnome-terminal-colors-solarized/
+    ./install.sh -s ${mod} -p Default
 
-# guake
-cd ~/projekti/git/drugi/solarized/guake-colors-solarized
-./set_${mod}.sh
+    # guake
+    cd ~/projekti/git/drugi/solarized/guake-colors-solarized
+    ./set_${mod}.sh
 
-# emacs
-emacsclient -e "(load-theme 'solarized-${mod} t)"
+    # emacs
+    emacsclient -e "(load-theme 'solarized-${mod} t)"
+
+
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    # Mac OS X
+    it2prof kermit$iterm2variant
+    #
+    /opt/homebrew-cask/Caskroom/emacs/24.4/Emacs.app/Contents/MacOS/bin/emacsclient -e "(set-background-mode nil '${mod})"
+fi
+
 
 exit
