@@ -175,6 +175,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     fi
     # brew wants this before /usr/bin
     export PATH="/usr/local/bin:$PATH"
+    export PATH="/usr/local/sbin:$PATH"
     # find the local docker daemon
 
     # hopefully not needed after Docker for Mac
