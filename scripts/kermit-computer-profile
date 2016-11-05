@@ -161,8 +161,12 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
       EMACS_PATH="/Applications/Emacs.app/Contents/MacOS"
     fi
     #alias emacs="${EMACS_PATH}/Emacs"
-    #alias emacsclient="${EMACS_PATH}/emacsclient"
     alias emacsclient=${EMACS_PATH}/bin/emacsclient
+    EMACS_CLIENT_PATH="${EMACS_PATH}/bin/emacsclient"
+    alias et="${EMACS_CLIENT_PATH} -t"
+    alias ed="${EMACS_CLIENT_PATH} --daemon &"
+    alias ek="${EMACS_CLIENT_PATH} -e '(kill-emacs)' &"
+    alias ep="${EMACS_CLIENT_PATH} -e | grep -i emacs"
     e() {
       nohup ${EMACS_PATH}/bin/emacsclient \
       -n --alternate-editor="${EMACS_PATH}/Emacs" \
