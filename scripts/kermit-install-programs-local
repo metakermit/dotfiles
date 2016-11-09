@@ -149,11 +149,12 @@ get_node_latest() {
 }
 
 npm_essential_modules() {
-    npm -g install yo gulp-cli bower
+    npm -g install yo gulp-cli node-gyp bower
 }
 
 npm_comfy_modules() {
-    npm -g install jslint generator-generator generator-webapp generator-gulp-angular generator-jekyllized
+    # current frontend scaffolding solution
+    npm -g install generator-fountain-webapp
 }
 
 get_node() {
@@ -163,8 +164,8 @@ get_node() {
     # install new
     curl https://raw.github.com/creationix/nvm/master/install.sh | sh
     [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
-    NODE_STABLE=$(curl -s semver.io/node/stable)
-    # NODE_STABLE=$(curl -s semver.io/iojs/stable)
+    # NODE_STABLE=$(curl -s https://semver.io/node/stable)
+    NODE_STABLE=$(curl -s https://semver.io/node/resolve/6.x) # LTS
     #NODE_STABLE="v5.3.0" # tmp. until semver gets updated
     nvm install $NODE_STABLE
     nvm use $NODE_STABLE
