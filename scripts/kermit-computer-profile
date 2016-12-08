@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # kermit's shell profile file
-if [ $PROFILE_SOURCED ]; then
+if [[ $PROFILE_SOURCED == TRUE ]]; then
     return # don't source us twice
 fi
 
@@ -155,7 +155,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     it2prof() { echo -e "\033]50;SetProfile=$1\a" }
     # open Emacs GUI from terminal
     #alias emacs='open -a /Applications/Emacs.app $1'
-    EMACS_PATH="/opt/homebrew-cask/Caskroom/emacs/24.4/Emacs.app/Contents/MacOS"
+    EMACS_PATH="/usr/local/Caskroom/emacs/24.4/Emacs.app/Contents/MacOS"
     if [ ! -d "$EMACS_PATH" ]; then
       # backup for when Emacs.app was manually installed
       EMACS_PATH="/Applications/Emacs.app/Contents/MacOS"
@@ -176,7 +176,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     export EDITOR_TERM="$EDITOR_GUI -nw"
     export EDITOR=kermit-edit # used to be emacsclient, then ${EMACS_PATH}/Emacs
     # set Chrome binary path
-    CHROME_BIN=/opt/homebrew-cask/Caskroom/google-chrome/latest/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+    CHROME_BIN=/usr/local/Caskroom/google-chrome/latest/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
     if [ -f "$CHROME_BIN" ]; then
       export CHROME_BIN
     fi
