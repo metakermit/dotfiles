@@ -144,7 +144,7 @@ get_node_latest() {
 
 node_essential_modules() {
     #npm -g install yo gulp-cli node-gyp
-    :
+    yarn global add gulp-cli
 }
 
 node_comfy_modules() {
