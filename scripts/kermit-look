@@ -59,7 +59,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Mac OS X
     it2prof kermit$iterm2variant
     #
-    /opt/homebrew-cask/Caskroom/emacs/24.4/Emacs.app/Contents/MacOS/bin/emacsclient -e "(set-background-mode nil '${mod})"
+    /Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e "(set-background-mode nil '${mod})"
 fi
 
 

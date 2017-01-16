@@ -1,54 +1,54 @@
 #!/bin/bash
 
-install_sudo() {
+install_sudo_linux() {
 
-apt-get install -y biblatex bsdtar compiz-plugins compizconfig-settings-manager gespeaker git glade gnupg golang goldendict gtk-recordmydesktop libfreetype6-dev mbrola mbrola-cr1 mbrola-us1 mbrola-us2 mbrola-en1 mbrola-de6 mbrola-it3 mbrola-it4 meld netcat network-manager-vpnc-gnome nmap openclipart-libreoffice openssh-server p7zip pandoc pbuilder picard pitivi playonlinux pulseaudio-module-jack qtcreator quicksynergy rapidsvn rednotebook shutter synaptic tex4ht texlive texlive-math-extra texlive-science texmaker vim wireshark xcalib xchm
+    apt-get install -y biblatex bsdtar compiz-plugins compizconfig-settings-manager gespeaker git glade gnupg golang goldendict gtk-recordmydesktop libfreetype6-dev mbrola mbrola-cr1 mbrola-us1 mbrola-us2 mbrola-en1 mbrola-de6 mbrola-it3 mbrola-it4 meld netcat network-manager-vpnc-gnome nmap openclipart-libreoffice openssh-server p7zip pandoc pbuilder picard pitivi playonlinux pulseaudio-module-jack qtcreator quicksynergy rapidsvn rednotebook shutter synaptic tex4ht texlive texlive-math-extra texlive-science texmaker vim wireshark xcalib xchm
 
-#TOFIX cheese
+    #TOFIX cheese
 
-# for selectable TTS
-apt-get install -y festival xsel uni2ascii lynx
+    # for selectable TTS
+    apt-get install -y festival xsel uni2ascii lynx
 
-# PPA-only programs
-#------------------
-# FFS
-add-apt-repository -y ppa:freefilesync/ffs
-# Lingo
-#apt-add-repository -y ppa:elementary-os/daily
-#apt-add-repository -y ppa:nemequ/sqlheavy
-# Sublime Text 2
-add-apt-repository -y ppa:webupd8team/sublime-text-2
+    # PPA-only programs
+    #------------------
+    # FFS
+    add-apt-repository -y ppa:freefilesync/ffs
+    # Lingo
+    #apt-add-repository -y ppa:elementary-os/daily
+    #apt-add-repository -y ppa:nemequ/sqlheavy
+    # Sublime Text 2
+    add-apt-repository -y ppa:webupd8team/sublime-text-2
 
-# Atom.io
-add-apt-repository ppa:webupd8team/atom
+    # Atom.io
+    add-apt-repository ppa:webupd8team/atom
 
-# Rhythmbox plugins
-add-apt-repository -y ppa:fossfreedom/rhythmbox-plugins
-# PPA Purge
-add-apt-repository -y ppa:nilarimogard/webupd8
-# docker
-# tmp transition ...
-ppa-purge ppa:dotcloud/lxc-docker
-#...
-apt-get install -y linux-image-extra-`uname -r`
-sh -c "curl https://get.docker.io/gpg | apt-key add -"
-sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
-# ufw setup for docker
-sed -i 's/^DEFAULT_FORWARD_POLICY="DROP"/DEFAULT_FORWARD_POLICY="ACCEPT"/g' /etc/default/ufw
-ufw reload
+    # Rhythmbox plugins
+    add-apt-repository -y ppa:fossfreedom/rhythmbox-plugins
+    # PPA Purge
+    add-apt-repository -y ppa:nilarimogard/webupd8
+    # docker
+    # tmp transition ...
+    ppa-purge ppa:dotcloud/lxc-docker
+    #...
+    apt-get install -y linux-image-extra-`uname -r`
+    sh -c "curl https://get.docker.io/gpg | apt-key add -"
+    sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
+    # ufw setup for docker
+    sed -i 's/^DEFAULT_FORWARD_POLICY="DROP"/DEFAULT_FORWARD_POLICY="ACCEPT"/g' /etc/default/ufw
+    ufw reload
 
-apt-get update
+    apt-get update
 
-apt-get install -y atom freefilesync lxc-docker ppa-purge rhythmbox-plugin-llyrics sublime-text
+    apt-get install -y atom freefilesync lxc-docker ppa-purge rhythmbox-plugin-llyrics sublime-text
 
 }
 
 # the essentials are in this script...
-kermit-install-programs-essential
+sudo kermit-install-programs-essential
 # comfortable, but not necessary
-kermit-install-programs-comfy
+sudo kermit-install-programs-comfy
 
-install_sudo
+sudo install_sudo_linux
 
 # and now for the non-sudo stuff
 /usr/bin/sudo -u `logname` env PATH=$PATH kermit-install-programs-local
