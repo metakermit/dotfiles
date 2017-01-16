@@ -45,6 +45,9 @@ alias fig=docker-compose
 alias dku="docker-compose up"
 alias dkr="docker-compose run"
 
+# - Node
+alias npm=yarn
+
 # global functions
 ###################
 
@@ -250,9 +253,9 @@ pathadd ${GOPATH}/bin
 
 # node
 ######
-pathadd $HOME/.local/bin
-[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
-[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+# [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 # yarn
 pathadd `yarn global bin`
 

@@ -142,22 +142,28 @@ get_node_latest() {
     ln -s .local/lib/node_modules .node_modules
 }
 
-npm_essential_modules() {
-    npm -g install yo gulp-cli node-gyp
+node_essential_modules() {
+    #npm -g install yo gulp-cli node-gyp
+    :
 }
 
-npm_comfy_modules() {
+node_comfy_modules() {
     # current frontend scaffolding solution
-    npm -g install generator-fountain-webapp
+    # npm -g install generator-fountain-webapp
+    #yarn add global yo generator-fountain-webapp
+    :
 }
 
-get_node() {
+get_nvm_node() {
     # revert old installation
     mv ~/.node-modules ~/.node-modules-old
     mv ~/.npmrc ~/.npmrc-old
     # install new
-    curl https://raw.github.com/creationix/nvm/master/install.sh | sh
-    [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+    # load
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+    # get stable node
     # NODE_STABLE=$(curl -s https://semver.io/node/stable)
     NODE_STABLE=$(curl -s https://semver.io/node/resolve/6.x) # LTS
     #NODE_STABLE="v5.3.0" # tmp. until semver gets updated
@@ -165,17 +171,24 @@ get_node() {
     nvm use $NODE_STABLE
     nvm alias default $NODE_STABLE
     # install yarn
-    if [[ "$OSTYPE" == "linux-gnu" ]]; then
-      curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-      echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-      sudo apt-get update && sudo apt-get install yarn
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-      brew update
-      brew install yarn
-    fi
+    npm install -g yarn
     # install some npm modules
-    npm_essential_modules
-    npm_comfy_modules
+    node_essential_modules
+    node_comfy_modules
+}
+
+get_yarn() {
+    # gets yarn and in turn node/npm
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+        echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+        sudo apt-get update && sudo apt-get install yarn
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        brew update
+        brew install yarn
+    fi
+    node_essential_modules
+    node_comfy_modules
 }
 
 # Docker
@@ -204,7 +217,7 @@ install_non_sudo() {
     get_ruby
     cheese_shop
     #get_docker
-    get_node
+    get_yarn
     get_src
 }
 
