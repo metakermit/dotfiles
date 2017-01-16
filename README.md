@@ -13,11 +13,16 @@ On a clean Ubuntu machine, do:
 
 In OS X do:
 
-    bash <(curl -s https://raw.githubusercontent.com/metakermit/dotfiles/master/meta/os/install-mac.sh)
+    bash <(curl -s https://raw.githubusercontent.com/metakermit/dotfiles/master/meta/install-mac.sh)
 
-Alternatively, if you already have `git` and you cloned this repository, just do:
+Alternatively, if you already have `git` and you cloned this repository,
+in Ubuntu just do:
 
-    ./meta/install.sh
+    ./meta/install-linux.sh
+
+or on a Mac:
+
+    ./meta/instal-mac.sh
 
 TODO:
 ----

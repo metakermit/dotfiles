@@ -164,7 +164,15 @@ get_node() {
     nvm install $NODE_STABLE
     nvm use $NODE_STABLE
     nvm alias default $NODE_STABLE
-    # TODO: maybe add yarn
+    # install yarn
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+      curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+      echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+      sudo apt-get update && sudo apt-get install yarn
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+      brew update
+      brew install yarn
+    fi
     # install some npm modules
     npm_essential_modules
     npm_comfy_modules

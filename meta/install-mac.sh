@@ -48,7 +48,7 @@ brew install python python3
 brew tap caskroom/cask
 # TODO: install desktop apps like VLC, Chrome, ... from a text file
 
-brew cask install google-chrome dropbox iterm2 lastpass flux
+brew cask install emacs google-chrome dropbox iterm2 lastpass flux
 
 # deploy the dotfiles
 #--------------------
