@@ -23,26 +23,21 @@ cheese_shop() {
     fi
 
     # create the virtualenvs if they don't exist
+    # if ! workon | grep --quiet '^s2$'; then
+    #     mkvirtualenv --system-site-packages -p $PYTHON_BIN2 s2
+    # fi
     if ! workon | grep --quiet '^s$'; then
-        mkvirtualenv --system-site-packages -p $PYTHON_BIN2 s
-    fi
-    if ! workon | grep --quiet '^s3$'; then
-        mkvirtualenv --system-site-packages -p $PYTHON_BIN3 s3
+        mkvirtualenv --system-site-packages -p $PYTHON_BIN3 s
     fi
 
-    # no upgrade - hopefully, there's a binary
-    PYTHON_STABLE="numpy scipy matplotlib ansible"
+    PYTHON_STABLE="ansible"
     # keep these upgraded
-    PYTHON_ESSENTIAL="jupyter pandas nose yanc jedi epc"
+    PYTHON_SCI="jupyter pandas numpy scipy matplotlib nose yanc jedi epc"
     if type workon > /dev/null; then
         workon s
         pip install --upgrade pip
         pip install --upgrade `echo $PYTHON_STABLE`
-        pip install --upgrade `echo $PYTHON_ESSENTIAL`
-        workon s3
-        pip install --upgrade pip
-        pip install --upgrade `echo $PYTHON_STABLE`
-        pip install --upgrade `echo $PYTHON_ESSENTIAL`
+        pip install --upgrade `echo $PYTHON_SCI`
     fi
 
 }
@@ -51,7 +46,7 @@ cheese_shop() {
 #-----------------------
 
 #--global functions-----
-export GIT=~/projekti/git
+export GIT=~/code
 
 clone_new() {
     NAME=`python -c "import sys; p=sys.argv[1]; print(p.split('/')[-1][:-4])" $1`
@@ -114,15 +109,14 @@ get_ruby() {
         echo "rvm already installed."
     else
     echo "installing rvm"
-        \curl -L https://get.rvm.io | bash -s stable --autolibs=3 --rails
+        gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+        \curl -sSL https://get.rvm.io | bash -s stable
     fi
-    # install all the gems
-    # gem install gist
 }
 
 # Node.js
 get_node_latest() {
-    NODEPATH=~/projekti/git/drugi/node
+    NODEPATH=~/code/drugi/node
 
     if [ -f ~/.npmrc ]; then
         echo "have .npmrc"
@@ -149,7 +143,7 @@ get_node_latest() {
 }
 
 npm_essential_modules() {
-    npm -g install yo gulp-cli node-gyp bower
+    npm -g install yo gulp-cli node-gyp
 }
 
 npm_comfy_modules() {
@@ -170,9 +164,7 @@ get_node() {
     nvm install $NODE_STABLE
     nvm use $NODE_STABLE
     nvm alias default $NODE_STABLE
-    # update stuff
-    npm install -g npm
-    npm update -g
+    # TODO: maybe add yarn
     # install some npm modules
     npm_essential_modules
     npm_comfy_modules
@@ -193,7 +185,6 @@ get_docker() {
         go get -v github.com/dotcloud/docker/...
         go install -v github.com/dotcloud/docker/...
     fi
-
 }
 
 

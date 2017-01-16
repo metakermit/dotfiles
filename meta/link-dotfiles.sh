@@ -8,21 +8,22 @@ DOTFILES_ROOT="`pwd`"
 # exit if any command exits with nonzero status
 #set -e
 
-echo ''
 DIR=`dirname $0`
 source $DIR/util.sh
+
+info_msg ''
 
 # sub-functions
 
 link_files () {
   ln -s $1 $2
-  success "linked $1 to $2"
+  success_msg "linked $1 to $2"
 }
 
 # the main dotfile linking function
 
 install_dotfiles () {
-  info 'installing dotfiles'
+  info_msg 'installing dotfiles'
 
   overwrite_all=false
   backup_all=false
@@ -41,7 +42,7 @@ install_dotfiles () {
 
       if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
       then
-        user "File already exists: `basename $source`, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        user_msg "File already exists: `basename $source`, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
 
         case "$action" in
@@ -65,20 +66,20 @@ install_dotfiles () {
       if [ "$overwrite" == "true" ] || [ "$overwrite_all" == "true" ]
       then
         rm -rf $dest
-        success "removed $dest"
+        success_msg "removed $dest"
       fi
 
       if [ "$backup" == "true" ] || [ "$backup_all" == "true" ]
       then
         mv $dest $dest\.backup
-        success "moved $dest to $dest.backup"
+        success_msg "moved $dest to $dest.backup"
       fi
 
       if [ "$skip" == "false" ] && [ "$skip_all" == "false" ]
       then
         link_files $source $dest
       else
-        success "skipped $source"
+        success_msg "skipped $source"
       fi
 
     else
@@ -89,12 +90,12 @@ install_dotfiles () {
 }
 
 link_special () {
-  info 'special links'
+  info_msg 'special links'
   python $DIR/link.py
 }
 
 install_dotfiles
 link_special
 
-echo ''
-echo 'All dotfiles installed!'
+info_msg ''
+info_msg 'All dotfiles installed!'

@@ -1,6 +1,6 @@
 #!/bin/bash
-
-# TODO: refactor into multiple scripts
+#
+# entry point for installing dotfiles on mac
 
 echo "STEP 1: install essentials"
 
@@ -17,7 +17,7 @@ echo "STEP 1: install essentials"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # first things first
-brew install git
+brew install git zsh
 
 # brew install bash-completion
 #brew install ssh-copy-id wget
@@ -29,8 +29,11 @@ xcode-select --install
 
 # Python
 #--------
-# needed for bootstrapping the dotfiles
+# needed for linking the dotfiles
 brew install python python3
+
+# we'll need this later in kermit-install-programs-local
+/usr/local/bin/pip install virtualenvwrapper
 
 # R
 #---
@@ -50,14 +53,14 @@ brew cask install google-chrome dropbox iterm2 lastpass flux
 # deploy the dotfiles
 #--------------------
 
-DOTFILES_HOME=~/projekti/git/dotfiles
+DOTFILES_HOME=~/code/dotfiles
 mkdir -p $DOTFILES_HOME
 
 echo "STEP 2: grab the source"
 git clone https://github.com/metakermit/dotfiles.git $DOTFILES_HOME
 
-echo "STEP 3: continue bootstrapping"
+echo "STEP 3: install dotfiles"
 # don't do it for now, as it's not Mac-ready
-#(cd $DOTFILES_HOME; source ./meta/bootstrap)
+(cd $DOTFILES_HOME; ./meta/install.sh)
 
 exit

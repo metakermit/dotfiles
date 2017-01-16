@@ -44,11 +44,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     gsettings set org.gnome.desktop.background picture-uri file://${bckg}
 
     # gnome
-    cd ~/projekti/git/drugi/solarized/gnome-terminal-colors-solarized/
+    cd ~/code/drugi/solarized/gnome-terminal-colors-solarized/
     ./install.sh -s ${mod} -p Default
 
     # guake
-    cd ~/projekti/git/drugi/solarized/guake-colors-solarized
+    cd ~/code/drugi/solarized/guake-colors-solarized
     ./set_${mod}.sh
 
     # emacs

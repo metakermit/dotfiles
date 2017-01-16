@@ -11,4 +11,4 @@ sudo apt-get install -y curl git-core python-pip ubuntu-restricted-extras virtua
 
 # TODO:
 # - install emacs (nox if server)
-# - git clone and bootstrap dotfiles
+# - git clone and install dotfiles

@@ -1,6 +1,9 @@
 #!/bin/bash
 #
-# bootstrap is the entry point to installing everything.
+# install.sh will link and install everything if essentials are available:
+# git, python, ...
+#
+# use install-mac.sh or install-linux.sh as an the entry point instead
 #
 
 # exit if any command exits with nonzero status
@@ -17,22 +20,20 @@ additionally () {
   # get fonts
   source $DIR/get-powerline-fonts.sh
 
-  info 'install local programs'
+  info_msg 'install local programs'
   $HOME/.bin/scripts/kermit-install-programs-local
 
   # scripts location TODO: write a (.gitignored) config file to the scripts/ folder stating this location
   SCRIPTS_DIR=`dirname $META_DIR`/scripts
-  info 'need sudo to write to /etc/kermit-location and install essential programs'
+  info_msg 'need sudo to write to /etc/kermit-location and install essential programs'
   echo $SCRIPTS_DIR | sudo tee /etc/kermit-location
 
   # we need the Ubuntu sudo same PATH hack...
   . $HOME/.bin/scripts/kermit-computer-profile
   . $HOME/.bin/scripts/kermit-computer-shrc
-  # ...to install essentials TODO: before everything, OS-independent (dotfiles.github.com)
-  sudo kermit-install-programs-essential
 
   # copy some hooks (on-resume etc.)
-  sudo ./meta/os/ubuntu/setup_ubuntu_root_stuff.sh
+  sudo ./meta/os/linux/setup_ubuntu_root_stuff.sh
 
   # zsh default
   chsh -s $(which zsh)
@@ -44,8 +45,8 @@ additionally () {
   curl 'https://raw.githubusercontent.com/heewa/bae/master/emoji_vars.sh' > ~/.emoji_vars.sh
 }
 
-source $DIR/install-dotfiles.sh
+source $DIR/link-dotfiles.sh
 additionally
 
 echo ''
-echo 'Bootstrapping complete!'
+info_msg 'Installation complete!'
