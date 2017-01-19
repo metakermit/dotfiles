@@ -14,8 +14,7 @@
     showIndentGuide: true
   "exception-reporting":
     userId: "d3a0f3ef-d857-32e9-f013-43043c15090d"
-  "linter-eslint":
-    useGlobalEslint: true
+  "linter-eslint": {}
   metrics:
     userId: "d6afe292f4a1f10d8d7b1959f41d56dd01c774a8"
   "tree-view":
