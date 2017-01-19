@@ -23,21 +23,24 @@ cheese_shop() {
     fi
 
     # create the virtualenvs if they don't exist
-    # if ! workon | grep --quiet '^s2$'; then
-    #     mkvirtualenv --system-site-packages -p $PYTHON_BIN2 s2
-    # fi
+    if ! workon | grep --quiet '^s2$'; then
+        mkvirtualenv --system-site-packages -p $PYTHON_BIN2 s2
+    fi
     if ! workon | grep --quiet '^s$'; then
         mkvirtualenv --system-site-packages -p $PYTHON_BIN3 s
     fi
 
-    PYTHON_STABLE="ansible"
+    PYTHON_STABLE2="ansible"
+    PYTHON_STABLE2="ansible"
     # keep these upgraded
     PYTHON_SCI="jupyter pandas numpy scipy matplotlib nose yanc jedi epc"
     if type workon > /dev/null; then
         workon s
         pip install --upgrade pip
-        pip install --upgrade `echo $PYTHON_STABLE`
+        #pip install --upgrade `echo $PYTHON_STABLE`
         pip install --upgrade `echo $PYTHON_SCI`
+        workon s2
+        pip install --upgrade `echo $PYTHON_STABLE2`
     fi
 
 }
