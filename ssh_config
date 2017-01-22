@@ -46,6 +46,14 @@ Host blimp-ci
   Port 2203
   User root
 
+# HakunaMatata
+#--------------
+Host hmbi
+  HostName 172.16.1.142
+  ForwardAgent yes
+  ProxyJump alta.x.not.org:9022
+  User kermit
+
 # Xworx
 #-------
 Host athos
