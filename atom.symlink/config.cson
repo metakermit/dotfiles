@@ -9,7 +9,6 @@
     ]
     telemetryConsent: "limited"
   editor:
-    fontSize: 17
     invisibles: {}
     showIndentGuide: true
   "exception-reporting":

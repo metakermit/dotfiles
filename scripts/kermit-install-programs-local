@@ -62,15 +62,6 @@ clone_new() {
 }
 #----------
 
-# prefix doesn't work
-get_hub() {
-    export PREFIX=$HOME
-    cd $GIT/drugi
-    clone_new git://github.com/github/hub.git
-    cd hub
-    rake install
-}
-
 get_src() {
     mkdir -p $GIT
 
@@ -89,7 +80,6 @@ get_src() {
     mkdir -p $GIT/drugi
     cd $GIT/drugi
     clone_new https://github.com/rupa/z.git
-    get_hub
 }
 
 get_zsh() {
