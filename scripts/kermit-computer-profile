@@ -31,6 +31,14 @@ alias py2=python
 alias py=python3
 alias ipy2=ipython
 alias ipy=ipython3
+function venv() {
+    if [ $# -eq 0 ]; then
+        echo "No arguments specified. Usage:"
+        echo "venv <prompt>"; return 1;
+    fi
+    python3 -m venv --prompt $1 .venv
+    cd .
+}
 
 # - Ruby
 alias rbgrep="grep --include='*.rb' $*"
