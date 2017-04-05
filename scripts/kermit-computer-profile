@@ -33,11 +33,14 @@ alias ipy2=ipython
 alias ipy=ipython3
 function venv() {
     if [ $# -eq 0 ]; then
-        echo "No arguments specified. Usage:"
-        echo "venv <prompt>"; return 1;
+        echo "No arguments specified. Using folder name as prompt:"
+        venv_prompt=${PWD##*/}
+        echo "venv ${venv_prompt}"
+    else
+        venv_prompt=$1
     fi
-    python3 -m venv --prompt $1 .venv
-    cd .
+    python3 -m venv --prompt $venv_prompt .venv
+    source ./.venv/bin/activate
 }
 
 # - Ruby
