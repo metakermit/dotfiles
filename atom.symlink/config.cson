@@ -16,6 +16,9 @@
   kite:
     showKiteTourOnStatup: false
   "linter-eslint": {}
+  "linter-ui-default":
+    panelHeight: 69
+    showPanel: true
   metrics:
     userId: "d6afe292f4a1f10d8d7b1959f41d56dd01c774a8"
   "tree-view":
