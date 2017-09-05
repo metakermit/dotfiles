@@ -158,6 +158,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         alias docker="docker.io"
     fi
 
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Mac OS X
     #export PATH=/usr/texbin:$PATH
@@ -210,6 +212,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # fi
     # Postgres.app
     #pathadd "/Applications/Postgres.app/Contents/Versions/9.4/bin"
+
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 fi
 
 # my scripts
@@ -326,3 +330,6 @@ perf () {
 if [ -e ~/.emoji_vars.sh ]; then
     source ~/.emoji_vars.sh
 fi
+
+# Travis
+[ -f /Users/kermit/.travis/travis.sh ] && source /Users/kermit/.travis/travis.sh
