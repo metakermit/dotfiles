@@ -214,6 +214,12 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     #pathadd "/Applications/Postgres.app/Contents/Versions/9.4/bin"
 
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+
+    # CUDA
+    pathadd /Developer/NVIDIA/CUDA-8.0/bin
+    export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-8.0/lib:/usr/local/cuda/lib:/usr/local/cuda/extras/CUPTI/lib:${DYLD_LIBRARY_PATH:+:${DYLD_LIBRARY_PATH}}
+    export LD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LD_LIBRARY_PATH
+
 fi
 
 # my scripts
@@ -333,8 +339,3 @@ fi
 
 # Travis
 [ -f /Users/kermit/.travis/travis.sh ] && source /Users/kermit/.travis/travis.sh
-
-# CUDA
-pathadd /Developer/NVIDIA/CUDA-8.0/bin
-export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-8.0/lib\
-  ${DYLD_LIBRARY_PATH:+:${DYLD_LIBRARY_PATH}}
