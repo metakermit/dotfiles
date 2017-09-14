@@ -333,3 +333,8 @@ fi
 
 # Travis
 [ -f /Users/kermit/.travis/travis.sh ] && source /Users/kermit/.travis/travis.sh
+
+# CUDA
+pathadd /Developer/NVIDIA/CUDA-8.0/bin
+export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-8.0/lib\
+  ${DYLD_LIBRARY_PATH:+:${DYLD_LIBRARY_PATH}}
