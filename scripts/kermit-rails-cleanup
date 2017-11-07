@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# filename: renice-rails
+renice +15 -p `ps ax | grep 'rb-fsevent' | grep -v grep | awk '{print $1}' | tr 'n' ' '`
+killall fsevent_watch
+
+exit
