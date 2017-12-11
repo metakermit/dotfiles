@@ -5,8 +5,28 @@ After looking at the many
 [interesting dotfile solutions](http://dotfiles.github.io/),
 I decided to go the build-your-own-lightsaber road after all. So here goes…
 
+Features
+--------
+
+💦🌱 These configs are actively nourished:
+
+- 📝 [atom](https://atom.io/) – the versatile and modern text editor
+- 💻 [zsh](http://ohmyz.sh/) – a cozy shell environment with git/virtualenv support
+- 📈 [jupyter notebook](https://jupyter.org/) – easily start a local Jupyter Notebook for number crunching on a train
+
+📼 These configs are still in there, but I rarely use them:
+
+- 💻 bash – not as cool as zsh, but should still work, I hope
+- ⌨️ [autokey](https://askubuntu.com/questions/245746/) – in Ubuntu, I tried to
+  get global Emacs shortcuts, but I hear from people this ain't working
+  any more. I'm mostly in OS X these days. Use at your own risk…
+
 Installation
 ------------
+Note, if you're really thinking of using this for your own config, you should
+fork the repo and clean out a lot of the stuff that will be useless to you.
+Sorry, I'm lazy and I didn't really make this a general-purpose config :P
+
 On a clean Ubuntu machine, do:
 
     wget -O - https://raw.githubusercontent.com/metakermit/dotfiles/master/meta/install-linux.sh | bash
@@ -31,13 +51,14 @@ TODO:
 - k script prefix with tab-completed subcommands - argparse+genzshcomp,
   OptionParser or trollop
 - move additionally () to separate file (too custom to my preferences)
-- install essential programs platform-independently
+- anonymize some of the configs / scripts that contain stuff very specific to me
 
 Changelog
 ---------
 
-- add emacs config metakermit/kermit-emacs
-- install script - something like http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
+- installed essential programs platform-independently
+- added emacs config metakermit/kermit-emacs
+- added install script - something like http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
 
 Thanks!
 -------

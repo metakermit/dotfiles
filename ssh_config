@@ -3,24 +3,10 @@ Host *
   UseKeychain yes
   AddKeysToAgent yes
   IdentityFile ~/.ssh/id_rsa
-
-# Cloudfleet
-#------------
-Host spire
-  HostName spire.cloudfleet.io
-  User root
-
-Host blimpyard
-  HostName blimpyard.cloudfleet.io
-  User kermit
-
-Host cloudfleet
-  HostName cloudfleet.io
-  User cloudfleet
-
-Host blimp.epska.org
-  CheckHostIP no
-  ProxyCommand /usr/bin/nc -X connect -x blimpyard.cloudfleet.io:80 %h %p
+  
+# kermit's servers
+#=================
+# TODO: get rid of these configs
 
 Host kermit-blimp
   HostName kermit-blimp
@@ -40,50 +26,8 @@ Host kermit-blimp-rpi
   User root
 
 Host kermit-blimp-rpi-zg
-     HostName utvrda.ddns.net
-     Port 2202
-     User root
-
-Host blimp-ci
-  HostName kermit-blimp
-  Port 2203
+  HostName utvrda.ddns.net
+  Port 2202
   User root
 
-# HakunaMatata
-#--------------
-Host hmbi
-  HostName 172.16.1.142
-  ForwardAgent yes
-  ProxyJump alta.x.not.org:9022
-  User kermit
 
-# Xworx
-#-------
-Host athos
-  HostName 141.244.40.212
-  Port 10009
-  User xworx
-
-Host porthos
-  HostName 141.244.40.213
-  Port 10009
-  User xworx
-
-Host aramis
-  HostName 141.244.40.217
-  Port 10009
-  User xworx
-
-Host dartagnan
-  HostName 141.244.40.209
-  Port 10009
-  User root
-  ForwardX11 yes
-
-# TU
-#----
-
-Host vitalab
-	Hostname vitalab.tuwien.ac.at
-        ServerAliveInterval 300
-        ServerAliveCountMax 36

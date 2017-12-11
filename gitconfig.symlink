@@ -1,9 +1,9 @@
 [user]
-        name = Dražen Lučanin
-        email = kermit666@gmail.com
+  name = Dražen Lučanin
+  email = kermit666@gmail.com
 [core]
-        excludesfile = ~/.gitignore_global
-        #editor = emacs -nw
+  excludesfile = ~/.gitignore_global
+  #editor = emacs -nw
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
@@ -11,12 +11,12 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [push]
-        default = simple
+  default = simple
 [merge]
 	tool = emerge
 	ff = no
 [mergetool "emerge"]
-        cmd = kermit-code-merge
+  cmd = kermit-code-merge
 
 [alias]
   s = status
@@ -46,5 +46,5 @@
 [pull]
 	rebase = true
 [credential]
-        helper = osxkeychain
-        helper = cache --timeout=3600
+  helper = osxkeychain
+  helper = cache --timeout=3600
