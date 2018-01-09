@@ -43,6 +43,12 @@ additionally () {
 
   # get emoji
   curl 'https://raw.githubusercontent.com/heewa/bae/master/emoji_vars.sh' > ~/.emoji_vars.sh
+
+  # create ~/.localshrc
+  if [ ! -f ~/.localshrc ]; then
+      echo "# ~/.localshrc: executed by bash / zsh for local overrides" > ~/.localshrc
+      chmod 755 ~/.localshrc
+  fi
 }
 
 source $DIR/link-dotfiles.sh

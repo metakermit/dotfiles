@@ -91,3 +91,7 @@ source $ZSH/oh-my-zsh.sh
 
 # source the actual profile
 . ~/.bin/scripts/kermit-computer-shrc
+
+if [ -f ~/.localshrc ]; then
+   source ~/.localshrc
+fi
