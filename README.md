@@ -13,6 +13,7 @@ Features
 - 📝 [atom](https://atom.io/) – the versatile and modern text editor
 - 💻 [zsh](http://ohmyz.sh/) – a cozy shell environment with git/virtualenv support
 - 📈 [jupyter notebook](https://jupyter.org/) – easily start a local Jupyter Notebook for number crunching on a train
+- 📝 [emacs](https://www.gnu.org/software/emacs/) – the classic text editor – for some reason I keep its config in [➡️ another repo](https://github.com/metakermit/kermit-emacs)
 
 📼 These configs are still in there, but I rarely use them:
 
@@ -62,4 +63,6 @@ Changelog
 
 Thanks!
 -------
-meta/install.sh - https://github.com/holman/dotfiles/blob/master/script/bootstrap
+
+- [the GitHub dotfiles community](https://dotfiles.github.io/)
+- [meta/install.sh](https://github.com/holman/dotfiles/blob/master/script/bootstrap)
