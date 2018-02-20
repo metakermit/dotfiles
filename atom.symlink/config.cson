@@ -7,6 +7,11 @@
     disabledPackages: [
       "linter"
       "whitespace"
+      "busy-signal"
+      "intentions"
+      "language-diff"
+      "language-latex"
+      "wordcount"
     ]
     ignoredNames: [
       ".git"
@@ -19,6 +24,8 @@
     showIndentGuide: true
   "exception-reporting":
     userId: "d3a0f3ef-d857-32e9-f013-43043c15090d"
+  "git-blame":
+    columnWidth: 175
   kite:
     showKiteTourOnStartup: false
   "linter-eslint": {}
@@ -27,8 +34,7 @@
   metrics:
     userId: "d6afe292f4a1f10d8d7b1959f41d56dd01c774a8"
   minimap: {}
-  "tree-view":
-    hideVcsIgnoredFiles: true
+  "tree-view": {}
   welcome:
     showOnStartup: false
   wordcount:
