@@ -13,7 +13,9 @@ DEFAULT_USER="$USER"
 # TODO: move this to shrc and maybe source it always for nested shells
 # venvwrapper stopped working with py2 in Ubuntu 14.04
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-   VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+else
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 fi
 
 # Uncomment the following line to use case-sensitive completion.

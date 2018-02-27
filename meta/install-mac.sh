@@ -33,7 +33,8 @@ xcode-select --install
 brew install python python3
 
 # we'll need this later in kermit-install-programs-local
-/usr/local/bin/pip3 install --user virtualenvwrapper
+sudo easy_install pip
+sudo pip install virtualenv virtualenvwrapper
 
 # R
 #---
