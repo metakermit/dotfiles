@@ -290,7 +290,7 @@ fi
 
 # vagrant
 #########
-export VAGRANT_HOME="/Volumes/mac-rezerva/vagrant_home/"
+# export VAGRANT_HOME="/Volumes/mac-rezerva/vagrant_home/"
 
 # Postgres functions
 ####################
