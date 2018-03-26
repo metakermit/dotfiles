@@ -1,6 +1,14 @@
 "*":
+  "atom-ide-ui":
+    use: {}
   "atom-package-deps":
     ignored: []
+  "autocomplete-plus":
+    fileBlacklist: [
+      "*.md"
+      "*.txt"
+      ".*"
+    ]
   "autocomplete-python":
     useKite: false
   core:
@@ -14,13 +22,19 @@
       ".DS_Store"
     ]
     telemetryConsent: "limited"
+    themes: [
+      "one-dark-ui"
+      "gruvbox"
+    ]
+    titleBar: "custom"
   editor:
+    fontSize: 17
     invisibles: {}
     showIndentGuide: true
   "exception-reporting":
     userId: "d3a0f3ef-d857-32e9-f013-43043c15090d"
   "git-blame":
-    columnWidth: 175
+    columnWidth: 293
   kite:
     showKiteTourOnStartup: false
   "linter-eslint": {}
@@ -31,7 +45,9 @@
     userId: "d6afe292f4a1f10d8d7b1959f41d56dd01c774a8"
   minimap: {}
   "prettier-atom":
-    formatOnSaveOptions: {}
+    formatOnSaveOptions:
+      enabled: true
+      isDisabledIfNoConfigFile: true
   "tree-view": {}
   welcome:
     showOnStartup: false
