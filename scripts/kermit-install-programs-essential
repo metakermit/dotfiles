@@ -19,11 +19,14 @@ pip3 install virtualenv virtualenvwrapper
 if type add-apt-repository > /dev/null 2>&1 ; then
     :
 else
-    apt-get install python-software-properties
+    apt-get install software-properties-common python-software-properties
 fi
 
 # Emacs24
 add-apt-repository -y ppa:cassou/emacs
+
+# Pipenv
+add-apt-repository ppa:pypa/ppa
 
 
 apt-get update
@@ -34,6 +37,6 @@ else
     apt-get install -y emacs-snapshot-nox keychain
 fi
 
-apt-get install emacs-snapshot-el
+apt-get install emacs-snapshot-el pipenv
 
 exit
