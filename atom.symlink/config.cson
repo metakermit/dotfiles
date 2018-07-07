@@ -28,7 +28,6 @@
     ]
     titleBar: "custom"
   editor:
-    fontSize: 17
     invisibles: {}
     showIndentGuide: true
   "exception-reporting":

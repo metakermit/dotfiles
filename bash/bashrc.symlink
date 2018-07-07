@@ -116,3 +116,6 @@ fi
 if [ -f ~/.localshrc ]; then
    source ~/.localshrc
 fi
+
+# added by travis gem
+[ -f /Users/kermit/.travis/travis.sh ] && source /Users/kermit/.travis/travis.sh
