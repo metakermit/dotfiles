@@ -338,4 +338,4 @@ if [ -e ~/.emoji_vars.sh ]; then
 fi
 
 # Travis
-[ -f /Users/kermit/.travis/travis.sh ] && source /Users/kermit/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh

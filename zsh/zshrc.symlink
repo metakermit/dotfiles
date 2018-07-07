@@ -57,7 +57,7 @@ fi
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(bower docker django gem git go heroku history node npm postgres \
-         python rake ruby rvm virtualenvwrapper pipenv)
+         python rake ruby rvm virtualenvwrapper pipenv zsh-autosuggestions)
 
 # User configuration
 
@@ -91,12 +91,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# zsh-autosuggestions binding
+bindkey '^ ' autosuggest-accept
+
 # source the actual profile
 . ~/.bin/scripts/kermit-computer-shrc
 
 if [ -f ~/.localshrc ]; then
    source ~/.localshrc
 fi
-
-# added by travis gem
-[ -f /Users/kermit/.travis/travis.sh ] && source /Users/kermit/.travis/travis.sh
