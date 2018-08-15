@@ -20,6 +20,8 @@
       ".git"
       ".svn"
       ".DS_Store"
+      "*.pyc"
+      ""
     ]
     telemetryConsent: "limited"
     themes: [
@@ -47,7 +49,9 @@
     formatOnSaveOptions:
       enabled: true
       isDisabledIfNoConfigFile: true
-  "tree-view": {}
+    useEslint: true
+  "tree-view":
+    hideIgnoredNames: true
   welcome:
     showOnStartup: false
   wordcount:
