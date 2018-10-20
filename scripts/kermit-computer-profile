@@ -283,6 +283,12 @@ pathadd `yarn global bin`
 ##########
 source ${GIT}/drugi/z/z.sh
 
+# hub
+######
+if hash hub 2>/dev/null; then
+  eval "$(hub alias -s)"
+fi
+
 # dev env variables
 ###################
 API_keys_script=$HOME/Dropbox/dev/API-keys.sh
