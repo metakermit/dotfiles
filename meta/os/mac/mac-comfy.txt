@@ -2,7 +2,7 @@ emacs
 iterm2
 spectacle
 dropbox
-libreoffice
 google-chrome
 atom
 postgres
+hub

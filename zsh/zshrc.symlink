@@ -13,7 +13,9 @@ DEFAULT_USER="$USER"
 # TODO: move this to shrc and maybe source it always for nested shells
 # venvwrapper stopped working with py2 in Ubuntu 14.04
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-   VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+else
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 fi
 
 # Uncomment the following line to use case-sensitive completion.
@@ -55,7 +57,7 @@ fi
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(bower docker django gem git go heroku history node npm postgres \
-         python rake ruby rvm virtualenvwrapper)
+         python rake ruby rvm virtualenvwrapper pipenv zsh-autosuggestions)
 
 # User configuration
 
@@ -88,6 +90,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# zsh-autosuggestions binding
+bindkey '^ ' autosuggest-accept
 
 # source the actual profile
 . ~/.bin/scripts/kermit-computer-shrc

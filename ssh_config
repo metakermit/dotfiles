@@ -3,7 +3,11 @@ Host *
   UseKeychain yes
   AddKeysToAgent yes
   IdentityFile ~/.ssh/id_rsa
-  
+
+Host *.pagekite.me
+  CheckHostIP no
+  ProxyCommand /usr/bin/nc -X connect -x %h:443 %h %p
+
 # kermit's servers
 #=================
 # TODO: get rid of these configs
@@ -30,4 +34,9 @@ Host kermit-blimp-rpi-zg
   Port 2202
   User root
 
+Host vitalportal
+  HostName vitalportal
+  User vpdevelop
 
+Host metakermit.pagekite.me
+  User pi

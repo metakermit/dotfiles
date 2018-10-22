@@ -164,6 +164,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Mac OS X
     #export PATH=/usr/texbin:$PATH
     pathadd '/usr/texbin'
+    # gettext (for Django locales)
+    pathadd '/usr/local/opt/gettext/bin'
     # Set CLICOLOR if you want Ansi Colors in iTerm2
     export CLICOLOR=1
     # Set colors to match iTerm2 Terminal Colors
@@ -281,6 +283,12 @@ pathadd `yarn global bin`
 ##########
 source ${GIT}/drugi/z/z.sh
 
+# hub
+######
+if hash hub 2>/dev/null; then
+  eval "$(hub alias -s)"
+fi
+
 # dev env variables
 ###################
 API_keys_script=$HOME/Dropbox/dev/API-keys.sh
@@ -290,7 +298,7 @@ fi
 
 # vagrant
 #########
-export VAGRANT_HOME="/Volumes/mac-rezerva/vagrant_home/"
+# export VAGRANT_HOME="/Volumes/mac-rezerva/vagrant_home/"
 
 # Postgres functions
 ####################
@@ -338,4 +346,4 @@ if [ -e ~/.emoji_vars.sh ]; then
 fi
 
 # Travis
-[ -f /Users/kermit/.travis/travis.sh ] && source /Users/kermit/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
