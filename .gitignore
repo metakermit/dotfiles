@@ -7,4 +7,5 @@ atom.symlink/packages
 atom.symlink/storage
 atom.symlink/.apm/.apmrc
 atom.symlink/blob-store
+atom.symlink/recovery
 .apm
