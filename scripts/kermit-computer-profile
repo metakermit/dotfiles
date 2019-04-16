@@ -282,7 +282,8 @@ pathadd ${GOPATH}/bin
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 # [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 # yarn
-pathadd `yarn global bin`
+# pathadd `yarn global bin`
+pathadd '/usr/local/opt/node@10/bin'
 
 # Z script
 ##########
