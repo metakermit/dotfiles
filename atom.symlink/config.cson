@@ -15,6 +15,7 @@
     disabledPackages: [
       "whitespace"
       "linter"
+      "editorconfig"
     ]
     ignoredNames: [
       ".git"

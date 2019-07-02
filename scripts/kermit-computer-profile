@@ -219,6 +219,15 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # fi
     # Postgres.app
     #pathadd "/Applications/Postgres.app/Contents/Versions/9.4/bin"
+    
+    # Android development
+    export ANDROID_HOME=$HOME/Library/Android/sdk
+    if [ -d $ANDROID_HOME ]; then
+      pathadd "$ANDROID_HOME/emulator"
+      pathadd "$ANDROID_HOME/tools"
+      pathadd "$ANDROID_HOME/tools/bin"
+      pathadd "$ANDROID_HOME/platform-tools"
+    fi
 
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
