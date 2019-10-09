@@ -36,7 +36,7 @@
   "exception-reporting":
     userId: "d3a0f3ef-d857-32e9-f013-43043c15090d"
   "git-blame":
-    columnWidth: 321
+    columnWidth: 443
   kite:
     showKiteTourOnStartup: false
   "linter-eslint": {}
