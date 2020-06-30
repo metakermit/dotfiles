@@ -12,6 +12,8 @@
 	<false/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
+	<key>ApplePressAndHoldEnabled</key>
+	<false/>
 	<key>AppleScrollAnimationEnabled</key>
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
@@ -1463,9 +1465,9 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>1348 196 918 512 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 398 650 479 0 0 1440 877 </string>
+	<string>0 0 1440 877 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>3 366 650 502 0 0 1440 877 </string>
+	<string>3 0 713 877 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>364 158 665 502 0 0 2560 1417 </string>
 	<key>New Bookmarks</key>
@@ -5445,15 +5447,27 @@
 	<key>NoSyncAllAppVersions</key>
 	<array>
 		<string>3.3.3beta1</string>
+		<string>3.3.0beta7</string>
+		<string>3.3.8beta3</string>
+		<string>3.3.5beta2</string>
+		<string>3.3.7beta1</string>
+		<string>3.3.2beta1</string>
+		<string>3.3.7beta3</string>
 		<string>3.3.1beta1</string>
+		<string>3.3.8beta2</string>
+		<string>3.3.0beta15</string>
+		<string>3.3.5beta1</string>
+		<string>3.3.0beta13</string>
 		<string>3.3.0beta16</string>
+		<string>3.3.3beta2</string>
+		<string>3.3.5beta3</string>
+		<string>3.3.7beta2</string>
 		<string>3.3.4beta1</string>
 		<string>3.3.2beta2</string>
-		<string>3.3.0beta13</string>
-		<string>3.3.2beta1</string>
-		<string>3.3.0beta15</string>
-		<string>3.3.3beta2</string>
-		<string>3.3.0beta7</string>
+		<string>3.3.7beta4</string>
+		<string>3.3.8beta1</string>
+		<string>3.3.8beta4</string>
+		<string>3.3.8beta5</string>
 	</array>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
@@ -5467,7 +5481,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>407D7FD2-DDE3-4820-B051-CC928E2A08DB</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>20</integer>
+	<integer>51</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -5997,6 +6011,22 @@
 			</dict>
 			<dict>
 				<key>isTerminal</key>
+				<false/>
+				<key>name</key>
+				<string>title</string>
+				<key>nonterminalContext</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>title</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
 				<string>tmuxWindowTitle</string>
@@ -6192,18 +6222,10 @@
 			</dict>
 		</array>
 	</dict>
-	<key>NoSyncSearchHistory</key>
-	<array>
-		<string>clean</string>
-		<string>356aqq</string>
-	</array>
-	<key>NoSyncSearchHistory2</key>
-	<array>
-		<string>3.2.6qgq</string>
-		<string>simplel</string>
-		<string>incompa</string>
-		<string>quantmatic</string>
-	</array>
+	<key>NoSyncSuppressDownloadConfirmation</key>
+	<true/>
+	<key>NoSyncSuppressDownloadConfirmation_selection</key>
+	<integer>0</integer>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>541418219.78089797</real>
 	<key>OnlyWhenMoreTabs</key>
@@ -6278,7 +6300,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-09-12T14:49:37Z</date>
+	<date>2020-02-01T15:28:33Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
@@ -6336,6 +6358,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.4beta1</string>
+	<string>3.3.8beta5</string>
 </dict>
 </plist>

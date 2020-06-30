@@ -57,7 +57,7 @@ fi
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(bower docker django gem git go heroku history node npm postgres \
-         python rake ruby rvm virtualenvwrapper pipenv zsh-autosuggestions)
+         python rake ruby rvm virtualenvwrapper pipenv zsh-autosuggestions z)
 
 # User configuration
 
