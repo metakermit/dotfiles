@@ -1,8 +1,9 @@
 [user]
-  name = Dražen Lučanin
-  email = kermit666@gmail.com
+	name = Dražen Lučanin
+	email = kermit666@gmail.com
 [core]
   excludesfile = ~/.gitignore_global
+	editor = emacs -nw --no-splash -q
   #editor = emacs -nw
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"

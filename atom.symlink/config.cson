@@ -31,13 +31,12 @@
     ]
     titleBar: "custom"
   editor:
-    fontSize: 19
     invisibles: {}
     showIndentGuide: true
   "exception-reporting":
     userId: "d3a0f3ef-d857-32e9-f013-43043c15090d"
   "git-blame":
-    columnWidth: 463
+    columnWidth: 508
   kite:
     showKiteTourOnStartup: false
   "linter-eslint": {}
