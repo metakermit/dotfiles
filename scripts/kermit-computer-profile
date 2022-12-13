@@ -317,6 +317,9 @@ load-nvmrc
 # pathadd `yarn global bin`
 pathadd '/usr/local/opt/node@10/bin'
 
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
 # Z script
 ##########
 source ${GIT}/drugi/z/z.sh
