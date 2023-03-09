@@ -89,13 +89,7 @@ install_dotfiles () {
   done
 }
 
-link_special () {
-  info_msg 'special links'
-  python $DIR/link.py
-}
-
 install_dotfiles
-link_special
 
 info_msg ''
 info_msg 'All dotfiles installed!'

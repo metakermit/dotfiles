@@ -14,7 +14,7 @@ echo "STEP 1: install essentials"
 
 # Homebrew
 #---------
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # first things first
 brew install git zsh
@@ -32,9 +32,9 @@ xcode-select --install
 # needed for linking the dotfiles
 brew install python python3 pipenv
 
-# we'll need this later in kermit-install-programs-local
-#sudo easy_install pip
-#sudo pip install virtualenv virtualenvwrapper
+# we'll need this later in install-programs-local.sh
+# python3 -m pip install virtualenvwrapper
+# python3 -m pip install --upgrade pip
 
 # R
 #---
@@ -46,10 +46,7 @@ brew install python python3 pipenv
 #-----
 # essential desktop apps
 
-brew tap caskroom/cask
-# TODO: install desktop apps like VLC, Chrome, ... from a text file
-
-brew cask install emacs google-chrome dropbox iterm2 lastpass flux
+brew --cask install emacs dropbox iterm2 flux
 
 # deploy the dotfiles
 #--------------------

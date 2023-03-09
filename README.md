@@ -18,9 +18,6 @@ Features
 📼 These configs are still in there, but I rarely use them:
 
 - 💻 bash – not as cool as zsh, but should still work, I hope
-- ⌨️ [autokey](https://askubuntu.com/questions/245746/) – in Ubuntu, I tried to
-  get global Emacs shortcuts, but I hear from people this ain't working
-  any more. I'm mostly in OS X these days. Use at your own risk…
 
 Installation
 ------------
@@ -28,13 +25,21 @@ Note, if you're really thinking of using this for your own config, you should
 fork the repo and clean out a lot of the stuff that will be useless to you.
 Sorry, I'm lazy and I didn't really make this a general-purpose config :P
 
-On a clean Ubuntu machine, do:
-
-    wget -O - https://raw.githubusercontent.com/metakermit/dotfiles/master/meta/install-linux.sh | bash
+### OS X
 
 In OS X do:
 
     bash <(curl -s https://raw.githubusercontent.com/metakermit/dotfiles/master/meta/install-mac.sh)
+
+### Ubuntu (deprecated)
+
+*Warning: support for Ubuntu no longer maintained.*
+
+On a clean Ubuntu machine, do:
+
+    wget -O - https://raw.githubusercontent.com/metakermit/dotfiles/master/meta/install-linux.sh | bash
+
+### Manual
 
 Alternatively, if you already have `git` and you cloned this repository,
 in Ubuntu just do:
@@ -45,21 +50,6 @@ or on a Mac:
 
     ./meta/instal-mac.sh
 
-TODO:
-----
-
-- store kermit-location inside the scripts folder
-- k script prefix with tab-completed subcommands - argparse+genzshcomp,
-  OptionParser or trollop
-- move additionally () to separate file (too custom to my preferences)
-- anonymize some of the configs / scripts that contain stuff very specific to me
-
-Changelog
----------
-
-- installed essential programs platform-independently
-- added emacs config metakermit/kermit-emacs
-- added install script - something like http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
 
 Thanks!
 -------

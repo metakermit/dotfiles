@@ -56,8 +56,8 @@ fi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(bower docker django gem git go heroku history node npm postgres \
-         python rake ruby rvm virtualenvwrapper pipenv zsh-autosuggestions z)
+plugins=(bower docker gem git heroku history node npm postgres \
+         python rake ruby rvm virtualenvwrapper pipenv z)
 
 # User configuration
 
@@ -95,8 +95,11 @@ source $ZSH/oh-my-zsh.sh
 bindkey '^ ' autosuggest-accept
 
 # source the actual profile
-. ~/.bin/scripts/kermit-computer-shrc
+. ~/.shrc
 
 if [ -f ~/.localshrc ]; then
    source ~/.localshrc
 fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

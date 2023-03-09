@@ -21,19 +21,12 @@ additionally () {
   source $DIR/get-powerline-fonts.sh
 
   info_msg 'install local programs'
-  $HOME/.bin/scripts/kermit-install-programs-local
-
-  # scripts location TODO: write a (.gitignored) config file to the scripts/ folder stating this location
   SCRIPTS_DIR=`dirname $META_DIR`/scripts
-  info_msg 'need sudo to write to /etc/kermit-location and install essential programs'
-  echo $SCRIPTS_DIR | sudo tee /etc/kermit-location
+  $SCRIPTS_DIR/install-programs-local.sh
 
   # we need the Ubuntu sudo same PATH hack...
-  . $HOME/.bin/scripts/kermit-computer-profile
-  . $HOME/.bin/scripts/kermit-computer-shrc
-
-  # copy some hooks (on-resume etc.)
-  sudo ./meta/os/linux/setup_ubuntu_root_stuff.sh
+  . $HOME/.shprofile
+  . $HOME/.shrc
 
   # zsh default
   chsh -s $(which zsh)

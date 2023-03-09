@@ -9,4 +9,3 @@ echo $1
 find -name '*.vala' -exec grep -PH $1 {} +
 
 exit
-

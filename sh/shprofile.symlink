@@ -207,9 +207,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
       export CHROME_BIN
     fi
     # brew wants this before /usr/bin
-    export PATH="/usr/local/bin:$PATH"
-    export PATH="/usr/local/sbin:$PATH"
-    # find the local docker daemon
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 
     # redis start/stop shortcuts
     alias redisstart='sudo launchctl start io.redis.redis-server'
@@ -231,7 +229,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
       pathadd "$ANDROID_HOME/platform-tools"
     fi
 
-    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+    export VIRTUALENVWRAPPER_PYTHON=/opt/homebrew/bin/python3
 
     # CUDA
     pathadd /Developer/NVIDIA/CUDA-8.0/bin
@@ -289,10 +287,7 @@ pathadd ${GOPATH}/bin
 
 # node
 ######
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-autoload -U add-zsh-hook
+
 load-nvmrc() {
   local node_version="$(nvm version)"
   local nvmrc_path="$(nvm_find_nvmrc)"
@@ -310,15 +305,26 @@ load-nvmrc() {
     nvm use default
   fi
 }
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+
+if hash nvm 2>/dev/null; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+  autoload -U add-zsh-hook
+
+  add-zsh-hook chpwd load-nvmrc
+  load-nvmrc
+fi
 
 # yarn
 # pathadd `yarn global bin`
 pathadd '/usr/local/opt/node@10/bin'
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+if hash ng 2>/dev/null; then
+  source <(ng completion script)
+fi
 
 # Z script
 ##########

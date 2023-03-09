@@ -2,4 +2,5 @@
 
 location=`pwd`
 echo $location > /etc/kermit-location
-chmod -R 755 $cp ${location}/* /usr/local/bin/
+chmod -R 755 $location
+cp ${location}/* /usr/local/bin/
