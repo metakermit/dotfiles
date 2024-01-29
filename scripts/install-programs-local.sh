@@ -43,11 +43,12 @@ cheese_shop() {
 export GIT=~/code
 
 clone_new() {
-    NAME=`python -c "import sys; p=sys.argv[1]; print(p.split('/')[-1][:-4])" $1`
+    NAME=`python3 -c "import sys; p=sys.argv[1]; print(p.split('/')[-1][:-4])" $1`
     if [ -d $NAME ]
     then
         echo $NAME already installed
     else
+        echo "git clone $1"
         git clone $1
     fi
 }
@@ -79,10 +80,9 @@ get_zsh() {
         echo "oh-my-zsh already set up"
     else
         echo "setting up oh-my-zsh"
-        #wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-        # manual method since I want my own .zsh
-        git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+        git clone git://github.com/ohmyzsh/oh-my-zsh.git ~/.oh-my-zsh
         chsh -s /bin/zsh
+
     fi
 }
 
@@ -106,6 +106,7 @@ install_non_sudo() {
     get_zsh
     cheese_shop
     get_yarn
+    get_src
 }
 
 echo "Instulling stuff as a *local* user..."
