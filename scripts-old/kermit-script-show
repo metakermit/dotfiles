@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# output content of script
-# usage kermit-script-show <script_name>
-BASE=$(kermit-deploy-location)
-cat $BASE/$1
-
-exit

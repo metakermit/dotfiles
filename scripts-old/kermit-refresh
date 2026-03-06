@@ -1,5 +1,0 @@
-#!/bin/bash
-
-location=`kermit-script-location`
-sudo kermit-undeploy
-sudo sh ${location}/kermit-deploy

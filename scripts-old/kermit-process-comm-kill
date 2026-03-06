@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# kill communtication
-pkill gm-notify
-
-
-exit

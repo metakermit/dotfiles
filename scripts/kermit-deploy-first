@@ -1,5 +1,0 @@
-#!/bin/bash
-
-location=`pwd`
-echo $location > /etc/kermit-location
-chmod -R 755 $cp ${location}/* /usr/local/bin/

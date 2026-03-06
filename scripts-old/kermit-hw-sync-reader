@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# kermit-auto-reader
-
-FreeFileSync ~/Dropbox/dev/linux-reader.ffs_batch
-
-
-exit

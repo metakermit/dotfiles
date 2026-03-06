@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# logout
-
-gnome-session-quit
-
-exit

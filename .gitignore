@@ -10,3 +10,6 @@ atom.symlink/blob-store
 atom.symlink/recovery
 atom.symlink/.atom-socket-secret-*
 .apm
+
+# git
+git/gitconfig.local.symlink

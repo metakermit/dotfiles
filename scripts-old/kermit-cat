@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# kermit-cat
-
-wget -q -O - $1
-
-
-exit

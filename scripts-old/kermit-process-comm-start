@@ -1,6 +1,0 @@
-#!/bin/bash
-
-# start communictaion
-gm-notify &
-
-exit

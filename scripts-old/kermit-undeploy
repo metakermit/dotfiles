@@ -1,2 +1,0 @@
-#!/bin/bash
-rm -R /usr/local/bin/kermit-*

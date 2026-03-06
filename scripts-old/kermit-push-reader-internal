@@ -1,4 +1,0 @@
-#!/bin/bash
-
-rsync -avzru --exclude '.DS_Store' ~/Documents/za_reader/ /Volumes/BEBOOKHD/Drazen/new
-#--delete - da pobriše one koji postoje samo na odredištu

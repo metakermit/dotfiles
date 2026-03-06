@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# kermit-config-java
-
-sudo update-alternatives --config java
-
-exit

@@ -25,34 +25,24 @@ Note, if you're really thinking of using this for your own config, you should
 fork the repo and clean out a lot of the stuff that will be useless to you.
 Sorry, I'm lazy and I didn't really make this a general-purpose config :P
 
-### OS X
+### First install
+
+TODO: fix this
 
 In OS X do:
 
-    bash <(curl -s https://raw.githubusercontent.com/metakermit/dotfiles/master/meta/install-mac.sh)
+    bash <(curl -s https://raw.githubusercontent.com/metakermit/dotfiles/main/meta/install-mac.sh)
 
-### Ubuntu (deprecated)
 
-*Warning: support for Ubuntu no longer maintained.*
+### From a cloned repo
 
-On a clean Ubuntu machine, do:
+Alternatively, if you already have `git` and you cloned this repository, just do:
 
-    wget -O - https://raw.githubusercontent.com/metakermit/dotfiles/master/meta/install-linux.sh | bash
-
-### Manual
-
-Alternatively, if you already have `git` and you cloned this repository,
-in Ubuntu just do:
-
-    ./meta/install-linux.sh
-
-or on a Mac:
-
-    ./meta/instal-mac.sh
+    meta/bootstrap.sh
 
 
 Thanks!
 -------
 
-- [the GitHub dotfiles community](https://dotfiles.github.io/)
-- [meta/install.sh](https://github.com/holman/dotfiles/blob/master/script/bootstrap)
+- [The GitHub dotfiles community](https://dotfiles.github.io/)
+- [Zach Holman's bootstrap script](https://github.com/holman/dotfiles/)

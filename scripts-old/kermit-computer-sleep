@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# kermit-computer-sleep
-
-
-sudo /etc/acpi/sleep.sh
-
-
-exit

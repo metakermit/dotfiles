@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# endless loop
-
-while true; do echo \"running assembly...\"; sleep 2; done
-
-exit

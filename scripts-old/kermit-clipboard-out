@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# clipboard
-# example echo test | kermit-clipboard
-
-xclip -o
-
-exit
