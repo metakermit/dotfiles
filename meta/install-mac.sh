@@ -1,10 +1,12 @@
 #!/bin/bash
 #
-# entry point for installing dotfiles on mac
+# entry point for installing dotfiles on a clean Mac from a remote url
+# usage:
+#     $ bash <(curl -fsSL https://raw.githubusercontent.com/metakermit/dotfiles/main/meta/install-mac.sh)
 
 echo "STEP 1: install essentials"
 
-# fetch my keyboard layout
+# fetch my keyboard layout - TODO fix
 #-------------------------
 #key_repo=https://raw.githubusercontent.com/kermit666/croatian-awesome/master/
 #sudo curl $key_repo/Croatian-awesome.keylayout \
@@ -24,41 +26,40 @@ brew install git zsh
 
 # Xcode command line tools
 #-------------------------
-# needed for python
-xcode-select --install
+# needed for Python
+if xcode-select -p &>/dev/null; then
+    echo "Xcode Command Line Tools already installed"
+else
+    xcode-select --install
+    echo "Please complete the Xcode Command Line Tools installation and re-run this script"
+    exit 0
+fi
 
 # Python
 #--------
 # needed for linking the dotfiles
-brew install python python3 pipenv
+brew install python3
 
 # we'll need this later in install-programs-local.sh
 # python3 -m pip install virtualenvwrapper
 # python3 -m pip install --upgrade pip
 
-# R
-#---
-#brew tap homebrew/science
-#echo "Install XQuartz from https://xquartz.macosforge.org/landing/"
-#brew install R
-
 # Cask
 #-----
 # essential desktop apps
 
-brew --cask install emacs dropbox iterm2 flux
+brew install --cask emacs dropbox iterm2 flux
 
 # deploy the dotfiles
 #--------------------
 
-DOTFILES_HOME=~/code/dotfiles
-mkdir -p $DOTFILES_HOME
+# DOTFILES_HOME=~/code/dotfiles
+# mkdir -p $DOTFILES_HOME
 
-echo "STEP 2: grab the source"
-git clone https://github.com/metakermit/dotfiles.git $DOTFILES_HOME
+# echo "STEP 2: grab the source"
+# git clone https://github.com/metakermit/dotfiles.git $DOTFILES_HOME
 
-echo "STEP 3: install dotfiles"
-# don't do it for now, as it's not Mac-ready
-(cd $DOTFILES_HOME; ./meta/install.sh)
+# echo "STEP 3: install dotfiles"
+# (cd $DOTFILES_HOME; meta/bootstrep.sh)
 
 exit

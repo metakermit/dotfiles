@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# bootstrap sets everything up initially.
+# bootstrap symlinks dotfiles
 
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
