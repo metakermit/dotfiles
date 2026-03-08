@@ -51,6 +51,12 @@ brew install python3 virtualenvwrapper
 
 brew install --cask emacs iterm2
 
+## Defaults
+#----------
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$HOME/.iterm"
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+
+
 # deploy the dotfiles
 #--------------------
 
