@@ -39,15 +39,15 @@ alias pei="pipenv install"
 alias pes="pipenv shell"
 alias pep="pipenv run python"
 function venv() {
-    if [ $# -eq 0 ]; then
-        echo "No arguments specified. Using folder name as prompt:"
-        venv_prompt=${PWD##*/}
-        echo "venv ${venv_prompt}"
-    else
-        venv_prompt=$1
-    fi
-    python3 -m venv --prompt $venv_prompt .venv
-    source ./.venv/bin/activate
+  if [ $# -eq 0 ]; then
+    echo "No arguments specified. Using folder name as prompt:"
+    venv_prompt=${PWD##*/}
+    echo "venv ${venv_prompt}"
+  else
+    venv_prompt=$1
+  fi
+  python3 -m venv --prompt $venv_prompt .venv
+  source ./.venv/bin/activate
 }
 
 # - Ruby
@@ -71,39 +71,35 @@ tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | s
 ###################
 
 function test_open() {
-    echo "opening"
-    open "http://localhost/"
+  echo "opening"
+  open "http://localhost/"
 }
 
 function server() {
-    local port="${1:-8000}"
-    if [ -f `kermit-deploy-location`/kermit-app-server ]; then
-        kermit-app-server "$port"
-    else
-        nohup python -m SimpleHTTPServer "$port" > /dev/null 2>&1 &
-        open "http://localhost:${port}/"
-    fi
+  local port="${1:-8000}"
+  nohup python3 -m http.server "$port" > /dev/null 2>&1 &
+  open "http://localhost:${port}/"
 }
 
 # - docker cleanup
 function docker-rm-exited() {
-    docker rm $(docker ps -a -q -f status=exited)
+  docker rm $(docker ps -a -q -f status=exited)
 }
 function docker-rmi-none() {
-    docker rmi $(docker images -a | grep '<none>' | awk '{print($3)}')
+  docker rmi $(docker images -a | grep '<none>' | awk '{print($3)}')
 }
 
 # - PATH stuff
 function absolute_path() {
-    echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1")
+  echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1")
 }
 
 export PATH
 
 pathadd() {
-    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-        PATH="${PATH:+"$PATH:"}$1"
-    fi
+  if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+      PATH="${PATH:+"$PATH:"}$1"
+  fi
 }
 
 # - Ruby
@@ -131,110 +127,110 @@ function routes() {
 # OS-specific
 ##################
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    # Linux
-    subl() { nohup /usr/bin/subl "$@" > /dev/null 2>&1 & }
-    #e() { nohup emacs "$@" > /dev/null 2>&1 & }
-    alias open=xdg-open
-    alias edit=e
-    #emacs --daemon # start the background daemon
-    #ALTERNATE_EDITOR=""
-    e() {
-        nohup emacsclient -n --alternate-editor="emacs" "$@" > /dev/null 2>&1 &
-    }
-    export EDITOR_GUI=emacs
-    export EDITOR_TERM="emacs -nw"
-    #export EDITOR=emacsclient
-    export EDITOR=kermit-edit
-    alias rc='env DISPLAY=:0.0 rhythmbox-client --no-start'
-    if [[ `hostname` == hocus-pocus ]]; then
-        # key remappings for weird keyboards. Apple khm.. khm..
-        # off due to switching to an us layout
-        #xmodmap ~/.Xmodmap
-        :
-    fi
-    # emacs-bindings: http://superuser.com/questions/345452
-    #gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
-    # ssh keychain
-    if type keychain >/dev/null 2>/dev/null; then
-        keychain --nogui -q ~/.ssh/id_rsa
-        [ -f ~/.keychain/${HOSTNAME}-sh ] && . ~/.keychain/${HOSTNAME}-sh
-        [ -f ~/.keychain/${HOSTNAME}-sh-gpg ] && . ~/.keychain/${HOSTNAME}-sh-gpg
-    fi
+  # Linux
+  subl() { nohup /usr/bin/subl "$@" > /dev/null 2>&1 & }
+  #e() { nohup emacs "$@" > /dev/null 2>&1 & }
+  alias open=xdg-open
+  alias edit=e
+  #emacs --daemon # start the background daemon
+  #ALTERNATE_EDITOR=""
+  e() {
+    nohup emacsclient -n --alternate-editor="emacs" "$@" > /dev/null 2>&1 &
+  }
+  export EDITOR_GUI=emacs
+  export EDITOR_TERM="emacs -nw"
+  #export EDITOR=emacsclient
+  export EDITOR=kermit-edit
+  alias rc='env DISPLAY=:0.0 rhythmbox-client --no-start'
+  if [[ `hostname` == hocus-pocus ]]; then
+    # key remappings for weird keyboards. Apple khm.. khm..
+    # off due to switching to an us layout
+    #xmodmap ~/.Xmodmap
+    :
+  fi
+  # emacs-bindings: http://superuser.com/questions/345452
+  #gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
+  # ssh keychain
+  if type keychain >/dev/null 2>/dev/null; then
+    keychain --nogui -q ~/.ssh/id_rsa
+    [ -f ~/.keychain/${HOSTNAME}-sh ] && . ~/.keychain/${HOSTNAME}-sh
+    [ -f ~/.keychain/${HOSTNAME}-sh-gpg ] && . ~/.keychain/${HOSTNAME}-sh-gpg
+  fi
 
-    if ! [ -f /usr/bin/docker ]; then
-        alias docker="docker.io"
-    fi
+  if ! [ -f /usr/bin/docker ]; then
+    alias docker="docker.io"
+  fi
 
-    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    # Mac OS X
-    #export PATH=/usr/texbin:$PATH
-    pathadd '/usr/texbin'
-    # gettext (for Django locales)
-    pathadd '/usr/local/opt/gettext/bin'
-    # Set CLICOLOR if you want Ansi Colors in iTerm2
-    export CLICOLOR=1
-    # Set colors to match iTerm2 Terminal Colors
-    export TERM=xterm-256color
-    # Change iterm2 profile. Usage it2prof ProfileName (case sensitive)
-    it2prof() { echo -e "\033]50;SetProfile=$1\a" }
-    # open Emacs GUI from terminal
-    #alias emacs='open -a /Applications/Emacs.app $1'
-    EMACS_PATH="/usr/local/Caskroom/emacs/24.4/Emacs.app/Contents/MacOS"
-    if [ ! -d "$EMACS_PATH" ]; then
-      # backup for when Emacs.app was manually installed
-      EMACS_PATH="/Applications/Emacs.app/Contents/MacOS"
-    fi
-    #alias emacs="${EMACS_PATH}/Emacs"
-    alias emacsclient=${EMACS_PATH}/bin/emacsclient
-    EMACS_CLIENT_PATH="${EMACS_PATH}/bin/emacsclient"
-    alias et="${EMACS_CLIENT_PATH} -t"
-    alias ed="${EMACS_CLIENT_PATH} --daemon &"
-    alias ek="${EMACS_CLIENT_PATH} -e '(kill-emacs)' &"
-    alias ep="${EMACS_CLIENT_PATH} -e | grep -i emacs"
-    e() {
-      nohup ${EMACS_PATH}/bin/emacsclient \
-      -n --alternate-editor="${EMACS_PATH}/Emacs" \
-      "$@" > /dev/null 2>&1 &
-    }
-    export EDITOR_GUI=${EMACS_PATH}/Emacs
-    export EDITOR_TERM="$EDITOR_GUI -nw"
-    export EDITOR=kermit-edit # used to be emacsclient, then ${EMACS_PATH}/Emacs
-    # set Chrome binary path
-    CHROME_BIN=/usr/local/Caskroom/google-chrome/latest/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
-    if [ -f "$CHROME_BIN" ]; then
-      export CHROME_BIN
-    fi
-    # brew wants this before /usr/bin
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+  # Mac OS X
+  #export PATH=/usr/texbin:$PATH
+  pathadd '/usr/texbin'
+  # gettext (for Django locales)
+  pathadd '/usr/local/opt/gettext/bin'
+  # Set CLICOLOR if you want Ansi Colors in iTerm2
+  export CLICOLOR=1
+  # Set colors to match iTerm2 Terminal Colors
+  export TERM=xterm-256color
+  # Change iterm2 profile. Usage it2prof ProfileName (case sensitive)
+  it2prof() { echo -e "\033]50;SetProfile=$1\a" }
+  # open Emacs GUI from terminal
+  #alias emacs='open -a /Applications/Emacs.app $1'
+  EMACS_PATH="/usr/local/Caskroom/emacs/24.4/Emacs.app/Contents/MacOS"
+  if [ ! -d "$EMACS_PATH" ]; then
+    # backup for when Emacs.app was manually installed
+    EMACS_PATH="/Applications/Emacs.app/Contents/MacOS"
+  fi
+  #alias emacs="${EMACS_PATH}/Emacs"
+  alias emacsclient=${EMACS_PATH}/bin/emacsclient
+  EMACS_CLIENT_PATH="${EMACS_PATH}/bin/emacsclient"
+  alias et="${EMACS_CLIENT_PATH} -t"
+  alias ed="${EMACS_CLIENT_PATH} --daemon &"
+  alias ek="${EMACS_CLIENT_PATH} -e '(kill-emacs)' &"
+  alias ep="${EMACS_CLIENT_PATH} -e | grep -i emacs"
+  e() {
+    nohup ${EMACS_PATH}/bin/emacsclient \
+    -n --alternate-editor="${EMACS_PATH}/Emacs" \
+    "$@" > /dev/null 2>&1 &
+  }
+  export EDITOR_GUI=${EMACS_PATH}/Emacs
+  export EDITOR_TERM="$EDITOR_GUI -nw"
+  export EDITOR=kermit-edit # used to be emacsclient, then ${EMACS_PATH}/Emacs
+  # set Chrome binary path
+  CHROME_BIN=/usr/local/Caskroom/google-chrome/latest/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+  if [ -f "$CHROME_BIN" ]; then
+    export CHROME_BIN
+  fi
+  # brew wants this before /usr/bin
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 
-    # redis start/stop shortcuts
-    alias redisstart='sudo launchctl start io.redis.redis-server'
-    alias redisstop='sudo launchctl stop io.redis.redis-server'
-    # JDK path
-    # for when Java is installed
-    # if [ -f /usr/libexec/java_home ]; then
-    #     export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-    # fi
-    # Postgres.app
-    #pathadd "/Applications/Postgres.app/Contents/Versions/9.4/bin"
-    
-    # Android development
-    export ANDROID_HOME=$HOME/Library/Android/sdk
-    if [ -d $ANDROID_HOME ]; then
-      pathadd "$ANDROID_HOME/emulator"
-      pathadd "$ANDROID_HOME/tools"
-      pathadd "$ANDROID_HOME/tools/bin"
-      pathadd "$ANDROID_HOME/platform-tools"
-    fi
+  # redis start/stop shortcuts
+  alias redisstart='sudo launchctl start io.redis.redis-server'
+  alias redisstop='sudo launchctl stop io.redis.redis-server'
+  # JDK path
+  # for when Java is installed
+  # if [ -f /usr/libexec/java_home ]; then
+  #     export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+  # fi
+  # Postgres.app
+  #pathadd "/Applications/Postgres.app/Contents/Versions/9.4/bin"
+  
+  # Android development
+  export ANDROID_HOME=$HOME/Library/Android/sdk
+  if [ -d $ANDROID_HOME ]; then
+    pathadd "$ANDROID_HOME/emulator"
+    pathadd "$ANDROID_HOME/tools"
+    pathadd "$ANDROID_HOME/tools/bin"
+    pathadd "$ANDROID_HOME/platform-tools"
+  fi
 
-    export VIRTUALENVWRAPPER_PYTHON=/opt/homebrew/bin/python3
+  export VIRTUALENVWRAPPER_PYTHON=/opt/homebrew/bin/python3
 
-    # CUDA
-    pathadd /Developer/NVIDIA/CUDA-8.0/bin
-    export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-8.0/lib:/usr/local/cuda/lib:/usr/local/cuda/extras/CUPTI/lib:${DYLD_LIBRARY_PATH:+:${DYLD_LIBRARY_PATH}}
-    export LD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LD_LIBRARY_PATH
+  # CUDA
+  pathadd /Developer/NVIDIA/CUDA-8.0/bin
+  export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-8.0/lib:/usr/local/cuda/lib:/usr/local/cuda/extras/CUPTI/lib:${DYLD_LIBRARY_PATH:+:${DYLD_LIBRARY_PATH}}
+  export LD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LD_LIBRARY_PATH
 
 fi
 
@@ -268,7 +264,7 @@ pathadd $HOME/.rvm/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 # rsense (Emacs auto-completion)
 if hash rsense 2>/dev/null; then
-    RSENSE_HOME=`which rsense`
+  RSENSE_HOME=`which rsense`
 fi
 
 # Heroku
@@ -284,38 +280,6 @@ pathadd ${GOPATH}/bin
 # OCaml
 #######
 . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-# node
-######
-
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use &>/dev/null
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-autoload -U add-zsh-hook
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
-
-# yarn
-# pathadd `yarn global bin`
-pathadd '/usr/local/opt/node@10/bin'
 
 # Load Angular CLI autocompletion.
 if hash ng 2>/dev/null; then
@@ -336,7 +300,7 @@ fi
 ###################
 API_keys_script=$HOME/Dropbox/dev/API-keys.sh
 if [ -f $API_keys_script ]; then
-    source $API_keys_script
+  source $API_keys_script
 fi
 
 # vagrant
@@ -346,46 +310,46 @@ fi
 # Postgres functions
 ####################
 pg() {
-    DATA="$1"
-    PORT=${2-5432}
-    postgres -D $DATA -p $PORT
+  DATA="$1"
+  PORT=${2-5432}
+  postgres -D $DATA -p $PORT
 }
 
 create-project-db() {
-    U=$1
-    DB=$2
-    DBPATH=tmp/postgres
-    PORT=9911
+  U=$1
+  DB=$2
+  DBPATH=tmp/postgres
+  PORT=9911
 
-    initdb $DBPATH
-    postgres -D $DBPATH -p $PORT &
-    sleep 5
-    PID=$!
-    createuser -s -p $PORT $U
-    createdb -p $PORT -O $U $DB
-    echo "Created database $DB for user $U"
+  initdb $DBPATH
+  postgres -D $DBPATH -p $PORT &
+  sleep 5
+  PID=$!
+  createuser -s -p $PORT $U
+  createdb -p $PORT -O $U $DB
+  echo "Created database $DB for user $U"
 
-    kill -INT $PID
+  kill -INT $PID
 }
 
 # password generation
 #####################
 
 genpasswd() {
-    local l=$1
-    [[ "$l" == "" ]] && l=16
-    #tr -dc A-Za-z0-9 < /dev/urandom | head -c ${l} | xargs
-    openssl rand -base64 $l
+  local l=$1
+  [[ "$l" == "" ]] && l=16
+  #tr -dc A-Za-z0-9 < /dev/urandom | head -c ${l} | xargs
+  openssl rand -base64 $l
  }
 
 # web performance
 perf () {
-    curl -o /dev/null -s -w "%{time_connect} + %{time_starttransfer} = %{time_total}\n" $@
+  curl -o /dev/null -s -w "%{time_connect} + %{time_starttransfer} = %{time_total}\n" $@
 }
 
 # emoji
 if [ -e ~/.emoji_vars.sh ]; then
-    source ~/.emoji_vars.sh
+  source ~/.emoji_vars.sh
 fi
 
 # Travis

@@ -1,10 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
-# install.sh will link and install everything if essentials are available:
-# git, python, ...
-#
-# use install-mac.sh or install-linux.sh as an the entry point instead
-#
+# run install.sh locally in a git repo to set a few more things up (manual linking and install from source)
+# run this _only after install-mac.sh_ (if essentials are available: git, zsh, ...)
 
 # exit if any command exits with nonzero status
 #set -e
@@ -12,15 +9,22 @@
 echo ''
 DIR=`dirname $0`
 META_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source $DIR/util.sh
+DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+# source $DIR/util.sh
 
-# sub-functions
+link_manually () {
+  if [ -f "$HOME/.ssh/config" ]
+  then
+    echo "ssh config already linked"
+  else
+    ln -s "$DOTFILES_DIR/ssh/config" "$HOME/.ssh/config"
+    echo "ssh config linked"
+  fi
+}
 
 additionally () {
-  # get fonts
-  source $DIR/get-powerline-fonts.sh
-
-  info_msg 'install local programs'
+  # install local programs
+  echo 'install local programs'
   SCRIPTS_DIR=`dirname $META_DIR`/scripts
   $SCRIPTS_DIR/install-programs-local.sh
 
@@ -44,8 +48,13 @@ additionally () {
   fi
 }
 
-source $DIR/link-dotfiles.sh
+# link dotfiles
+$META_DIR/bootstrap.sh
+# link some stuff manually
+link_manually
+# source the profile and change to zsh
 additionally
 
 echo ''
-info_msg 'Installation complete!'
+echo 'Installation complete!'
+

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # entry point for installing dotfiles on a clean Mac from a remote url
 # usage:
@@ -17,6 +17,7 @@ echo "STEP 1: install essentials"
 # Homebrew
 #---------
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew update
 
 # first things first
 brew install git zsh
@@ -38,7 +39,7 @@ fi
 # Python
 #--------
 # needed for linking the dotfiles
-brew install python3
+brew install python3 virtualenvwrapper
 
 # we'll need this later in install-programs-local.sh
 # python3 -m pip install virtualenvwrapper
@@ -48,18 +49,18 @@ brew install python3
 #-----
 # essential desktop apps
 
-brew install --cask emacs dropbox iterm2 flux
+brew install --cask emacs iterm2
 
 # deploy the dotfiles
 #--------------------
 
-# DOTFILES_HOME=~/code/dotfiles
-# mkdir -p $DOTFILES_HOME
+DOTFILES_HOME=~/code/dotfiles
+mkdir -p $DOTFILES_HOME
 
 # echo "STEP 2: grab the source"
 # git clone https://github.com/metakermit/dotfiles.git $DOTFILES_HOME
 
 # echo "STEP 3: install dotfiles"
-# (cd $DOTFILES_HOME; meta/bootstrep.sh)
+(cd $DOTFILES_HOME; meta/install.sh)
 
 exit

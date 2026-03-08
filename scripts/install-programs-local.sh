@@ -1,9 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # install locally, not as super user
-
-# Non-sudo stuff
-##################
 
 # Python packages
 #-----------------
@@ -57,16 +54,6 @@ clone_new() {
 get_src() {
     mkdir -p $GIT
 
-    # solarized stuff
-    # -----
-    if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        SLR=${GIT}/drugi/solarized
-        mkdir -p $SLR
-        cd $SLR
-        clone_new https://github.com/sigurdga/gnome-terminal-colors-solarized.git
-        clone_new https://github.com/coolwanglu/guake-colors-solarized.git
-    fi
-
     # other
     # -----
     mkdir -p $GIT/drugi
@@ -86,26 +73,12 @@ get_zsh() {
     fi
 }
 
-# Node.js
-get_yarn() {
-    # gets yarn and in turn node/npm
-    if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-        echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-        sudo apt-get update && sudo apt-get install yarn
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-        brew update
-        brew install yarn
-    fi
-}
-
 # Call all the functions
 #-----------------------
 
 install_non_sudo() {
     get_zsh
     cheese_shop
-    get_yarn
     get_src
 }
 

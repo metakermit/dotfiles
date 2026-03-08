@@ -27,16 +27,20 @@ Sorry, I'm lazy and I didn't really make this a general-purpose config :P
 
 ### First install
 
-TODO: fix this
+On a clean Mac do:
 
-In OS X do:
+    bash <(curl -fsSL https://raw.githubusercontent.com/metakermit/dotfiles/main/meta/install-mac.sh)
 
-    bash <(curl -s https://raw.githubusercontent.com/metakermit/dotfiles/main/meta/install-mac.sh)
+Alternatively download this repository and manually run the script:
+
+    cd dotfiles
+    chmod +x meta/install-mac.sh
+    meta/install-mac.sh
 
 
-### From a cloned repo
+### Refresh a cloned repo
 
-Alternatively, if you already have `git` and you cloned this repository, just do:
+To rerun the script if you added something new run:
 
     meta/bootstrap.sh
 
@@ -46,3 +50,4 @@ Thanks!
 
 - [The GitHub dotfiles community](https://dotfiles.github.io/)
 - [Zach Holman's bootstrap script](https://github.com/holman/dotfiles/)
+- [Zahradeen Muazu's Mac setup script](https://github.com/itxDeeni/mac-dev-setup)

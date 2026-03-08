@@ -9,6 +9,6 @@ fi
 
 # TODO: figure out how to divide stuff between profile and shrc
 if [ ! $PROFILE_SOURCED ]; then
-    source ~/.bin/scripts/kermit-computer-profile
-#    :
+    # source ~/.bin/scripts/kermit-computer-profile
+    :
 fi
