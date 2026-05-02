@@ -15,7 +15,7 @@ DEFAULT_USER="$USER"
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 else
-    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 fi
 
 # Uncomment the following line to use case-sensitive completion.
